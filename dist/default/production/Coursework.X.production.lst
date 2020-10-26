@@ -1,0 +1,366 @@
+
+
+HI-TECH Software PIC LITE Macro Assembler V1.00 build 12136 
+                                                                                               Mon Oct 26 15:55:36 2020
+
+HI-TECH Software Omniscient Code Generator (Lite mode) build 12136
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 12136"
+     2                           
+     3                           opt pagewidth 120
+     4                           
+     5                           	opt lm
+     6                           
+     7                           	processor	16F877A
+     8                           clrc	macro
+     9                           	bcf	3,0
+    10  0000                     	endm
+    11                           clrz	macro
+    12                           	bcf	3,2
+    13  0000                     	endm
+    14                           setc	macro
+    15                           	bsf	3,0
+    16  0000                     	endm
+    17                           setz	macro
+    18                           	bsf	3,2
+    19  0000                     	endm
+    20                           skipc	macro
+    21                           	btfss	3,0
+    22  0000                     	endm
+    23                           skipz	macro
+    24                           	btfss	3,2
+    25  0000                     	endm
+    26                           skipnc	macro
+    27                           	btfsc	3,0
+    28  0000                     	endm
+    29                           skipnz	macro
+    30                           	btfsc	3,2
+    31  0000                     	endm
+    32  0000                     indf	equ	0
+    33  0000                     indf0	equ	0
+    34  0002                     pc	equ	2
+    35  0002                     pcl	equ	2
+    36  0003                     status	equ	3
+    37  0004                     fsr	equ	4
+    38  0004                     fsr0	equ	4
+    39  0001                     c	equ	1
+    40  0000                     z	equ	0
+    41  000A                     pclath	equ	10
+    42                           	FNROOT	_main
+    43                           	global	_PORTD
+    44  0008                     _PORTD	set	0x8
+    45                           	global	_RA1
+    46  0029                     _RA1	set	0x29
+    47                           	global	_RA2
+    48  002A                     _RA2	set	0x2A
+    49                           	global	_RA3
+    50  002B                     _RA3	set	0x2B
+    51                           	global	_ADCON1
+    52  009F                     _ADCON1	set	0x9F
+    53                           	global	_TRISA
+    54  0085                     _TRISA	set	0x85
+    55                           	global	_TRISD
+    56  0088                     _TRISD	set	0x88
+    57                           psect	strings,class=STRING,delta=2
+    58                           global __pstrings
+    59  0003                     __pstrings:
+    60                           ;	global	stringdir,stringtab,__stringbase
+    61  0003                     stringtab:
+    62                           ;	String table - string pointers are 1 byte each
+    63  0003                     stringcode:stringdir:
+      + 0003                     stringdir:	
+    64  0003  3000               movlw high(stringdir)
+    65  0004  008A               movwf pclath
+    66  0005  0804               movf fsr,w
+    67  0006  0A84               incf fsr
+    68  0007  0782               	addwf pc
+    69  0008                     __stringbase:
+    70  0008  3400               	retlw	0
+    71                           psect	strings
+    72                           	
+    73  0009                     STR_2:	
+    74  0009  3457               	retlw	87	;'W'
+    75  000A  346F               	retlw	111	;'o'
+    76  000B  3472               	retlw	114	;'r'
+    77  000C  346C               	retlw	108	;'l'
+    78  000D  3464               	retlw	100	;'d'
+    79  000E  3421               	retlw	33	;'!'
+    80  000F  3400               	retlw	0
+    81                           psect	strings
+    82                           	
+    83  0010                     STR_1:	
+    84  0010  3448               	retlw	72	;'H'
+    85  0011  3465               	retlw	101	;'e'
+    86  0012  346C               	retlw	108	;'l'
+    87  0013  346C               	retlw	108	;'l'
+    88  0014  346F               	retlw	111	;'o'
+    89  0015  3400               	retlw	0
+    90                           psect	strings
+    91                           	file	"C:\Users\581402\AppData\Local\Temp\seuc."
+    92                           	line	#
+    93                           psect cinit,class=CODE,delta=2
+    94                           global start_initialization
+    95  07FC                     start_initialization:
+    96                           
+    97                           psect cinit,class=CODE,delta=2,merge=1
+    98                           global end_of_initialization
+    99                           
+   100                           ;End of C runtime variable initialization code
+   101                           
+   102  07FC                     end_of_initialization:
+   103  07FC  0183               clrf status
+   104  07FD  120A  118A  2FF9   ljmp _main	;jump to C main() function
+   105                           psect	cstackCOMMON,class=COMMON,space=1
+   106                           global __pcstackCOMMON
+   107  0000                     __pcstackCOMMON:
+   108                           	global	?_main
+   109  0000                     ?_main:	; 0 bytes @ 0x0
+   110                           	global	??_main
+   111  0000                     ??_main:	; 0 bytes @ 0x0
+   112                           ;!
+   113                           ;!Data Sizes:
+   114                           ;!    Strings     13
+   115                           ;!    Constant    0
+   116                           ;!    Data        0
+   117                           ;!    BSS         0
+   118                           ;!    Persistent  0
+   119                           ;!    Stack       0
+   120                           ;!
+   121                           ;!Auto Spaces:
+   122                           ;!    Space          Size  Autos    Used
+   123                           ;!    COMMON           14      0       0
+   124                           ;!    BANK0            80      0       0
+   125                           ;!    BANK1            80      0       0
+   126                           ;!    BANK3            96      0       0
+   127                           ;!    BANK2            96      0       0
+   128                           
+   129                           ;!
+   130                           ;!Pointer List with Targets:
+   131                           ;!
+   132                           ;!    None.
+   133                           
+   134                           
+   135                           ;!
+   136                           ;!Critical Paths under _main in COMMON
+   137                           ;!
+   138                           ;!    None.
+   139                           ;!
+   140                           ;!Critical Paths under _main in BANK0
+   141                           ;!
+   142                           ;!    None.
+   143                           ;!
+   144                           ;!Critical Paths under _main in BANK1
+   145                           ;!
+   146                           ;!    None.
+   147                           ;!
+   148                           ;!Critical Paths under _main in BANK3
+   149                           ;!
+   150                           ;!    None.
+   151                           ;!
+   152                           ;!Critical Paths under _main in BANK2
+   153                           ;!
+   154                           ;!    None.
+   155                           
+   156 ;;
+   157 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   158 ;;
+   159                           
+   160                           ;!
+   161                           ;!Call Graph Tables:
+   162                           ;!
+   163                           ;! ---------------------------------------------------------------------------------
+   164                           ;! (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   165                           ;! ---------------------------------------------------------------------------------
+   166                           ;! (0) _main                                                 0     0      0       0
+   167                           ;! ---------------------------------------------------------------------------------
+   168                           ;! Estimated maximum stack depth 0
+   169                           ;! ---------------------------------------------------------------------------------
+   170                           ;!
+   171                           ;! Call Graph Graphs:
+   172                           ;!
+   173                           ;! _main (ROOT)
+   174                           ;!
+   175                           
+   176                           ;! Address spaces:
+   177                           
+   178                           ;!Name               Size   Autos  Total    Cost      Usage
+   179                           ;!BITCOMMON            E      0       0       0        0.0%
+   180                           ;!EEDATA             100      0       0       0        0.0%
+   181                           ;!NULL                 0      0       0       0        0.0%
+   182                           ;!CODE                 0      0       0       0        0.0%
+   183                           ;!COMMON               E      0       0       1        0.0%
+   184                           ;!BITSFR0              0      0       0       1        0.0%
+   185                           ;!SFR0                 0      0       0       1        0.0%
+   186                           ;!BITSFR1              0      0       0       2        0.0%
+   187                           ;!SFR1                 0      0       0       2        0.0%
+   188                           ;!STACK                0      0       0       2        0.0%
+   189                           ;!ABS                  0      0       0       3        0.0%
+   190                           ;!BITBANK0            50      0       0       4        0.0%
+   191                           ;!BITSFR3              0      0       0       4        0.0%
+   192                           ;!SFR3                 0      0       0       4        0.0%
+   193                           ;!BANK0               50      0       0       5        0.0%
+   194                           ;!BITSFR2              0      0       0       5        0.0%
+   195                           ;!SFR2                 0      0       0       5        0.0%
+   196                           ;!BITBANK1            50      0       0       6        0.0%
+   197                           ;!BANK1               50      0       0       7        0.0%
+   198                           ;!BITBANK3            60      0       0       8        0.0%
+   199                           ;!BANK3               60      0       0       9        0.0%
+   200                           ;!BITBANK2            60      0       0      10        0.0%
+   201                           ;!BANK2               60      0       0      11        0.0%
+   202                           ;!DATA                 0      0       0      12        0.0%
+   203                           
+   204                           	global	_main
+   205                           
+   206 ;; *************** function _main *****************
+   207 ;; Defined at:
+   208 ;;		line 11 in file "Delay.c"
+   209 ;; Parameters:    Size  Location     Type
+   210 ;;		None
+   211 ;; Auto vars:     Size  Location     Type
+   212 ;;		None
+   213 ;; Return value:  Size  Location     Type
+   214 ;;		None               void
+   215 ;; Registers used:
+   216 ;;		None
+   217 ;; Tracked objects:
+   218 ;;		On entry : 17F/0
+   219 ;;		On exit  : 0/0
+   220 ;;		Unchanged: 0/0
+   221 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   222 ;;      Params:         0       0       0       0       0
+   223 ;;      Locals:         0       0       0       0       0
+   224 ;;      Temps:          0       0       0       0       0
+   225 ;;      Totals:         0       0       0       0       0
+   226 ;;Total ram usage:        0 bytes
+   227 ;; This function calls:
+   228 ;;		Nothing
+   229 ;; This function is called by:
+   230 ;;		Startup code after reset
+   231 ;; This function uses a non-reentrant model
+   232 ;;
+   233                           psect	maintext,global,class=CODE,delta=2,split=1
+   234                           global __pmaintext
+   235  07F9                     __pmaintext:
+   236                           psect	maintext
+   237                           	file	"Delay.c"
+   238                           	line	11
+   239                           	global	__size_of_main
+   240  0003                     	__size_of_main	equ	__end_of_main-_main
+   241                           	
+   242  07F9                     _main:	
+   243                           	opt	stack 8
+   244                           ; Regs used in _main: []
+   245                           	line	12
+   246                           	
+   247  07F9                     l589:	
+   248                           	line	13
+   249                           ;Delay.c: 12: return;
+   250                           	
+   251  07F9                     l62:	
+   252                           	global	start
+   253  07F9  120A  118A  2800   	ljmp	start
+   254                           	opt stack 0
+   255                           GLOBAL	__end_of_main
+   256  07FC                     	__end_of_main:
+   257                           	signat	_main,88
+   258                           psect	maintext
+   259                           	global	btemp
+   260  007E                     	btemp set 07Eh
+   261                           
+   262                           	DABS	1,126,2	;btemp
+   263                           	global	wtemp0
+   264  007E                     	wtemp0 set btemp
+
+
+Data Sizes:
+    Strings     13
+    Constant    0
+    Data        0
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14      0       0
+    BANK0            80      0       0
+    BANK1            80      0       0
+    BANK3            96      0       0
+    BANK2            96      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 0
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMMON            E      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+COMMON               E      0       0       1        0.0%
+BITSFR0              0      0       0       1        0.0%
+SFR0                 0      0       0       1        0.0%
+BITSFR1              0      0       0       2        0.0%
+SFR1                 0      0       0       2        0.0%
+STACK                0      0       0       2        0.0%
+ABS                  0      0       0       3        0.0%
+BITBANK0            50      0       0       4        0.0%
+BITSFR3              0      0       0       4        0.0%
+SFR3                 0      0       0       4        0.0%
+BANK0               50      0       0       5        0.0%
+BITSFR2              0      0       0       5        0.0%
+SFR2                 0      0       0       5        0.0%
+BITBANK1            50      0       0       6        0.0%
+BANK1               50      0       0       7        0.0%
+BITBANK3            60      0       0       8        0.0%
+BANK3               60      0       0       9        0.0%
+BITBANK2            60      0       0      10        0.0%
+BANK2               60      0       0      11        0.0%
+DATA                 0      0       0      12        0.0%
+
+
+HI-TECH Software PICC Macro Assembler V1.00 build 12136 
+Symbol Table                                                                                   Mon Oct 26 15:55:36 2020
+
+                   pc 0002                    l62 07F9                    fsr 0004                   l589 07F9  
+                 _RA1 0029                   _RA2 002A                   _RA3 002B                  STR_1 0010  
+                STR_2 0009                  _main 07F9                  btemp 007E                  start 0000  
+               ?_main 0000                 _PORTD 0008                 _TRISA 0085                 _TRISD 0088  
+               pclath 000A                 status 0003                 wtemp0 007E          __end_of_main 07FC  
+              ??_main 0000                _ADCON1 009F        __pcstackCOMMON 0000            __pmaintext 07F9  
+end_of_initialization 07FC   start_initialization 07FC             __pstrings 0003           __stringbase 0008  
+       __size_of_main 0003             stringcode 0003              stringdir 0003              stringtab 0003  
