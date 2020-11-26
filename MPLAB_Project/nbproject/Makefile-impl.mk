@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Coursework.X
+PROJECTNAME=MPLAB_Project
 
 # Active Configuration
 DEFAULTCONF=default
