@@ -6,6 +6,17 @@
 #pragma config BOREN = OFF
 #pragma config LVP = OFF
 
+struct Buttons{
+   Button 
+};
+
+
 void main(void) {
+    
+    while(1)
+    {
+        
+    }
+    
     return;
 }
