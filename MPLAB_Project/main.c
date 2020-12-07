@@ -12,14 +12,21 @@
 
 
 struct Buttons{
-//Kai Add Button Stuff Pls
+    void (*mode)(void);
+    void (*set)(void);
+    void (*increment)(void);
+    void (*decrement)(void);
+    void (*cancel)(void);
+    void (*aux1)(void);
+    void (*aux2)(void);
+    void (*aux3)(void);
 };
 
 void main(void) {
     char[] action;
     int lastTemp = -1; // 0 for under trigger, 1 for over trigger
-    float trigger = 25.0; // Move to temperature
-    float temperature = 0;
+    double trigger = 25.0; // Move to temperature
+    double temperature = 0;
     int startTime; // Change to appropriate type
     int currentTime; // Change to appropriate type
     int timerGone = 0; // Has timer buzzed
