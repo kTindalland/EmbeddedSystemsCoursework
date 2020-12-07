@@ -1,0 +1,6 @@
+
+double ITemperatureGetTemp()
+{
+    
+}
+
