@@ -1,5 +1,6 @@
 #include <xc.h>
 #include "LCDPanelInterface.h"
+#include "HeaterConfigManager.h"
 
 
 #pragma config FOSC = HS
@@ -8,9 +9,7 @@
 #pragma config BOREN = OFF
 #pragma config LVP = OFF
 
-struct Heater {
-        int mode;
-    } heater;
+
 
 struct Buttons{
 //Kai Add Button Stuff Pls

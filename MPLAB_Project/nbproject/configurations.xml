@@ -16,6 +16,7 @@
       <itemPath>ThermometerDriver.h</itemPath>
       <itemPath>ThermometerInterface.h</itemPath>
       <itemPath>MathsUtils.h</itemPath>
+      <itemPath>HeaterConfigManager.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -38,6 +39,7 @@
       <itemPath>RealTimeClockInterface.c</itemPath>
       <itemPath>SounderInterface.c</itemPath>
       <itemPath>ThermometerInterface.c</itemPath>
+      <itemPath>HeaterConfigManager.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

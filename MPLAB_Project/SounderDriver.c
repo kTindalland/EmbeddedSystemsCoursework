@@ -1,8 +1,15 @@
+#include <xc.h>
+
 void initialiseSounder()
 {
     TRISC = 0;
 }
-void beepSounder()
+
+void beepSounder(int time)
 {
-    PORTC2 = 1;
+    for (int i = 0; i < time; i++)
+    {
+        PORTC = 1;
+    }
+    PORTC = 0;
 }
