@@ -10,10 +10,11 @@ extern "C" {
     
 struct Heater {
     int mode;
-    int triggerTemp;
+    double triggerTemp;
+    double displayTemp;
     int hotTimer;
     int coldTimer;
-    char[] error;
+    char error[];
 } heater;
 
 void SetTriggerTemp(double temp);
