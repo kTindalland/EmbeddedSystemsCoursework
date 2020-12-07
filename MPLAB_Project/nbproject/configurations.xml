@@ -42,6 +42,7 @@
       <itemPath>ThermometerInterface.c</itemPath>
       <itemPath>HeaterConfigManager.c</itemPath>
       <itemPath>ModeRefreshes.c</itemPath>
+      <itemPath>Mode.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

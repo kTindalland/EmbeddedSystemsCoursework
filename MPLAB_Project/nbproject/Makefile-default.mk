@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=SevenSeg.c LcdDisplay.c Delay.c main.c ButtonDriver.c LCDPanelDriver.c RealTimeClockDriver.c ThermometerDriver.c SounderDriver.c ButtonInterface.c LCDPanelInterface.c RealTimeClockInterface.c SounderInterface.c ThermometerInterface.c HeaterConfigManager.c ModeRefreshes.c
+SOURCEFILES_QUOTED_IF_SPACED=SevenSeg.c LcdDisplay.c Delay.c main.c ButtonDriver.c LCDPanelDriver.c RealTimeClockDriver.c ThermometerDriver.c SounderDriver.c ButtonInterface.c LCDPanelInterface.c RealTimeClockInterface.c SounderInterface.c ThermometerInterface.c HeaterConfigManager.c ModeRefreshes.c Mode.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/SevenSeg.p1 ${OBJECTDIR}/LcdDisplay.p1 ${OBJECTDIR}/Delay.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/ButtonDriver.p1 ${OBJECTDIR}/LCDPanelDriver.p1 ${OBJECTDIR}/RealTimeClockDriver.p1 ${OBJECTDIR}/ThermometerDriver.p1 ${OBJECTDIR}/SounderDriver.p1 ${OBJECTDIR}/ButtonInterface.p1 ${OBJECTDIR}/LCDPanelInterface.p1 ${OBJECTDIR}/RealTimeClockInterface.p1 ${OBJECTDIR}/SounderInterface.p1 ${OBJECTDIR}/ThermometerInterface.p1 ${OBJECTDIR}/HeaterConfigManager.p1 ${OBJECTDIR}/ModeRefreshes.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/SevenSeg.p1.d ${OBJECTDIR}/LcdDisplay.p1.d ${OBJECTDIR}/Delay.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/ButtonDriver.p1.d ${OBJECTDIR}/LCDPanelDriver.p1.d ${OBJECTDIR}/RealTimeClockDriver.p1.d ${OBJECTDIR}/ThermometerDriver.p1.d ${OBJECTDIR}/SounderDriver.p1.d ${OBJECTDIR}/ButtonInterface.p1.d ${OBJECTDIR}/LCDPanelInterface.p1.d ${OBJECTDIR}/RealTimeClockInterface.p1.d ${OBJECTDIR}/SounderInterface.p1.d ${OBJECTDIR}/ThermometerInterface.p1.d ${OBJECTDIR}/HeaterConfigManager.p1.d ${OBJECTDIR}/ModeRefreshes.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/SevenSeg.p1 ${OBJECTDIR}/LcdDisplay.p1 ${OBJECTDIR}/Delay.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/ButtonDriver.p1 ${OBJECTDIR}/LCDPanelDriver.p1 ${OBJECTDIR}/RealTimeClockDriver.p1 ${OBJECTDIR}/ThermometerDriver.p1 ${OBJECTDIR}/SounderDriver.p1 ${OBJECTDIR}/ButtonInterface.p1 ${OBJECTDIR}/LCDPanelInterface.p1 ${OBJECTDIR}/RealTimeClockInterface.p1 ${OBJECTDIR}/SounderInterface.p1 ${OBJECTDIR}/ThermometerInterface.p1 ${OBJECTDIR}/HeaterConfigManager.p1 ${OBJECTDIR}/ModeRefreshes.p1 ${OBJECTDIR}/Mode.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/SevenSeg.p1.d ${OBJECTDIR}/LcdDisplay.p1.d ${OBJECTDIR}/Delay.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/ButtonDriver.p1.d ${OBJECTDIR}/LCDPanelDriver.p1.d ${OBJECTDIR}/RealTimeClockDriver.p1.d ${OBJECTDIR}/ThermometerDriver.p1.d ${OBJECTDIR}/SounderDriver.p1.d ${OBJECTDIR}/ButtonInterface.p1.d ${OBJECTDIR}/LCDPanelInterface.p1.d ${OBJECTDIR}/RealTimeClockInterface.p1.d ${OBJECTDIR}/SounderInterface.p1.d ${OBJECTDIR}/ThermometerInterface.p1.d ${OBJECTDIR}/HeaterConfigManager.p1.d ${OBJECTDIR}/ModeRefreshes.p1.d ${OBJECTDIR}/Mode.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/SevenSeg.p1 ${OBJECTDIR}/LcdDisplay.p1 ${OBJECTDIR}/Delay.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/ButtonDriver.p1 ${OBJECTDIR}/LCDPanelDriver.p1 ${OBJECTDIR}/RealTimeClockDriver.p1 ${OBJECTDIR}/ThermometerDriver.p1 ${OBJECTDIR}/SounderDriver.p1 ${OBJECTDIR}/ButtonInterface.p1 ${OBJECTDIR}/LCDPanelInterface.p1 ${OBJECTDIR}/RealTimeClockInterface.p1 ${OBJECTDIR}/SounderInterface.p1 ${OBJECTDIR}/ThermometerInterface.p1 ${OBJECTDIR}/HeaterConfigManager.p1 ${OBJECTDIR}/ModeRefreshes.p1
+OBJECTFILES=${OBJECTDIR}/SevenSeg.p1 ${OBJECTDIR}/LcdDisplay.p1 ${OBJECTDIR}/Delay.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/ButtonDriver.p1 ${OBJECTDIR}/LCDPanelDriver.p1 ${OBJECTDIR}/RealTimeClockDriver.p1 ${OBJECTDIR}/ThermometerDriver.p1 ${OBJECTDIR}/SounderDriver.p1 ${OBJECTDIR}/ButtonInterface.p1 ${OBJECTDIR}/LCDPanelInterface.p1 ${OBJECTDIR}/RealTimeClockInterface.p1 ${OBJECTDIR}/SounderInterface.p1 ${OBJECTDIR}/ThermometerInterface.p1 ${OBJECTDIR}/HeaterConfigManager.p1 ${OBJECTDIR}/ModeRefreshes.p1 ${OBJECTDIR}/Mode.p1
 
 # Source Files
-SOURCEFILES=SevenSeg.c LcdDisplay.c Delay.c main.c ButtonDriver.c LCDPanelDriver.c RealTimeClockDriver.c ThermometerDriver.c SounderDriver.c ButtonInterface.c LCDPanelInterface.c RealTimeClockInterface.c SounderInterface.c ThermometerInterface.c HeaterConfigManager.c ModeRefreshes.c
+SOURCEFILES=SevenSeg.c LcdDisplay.c Delay.c main.c ButtonDriver.c LCDPanelDriver.c RealTimeClockDriver.c ThermometerDriver.c SounderDriver.c ButtonInterface.c LCDPanelInterface.c RealTimeClockInterface.c SounderInterface.c ThermometerInterface.c HeaterConfigManager.c ModeRefreshes.c Mode.c
 
 
 
@@ -222,6 +222,14 @@ ${OBJECTDIR}/ModeRefreshes.p1: ModeRefreshes.c  nbproject/Makefile-${CND_CONF}.m
 	@-${MV} ${OBJECTDIR}/ModeRefreshes.d ${OBJECTDIR}/ModeRefreshes.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/ModeRefreshes.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/Mode.p1: Mode.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/Mode.p1.d 
+	@${RM} ${OBJECTDIR}/Mode.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/Mode.p1 Mode.c 
+	@-${MV} ${OBJECTDIR}/Mode.d ${OBJECTDIR}/Mode.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/Mode.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
 ${OBJECTDIR}/SevenSeg.p1: SevenSeg.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -350,6 +358,14 @@ ${OBJECTDIR}/ModeRefreshes.p1: ModeRefreshes.c  nbproject/Makefile-${CND_CONF}.m
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ModeRefreshes.p1 ModeRefreshes.c 
 	@-${MV} ${OBJECTDIR}/ModeRefreshes.d ${OBJECTDIR}/ModeRefreshes.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/ModeRefreshes.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/Mode.p1: Mode.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/Mode.p1.d 
+	@${RM} ${OBJECTDIR}/Mode.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/Mode.p1 Mode.c 
+	@-${MV} ${OBJECTDIR}/Mode.d ${OBJECTDIR}/Mode.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/Mode.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 
