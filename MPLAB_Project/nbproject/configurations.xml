@@ -27,7 +27,6 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>SevenSeg.c</itemPath>
-      <itemPath>LcdDisplay.c</itemPath>
       <itemPath>Delay.c</itemPath>
       <itemPath>main.c</itemPath>
       <itemPath>ButtonDriver.c</itemPath>
