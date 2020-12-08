@@ -1,10 +1,14 @@
-    
-void ILCDPanelSetCursor(int down, int along)
+#include "LCDPanelDriver.h"    
+
+void ILCDPanelSetCursor(char down, char along)
 {
-    
+    LcdInit();
+    SetCursorPos(down, along);
 }
 
-void ILCDPanelWrite(char[] s)
+void ILCDPanelWrite(char s[])
 {
-    
+    ClearCmd();
+    LcdInit();
+    WriteString(s);
 }

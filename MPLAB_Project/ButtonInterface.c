@@ -1,5 +1,5 @@
 
 void IButtonsCheckButtons(char* result)
 {
-    
+
 }
