@@ -57,6 +57,7 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
+<<<<<<< Updated upstream
 SOURCEFILES_QUOTED_IF_SPACED=SevenSeg.c Delay.c main.c ButtonDriver.c LCDPanelDriver.c RealTimeClockDriver.c ThermometerDriver.c SounderDriver.c ButtonInterface.c LCDPanelInterface.c RealTimeClockInterface.c SounderInterface.c ThermometerInterface.c HeaterConfigManager.c ModeRefreshes.c Mode.c
 
 # Object Files Quoted if spaced
@@ -68,6 +69,19 @@ OBJECTFILES=${OBJECTDIR}/SevenSeg.p1 ${OBJECTDIR}/Delay.p1 ${OBJECTDIR}/main.p1 
 
 # Source Files
 SOURCEFILES=SevenSeg.c Delay.c main.c ButtonDriver.c LCDPanelDriver.c RealTimeClockDriver.c ThermometerDriver.c SounderDriver.c ButtonInterface.c LCDPanelInterface.c RealTimeClockInterface.c SounderInterface.c ThermometerInterface.c HeaterConfigManager.c ModeRefreshes.c Mode.c
+=======
+SOURCEFILES_QUOTED_IF_SPACED=SevenSeg.c LcdDisplay.c Delay.c main.c ButtonDriver.c ButtonInterface.c LCDPanelDriver.c LCDPanelInterface.c RealTimeClockDriver.c RealTimeClockInterface.c SounderDriver.c SounderInterface.c ThermometerDriver.c ThermometerInterface.c
+
+# Object Files Quoted if spaced
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/SevenSeg.p1 ${OBJECTDIR}/LcdDisplay.p1 ${OBJECTDIR}/Delay.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/ButtonDriver.p1 ${OBJECTDIR}/ButtonInterface.p1 ${OBJECTDIR}/LCDPanelDriver.p1 ${OBJECTDIR}/LCDPanelInterface.p1 ${OBJECTDIR}/RealTimeClockDriver.p1 ${OBJECTDIR}/RealTimeClockInterface.p1 ${OBJECTDIR}/SounderDriver.p1 ${OBJECTDIR}/SounderInterface.p1 ${OBJECTDIR}/ThermometerDriver.p1 ${OBJECTDIR}/ThermometerInterface.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/SevenSeg.p1.d ${OBJECTDIR}/LcdDisplay.p1.d ${OBJECTDIR}/Delay.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/ButtonDriver.p1.d ${OBJECTDIR}/ButtonInterface.p1.d ${OBJECTDIR}/LCDPanelDriver.p1.d ${OBJECTDIR}/LCDPanelInterface.p1.d ${OBJECTDIR}/RealTimeClockDriver.p1.d ${OBJECTDIR}/RealTimeClockInterface.p1.d ${OBJECTDIR}/SounderDriver.p1.d ${OBJECTDIR}/SounderInterface.p1.d ${OBJECTDIR}/ThermometerDriver.p1.d ${OBJECTDIR}/ThermometerInterface.p1.d
+
+# Object Files
+OBJECTFILES=${OBJECTDIR}/SevenSeg.p1 ${OBJECTDIR}/LcdDisplay.p1 ${OBJECTDIR}/Delay.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/ButtonDriver.p1 ${OBJECTDIR}/ButtonInterface.p1 ${OBJECTDIR}/LCDPanelDriver.p1 ${OBJECTDIR}/LCDPanelInterface.p1 ${OBJECTDIR}/RealTimeClockDriver.p1 ${OBJECTDIR}/RealTimeClockInterface.p1 ${OBJECTDIR}/SounderDriver.p1 ${OBJECTDIR}/SounderInterface.p1 ${OBJECTDIR}/ThermometerDriver.p1 ${OBJECTDIR}/ThermometerInterface.p1
+
+# Source Files
+SOURCEFILES=SevenSeg.c LcdDisplay.c Delay.c main.c ButtonDriver.c ButtonInterface.c LCDPanelDriver.c LCDPanelInterface.c RealTimeClockDriver.c RealTimeClockInterface.c SounderDriver.c SounderInterface.c ThermometerDriver.c ThermometerInterface.c
+>>>>>>> Stashed changes
 
 
 
@@ -126,38 +140,6 @@ ${OBJECTDIR}/ButtonDriver.p1: ButtonDriver.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/ButtonDriver.d ${OBJECTDIR}/ButtonDriver.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/ButtonDriver.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/LCDPanelDriver.p1: LCDPanelDriver.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/LCDPanelDriver.p1.d 
-	@${RM} ${OBJECTDIR}/LCDPanelDriver.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/LCDPanelDriver.p1 LCDPanelDriver.c 
-	@-${MV} ${OBJECTDIR}/LCDPanelDriver.d ${OBJECTDIR}/LCDPanelDriver.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/LCDPanelDriver.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/RealTimeClockDriver.p1: RealTimeClockDriver.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/RealTimeClockDriver.p1.d 
-	@${RM} ${OBJECTDIR}/RealTimeClockDriver.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/RealTimeClockDriver.p1 RealTimeClockDriver.c 
-	@-${MV} ${OBJECTDIR}/RealTimeClockDriver.d ${OBJECTDIR}/RealTimeClockDriver.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/RealTimeClockDriver.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/ThermometerDriver.p1: ThermometerDriver.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/ThermometerDriver.p1.d 
-	@${RM} ${OBJECTDIR}/ThermometerDriver.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ThermometerDriver.p1 ThermometerDriver.c 
-	@-${MV} ${OBJECTDIR}/ThermometerDriver.d ${OBJECTDIR}/ThermometerDriver.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/ThermometerDriver.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/SounderDriver.p1: SounderDriver.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/SounderDriver.p1.d 
-	@${RM} ${OBJECTDIR}/SounderDriver.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/SounderDriver.p1 SounderDriver.c 
-	@-${MV} ${OBJECTDIR}/SounderDriver.d ${OBJECTDIR}/SounderDriver.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/SounderDriver.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
 ${OBJECTDIR}/ButtonInterface.p1: ButtonInterface.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/ButtonInterface.p1.d 
@@ -165,6 +147,14 @@ ${OBJECTDIR}/ButtonInterface.p1: ButtonInterface.c  nbproject/Makefile-${CND_CON
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ButtonInterface.p1 ButtonInterface.c 
 	@-${MV} ${OBJECTDIR}/ButtonInterface.d ${OBJECTDIR}/ButtonInterface.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/ButtonInterface.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/LCDPanelDriver.p1: LCDPanelDriver.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/LCDPanelDriver.p1.d 
+	@${RM} ${OBJECTDIR}/LCDPanelDriver.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/LCDPanelDriver.p1 LCDPanelDriver.c 
+	@-${MV} ${OBJECTDIR}/LCDPanelDriver.d ${OBJECTDIR}/LCDPanelDriver.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/LCDPanelDriver.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 ${OBJECTDIR}/LCDPanelInterface.p1: LCDPanelInterface.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -174,6 +164,14 @@ ${OBJECTDIR}/LCDPanelInterface.p1: LCDPanelInterface.c  nbproject/Makefile-${CND
 	@-${MV} ${OBJECTDIR}/LCDPanelInterface.d ${OBJECTDIR}/LCDPanelInterface.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/LCDPanelInterface.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/RealTimeClockDriver.p1: RealTimeClockDriver.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/RealTimeClockDriver.p1.d 
+	@${RM} ${OBJECTDIR}/RealTimeClockDriver.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/RealTimeClockDriver.p1 RealTimeClockDriver.c 
+	@-${MV} ${OBJECTDIR}/RealTimeClockDriver.d ${OBJECTDIR}/RealTimeClockDriver.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/RealTimeClockDriver.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 ${OBJECTDIR}/RealTimeClockInterface.p1: RealTimeClockInterface.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/RealTimeClockInterface.p1.d 
@@ -181,6 +179,14 @@ ${OBJECTDIR}/RealTimeClockInterface.p1: RealTimeClockInterface.c  nbproject/Make
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/RealTimeClockInterface.p1 RealTimeClockInterface.c 
 	@-${MV} ${OBJECTDIR}/RealTimeClockInterface.d ${OBJECTDIR}/RealTimeClockInterface.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/RealTimeClockInterface.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/SounderDriver.p1: SounderDriver.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/SounderDriver.p1.d 
+	@${RM} ${OBJECTDIR}/SounderDriver.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/SounderDriver.p1 SounderDriver.c 
+	@-${MV} ${OBJECTDIR}/SounderDriver.d ${OBJECTDIR}/SounderDriver.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/SounderDriver.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 ${OBJECTDIR}/SounderInterface.p1: SounderInterface.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -190,6 +196,14 @@ ${OBJECTDIR}/SounderInterface.p1: SounderInterface.c  nbproject/Makefile-${CND_C
 	@-${MV} ${OBJECTDIR}/SounderInterface.d ${OBJECTDIR}/SounderInterface.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/SounderInterface.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/ThermometerDriver.p1: ThermometerDriver.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/ThermometerDriver.p1.d 
+	@${RM} ${OBJECTDIR}/ThermometerDriver.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ThermometerDriver.p1 ThermometerDriver.c 
+	@-${MV} ${OBJECTDIR}/ThermometerDriver.d ${OBJECTDIR}/ThermometerDriver.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/ThermometerDriver.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 ${OBJECTDIR}/ThermometerInterface.p1: ThermometerInterface.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/ThermometerInterface.p1.d 
@@ -198,6 +212,7 @@ ${OBJECTDIR}/ThermometerInterface.p1: ThermometerInterface.c  nbproject/Makefile
 	@-${MV} ${OBJECTDIR}/ThermometerInterface.d ${OBJECTDIR}/ThermometerInterface.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/ThermometerInterface.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+<<<<<<< Updated upstream
 ${OBJECTDIR}/HeaterConfigManager.p1: HeaterConfigManager.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/HeaterConfigManager.p1.d 
@@ -222,6 +237,8 @@ ${OBJECTDIR}/Mode.p1: Mode.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/Mode.d ${OBJECTDIR}/Mode.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/Mode.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+=======
+>>>>>>> Stashed changes
 else
 ${OBJECTDIR}/SevenSeg.p1: SevenSeg.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -255,38 +272,6 @@ ${OBJECTDIR}/ButtonDriver.p1: ButtonDriver.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/ButtonDriver.d ${OBJECTDIR}/ButtonDriver.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/ButtonDriver.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/LCDPanelDriver.p1: LCDPanelDriver.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/LCDPanelDriver.p1.d 
-	@${RM} ${OBJECTDIR}/LCDPanelDriver.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/LCDPanelDriver.p1 LCDPanelDriver.c 
-	@-${MV} ${OBJECTDIR}/LCDPanelDriver.d ${OBJECTDIR}/LCDPanelDriver.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/LCDPanelDriver.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/RealTimeClockDriver.p1: RealTimeClockDriver.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/RealTimeClockDriver.p1.d 
-	@${RM} ${OBJECTDIR}/RealTimeClockDriver.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/RealTimeClockDriver.p1 RealTimeClockDriver.c 
-	@-${MV} ${OBJECTDIR}/RealTimeClockDriver.d ${OBJECTDIR}/RealTimeClockDriver.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/RealTimeClockDriver.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/ThermometerDriver.p1: ThermometerDriver.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/ThermometerDriver.p1.d 
-	@${RM} ${OBJECTDIR}/ThermometerDriver.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ThermometerDriver.p1 ThermometerDriver.c 
-	@-${MV} ${OBJECTDIR}/ThermometerDriver.d ${OBJECTDIR}/ThermometerDriver.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/ThermometerDriver.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/SounderDriver.p1: SounderDriver.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/SounderDriver.p1.d 
-	@${RM} ${OBJECTDIR}/SounderDriver.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/SounderDriver.p1 SounderDriver.c 
-	@-${MV} ${OBJECTDIR}/SounderDriver.d ${OBJECTDIR}/SounderDriver.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/SounderDriver.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
 ${OBJECTDIR}/ButtonInterface.p1: ButtonInterface.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/ButtonInterface.p1.d 
@@ -294,6 +279,14 @@ ${OBJECTDIR}/ButtonInterface.p1: ButtonInterface.c  nbproject/Makefile-${CND_CON
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ButtonInterface.p1 ButtonInterface.c 
 	@-${MV} ${OBJECTDIR}/ButtonInterface.d ${OBJECTDIR}/ButtonInterface.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/ButtonInterface.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/LCDPanelDriver.p1: LCDPanelDriver.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/LCDPanelDriver.p1.d 
+	@${RM} ${OBJECTDIR}/LCDPanelDriver.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/LCDPanelDriver.p1 LCDPanelDriver.c 
+	@-${MV} ${OBJECTDIR}/LCDPanelDriver.d ${OBJECTDIR}/LCDPanelDriver.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/LCDPanelDriver.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 ${OBJECTDIR}/LCDPanelInterface.p1: LCDPanelInterface.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -303,6 +296,14 @@ ${OBJECTDIR}/LCDPanelInterface.p1: LCDPanelInterface.c  nbproject/Makefile-${CND
 	@-${MV} ${OBJECTDIR}/LCDPanelInterface.d ${OBJECTDIR}/LCDPanelInterface.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/LCDPanelInterface.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/RealTimeClockDriver.p1: RealTimeClockDriver.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/RealTimeClockDriver.p1.d 
+	@${RM} ${OBJECTDIR}/RealTimeClockDriver.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/RealTimeClockDriver.p1 RealTimeClockDriver.c 
+	@-${MV} ${OBJECTDIR}/RealTimeClockDriver.d ${OBJECTDIR}/RealTimeClockDriver.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/RealTimeClockDriver.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 ${OBJECTDIR}/RealTimeClockInterface.p1: RealTimeClockInterface.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/RealTimeClockInterface.p1.d 
@@ -310,6 +311,14 @@ ${OBJECTDIR}/RealTimeClockInterface.p1: RealTimeClockInterface.c  nbproject/Make
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/RealTimeClockInterface.p1 RealTimeClockInterface.c 
 	@-${MV} ${OBJECTDIR}/RealTimeClockInterface.d ${OBJECTDIR}/RealTimeClockInterface.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/RealTimeClockInterface.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/SounderDriver.p1: SounderDriver.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/SounderDriver.p1.d 
+	@${RM} ${OBJECTDIR}/SounderDriver.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/SounderDriver.p1 SounderDriver.c 
+	@-${MV} ${OBJECTDIR}/SounderDriver.d ${OBJECTDIR}/SounderDriver.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/SounderDriver.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 ${OBJECTDIR}/SounderInterface.p1: SounderInterface.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -319,6 +328,14 @@ ${OBJECTDIR}/SounderInterface.p1: SounderInterface.c  nbproject/Makefile-${CND_C
 	@-${MV} ${OBJECTDIR}/SounderInterface.d ${OBJECTDIR}/SounderInterface.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/SounderInterface.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/ThermometerDriver.p1: ThermometerDriver.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/ThermometerDriver.p1.d 
+	@${RM} ${OBJECTDIR}/ThermometerDriver.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ThermometerDriver.p1 ThermometerDriver.c 
+	@-${MV} ${OBJECTDIR}/ThermometerDriver.d ${OBJECTDIR}/ThermometerDriver.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/ThermometerDriver.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 ${OBJECTDIR}/ThermometerInterface.p1: ThermometerInterface.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/ThermometerInterface.p1.d 
@@ -327,6 +344,7 @@ ${OBJECTDIR}/ThermometerInterface.p1: ThermometerInterface.c  nbproject/Makefile
 	@-${MV} ${OBJECTDIR}/ThermometerInterface.d ${OBJECTDIR}/ThermometerInterface.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/ThermometerInterface.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+<<<<<<< Updated upstream
 ${OBJECTDIR}/HeaterConfigManager.p1: HeaterConfigManager.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/HeaterConfigManager.p1.d 
@@ -351,6 +369,8 @@ ${OBJECTDIR}/Mode.p1: Mode.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/Mode.d ${OBJECTDIR}/Mode.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/Mode.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+=======
+>>>>>>> Stashed changes
 endif
 
 # ------------------------------------------------------------------------------------
