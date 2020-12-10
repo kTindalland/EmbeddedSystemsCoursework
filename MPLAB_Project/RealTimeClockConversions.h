@@ -7,6 +7,7 @@ extern "C" {
     
 #define uch unsigned char
 #define RTC_ERROR 0xFF
+#define NULL -1
     
 uch convertSecs(int sec);
 uch convertMins(int mins);
@@ -23,6 +24,8 @@ int convertReadDate(uch date);
 int convertReadMonth(uch month);
 int convertReadDay(uch day);
 int convertReadYear(uch year);
+
+uch readCH();
 
 #ifdef	__cplusplus
 }
