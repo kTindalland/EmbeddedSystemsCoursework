@@ -1,3 +1,4 @@
+#include "RealTimeClockConversions.h"
 #include <xc.h>
 
 #ifndef RTC_H
@@ -6,8 +7,6 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif
-    
-    #define uch unsigned char
 
     #define RTC_READ 0x80
     #define RTC_WRITE 0x00
@@ -25,8 +24,6 @@ extern "C" {
     #define RTC_CTRL 0x71
     #define RTC_TRICKLE_CHARGER 0x09
     #define RTC_CLK_BURST 0x7D
-
-    #define RTC_ERROR 0xFF
 
     #define RST RB5
     #define SCLK RB0
@@ -53,24 +50,7 @@ extern "C" {
     
     void clearWP();
     
-    void writeByte(uch addr, uch data);
-    
-    uch convertSecs(int sec);
-    uch convertMins(int mins);
-    uch convertHours(int hours, int is24Hour);
-    uch convertDate(int date, int month, int year);
-    uch convertMonth(int month);
-    uch convertDay(int day);
-    uch convertYear(int year);
-    
-    int convertReadSecs(uch secs);
-    int convertReadMins(uch mins);
-    int convertReadHours(uch hours, int* AMPM);
-    int convertReadDate(uch date);
-    int convertReadMonth(uch month);
-    int convertReadDay(uch day);
-    int convertReadYear(uch year);
-    
+    void writeByte(uch addr, uch data);    
     uch readByte(uch addr);
     uch readCH();
     void startClock();
