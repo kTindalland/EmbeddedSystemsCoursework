@@ -1,3 +1,4 @@
+![Unit Tests](https://github.com/kTindalland/EmbeddedSystemsCoursework/workflows/Unit%20Tests/badge.svg)
 # Embedded Systems Coursework
 ## Team Members
 * Kai Tindall
