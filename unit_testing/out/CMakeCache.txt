@@ -278,10 +278,10 @@ Python_EXECUTABLE:FILEPATH=/usr/bin/python3.7
 SmartHeaterTesting_BINARY_DIR:STATIC=/home/kai/EmbeddedSystemsCoursework/unit_testing/out
 
 //Value Computed by CMake
-SmartHeaterTesting_SOURCE_DIR:STATIC=/home/kai/EmbeddedSystemsCoursework/unit_testing
+SmartHeaterTesting_SOURCE_DIR:STATIC=/home/kai/EmbeddedSystemsCoursework
 
 //Value Computed by CMake
-gmock_BINARY_DIR:STATIC=/home/kai/EmbeddedSystemsCoursework/unit_testing/out/googletest/googlemock
+gmock_BINARY_DIR:STATIC=/home/kai/EmbeddedSystemsCoursework/unit_testing/out/unit_testing/googletest/googlemock
 
 //Dependencies for the target
 gmock_LIB_DEPENDS:STATIC=general;gtest;
@@ -296,13 +296,13 @@ gmock_build_tests:BOOL=OFF
 gmock_main_LIB_DEPENDS:STATIC=general;gmock;
 
 //Value Computed by CMake
-googletest-distribution_BINARY_DIR:STATIC=/home/kai/EmbeddedSystemsCoursework/unit_testing/out/googletest
+googletest-distribution_BINARY_DIR:STATIC=/home/kai/EmbeddedSystemsCoursework/unit_testing/out/unit_testing/googletest
 
 //Value Computed by CMake
 googletest-distribution_SOURCE_DIR:STATIC=/home/kai/EmbeddedSystemsCoursework/unit_testing/googletest
 
 //Value Computed by CMake
-gtest_BINARY_DIR:STATIC=/home/kai/EmbeddedSystemsCoursework/unit_testing/out/googletest/googletest
+gtest_BINARY_DIR:STATIC=/home/kai/EmbeddedSystemsCoursework/unit_testing/out/unit_testing/googletest/googletest
 
 //Value Computed by CMake
 gtest_SOURCE_DIR:STATIC=/home/kai/EmbeddedSystemsCoursework/unit_testing/googletest/googletest
@@ -415,7 +415,7 @@ CMAKE_HAVE_PTHREAD_CREATE:INTERNAL=1
 CMAKE_HAVE_PTHREAD_H:INTERNAL=1
 //Source directory with the top level CMakeLists.txt file for this
 // project
-CMAKE_HOME_DIRECTORY:INTERNAL=/home/kai/EmbeddedSystemsCoursework/unit_testing
+CMAKE_HOME_DIRECTORY:INTERNAL=/home/kai/EmbeddedSystemsCoursework
 //ADVANCED property for variable: CMAKE_INSTALL_BINDIR
 CMAKE_INSTALL_BINDIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_INSTALL_DATADIR
@@ -467,7 +467,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=5
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=6
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -516,7 +516,7 @@ FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 Python_EXECUTABLE-ADVANCED:INTERNAL=1
 //CMAKE_INSTALL_PREFIX during last run
 _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/usr/local
-generated_dir:INTERNAL=/home/kai/EmbeddedSystemsCoursework/unit_testing/out/googletest/googletest/generated
+generated_dir:INTERNAL=/home/kai/EmbeddedSystemsCoursework/unit_testing/out/unit_testing/googletest/googletest/generated
 //ADVANCED property for variable: gmock_build_tests
 gmock_build_tests-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: gtest_build_samples

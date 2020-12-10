@@ -1,20 +1,20 @@
 Determining if the pthread_create exist failed with the following output:
 Change Dir: /home/kai/EmbeddedSystemsCoursework/unit_testing/out/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_766ea/fast"
-/usr/bin/make -f CMakeFiles/cmTC_766ea.dir/build.make CMakeFiles/cmTC_766ea.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_55ed2/fast"
+/usr/bin/make -f CMakeFiles/cmTC_55ed2.dir/build.make CMakeFiles/cmTC_55ed2.dir/build
 make[1]: Entering directory '/home/kai/EmbeddedSystemsCoursework/unit_testing/out/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_766ea.dir/CheckSymbolExists.c.o
-/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_766ea.dir/CheckSymbolExists.c.o   -c /home/kai/EmbeddedSystemsCoursework/unit_testing/out/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_766ea
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_766ea.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_766ea.dir/CheckSymbolExists.c.o  -o cmTC_766ea 
-/usr/bin/ld: CMakeFiles/cmTC_766ea.dir/CheckSymbolExists.c.o: in function `main':
+Building C object CMakeFiles/cmTC_55ed2.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_55ed2.dir/CheckSymbolExists.c.o   -c /home/kai/EmbeddedSystemsCoursework/unit_testing/out/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_55ed2
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_55ed2.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_55ed2.dir/CheckSymbolExists.c.o  -o cmTC_55ed2 
+/usr/bin/ld: CMakeFiles/cmTC_55ed2.dir/CheckSymbolExists.c.o: in function `main':
 CheckSymbolExists.c:(.text+0x1b): undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_766ea.dir/build.make:87: cmTC_766ea] Error 1
+make[1]: *** [CMakeFiles/cmTC_55ed2.dir/build.make:87: cmTC_55ed2] Error 1
 make[1]: Leaving directory '/home/kai/EmbeddedSystemsCoursework/unit_testing/out/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_766ea/fast] Error 2
+make: *** [Makefile:121: cmTC_55ed2/fast] Error 2
 
 File /home/kai/EmbeddedSystemsCoursework/unit_testing/out/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
@@ -34,18 +34,18 @@ int main(int argc, char** argv)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /home/kai/EmbeddedSystemsCoursework/unit_testing/out/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_7cf24/fast"
-/usr/bin/make -f CMakeFiles/cmTC_7cf24.dir/build.make CMakeFiles/cmTC_7cf24.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_41780/fast"
+/usr/bin/make -f CMakeFiles/cmTC_41780.dir/build.make CMakeFiles/cmTC_41780.dir/build
 make[1]: Entering directory '/home/kai/EmbeddedSystemsCoursework/unit_testing/out/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_7cf24.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -fPIE   -o CMakeFiles/cmTC_7cf24.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.13/Modules/CheckFunctionExists.c
-Linking C executable cmTC_7cf24
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7cf24.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_7cf24.dir/CheckFunctionExists.c.o  -o cmTC_7cf24 -lpthreads 
+Building C object CMakeFiles/cmTC_41780.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -fPIE   -o CMakeFiles/cmTC_41780.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.13/Modules/CheckFunctionExists.c
+Linking C executable cmTC_41780
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_41780.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_41780.dir/CheckFunctionExists.c.o  -o cmTC_41780 -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_7cf24.dir/build.make:87: cmTC_7cf24] Error 1
+make[1]: *** [CMakeFiles/cmTC_41780.dir/build.make:87: cmTC_41780] Error 1
 make[1]: Leaving directory '/home/kai/EmbeddedSystemsCoursework/unit_testing/out/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_7cf24/fast] Error 2
+make: *** [Makefile:121: cmTC_41780/fast] Error 2
 
 
