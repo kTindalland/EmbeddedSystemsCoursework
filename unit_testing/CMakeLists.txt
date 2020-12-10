@@ -10,12 +10,13 @@ enable_testing()
 
 add_subdirectory(googletest)
 
+include_directories(../MPLAB_Project)
 set(Headers
-    example.h
+    ../MPLAB_Project/RealTimeClockConversions.h
 )
 
 set(Sources 
-    example.c 
+    ../MPLAB_Project/RealTimeClockConversions.c
 )
 
 add_library(SmartHeaterLogicalCode STATIC ${Sources} ${Headers})
