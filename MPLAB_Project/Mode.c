@@ -1,7 +1,16 @@
 #include "Mode.h"
 
 typedef void(*function_pointer_type)(void);
-typedef void(*function_pointerparam_type)(void);
+
+// Refresh Functionality for All Modes
+extern function_pointer_type ModeRefreshHome;
+extern function_pointer_type ModeRefreshSetDate;
+extern function_pointer_type ModeRefreshSetTime;
+extern function_pointer_type ModeRefreshSetTrigTemp;
+extern function_pointer_type ModeRefreshSetFakeTemp;
+extern function_pointer_type ModeRefreshSetHotTimer;
+extern function_pointer_type ModeRefreshSetColdTimer;
+extern function_pointer_type ModeRefreshErrors;
 
 //Home Button Functionality
 extern function_pointer_type ModeHomeMode;
@@ -85,6 +94,16 @@ extern function_pointer_type ModeErrorsAux3;
 
 void InstantiateModes(Mode* modes)
 {
+    modes[HOME].refresh = ModeRefreshesHome;
+    modes[SETDATE].refresh = ModeRefreshesSetDate;
+    modes[SETTIME].refresh = ModeRefreshesSetTime;
+    modes[SETTRIGTEMP].refresh = ModeRefreshesSetTrigTemp;
+    modes[SETFAKETEMP].refresh = ModeRefreshesSetFakeTemp;
+    modes[SETHOTTIMER].refresh = ModeRefreshesSetHotTimer;
+    modes[SETCOLDTIMER].refresh = ModeRefreshesSetColdTimer;
+    modes[ERRORS].refresh = ModeRefreshesErrors;
+            
+            
     modes[HOME].buttons.mode = ModeHomeMode;
     modes[HOME].buttons.set = ModeHomeSet;
     modes[HOME].buttons.increment = ModeHomeInc;

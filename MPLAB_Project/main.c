@@ -20,9 +20,11 @@ void main(void) {
     struct Mode modes[6];
     InstantiateModes(modes);
     currentMode = HOME;
+    modes[HOME].firstLine = "Home";
+    modes[HOME].secondLine = "emoH";
     
     int lastTemp = 1; // 0 for under trigger, 1 for over trigger
-    if(ITemperatureGetTemp() < trigger)
+    if(IThermometerGetTemp() < trigger)
     {
         lastTemp = 0;  
     }
@@ -40,7 +42,7 @@ void main(void) {
         ModeDisplay(mode);
         ModeCheckButtons(mode);
         
-        temperature = ITemperatureGetTemp();
+        temperature = IThermometerGetTemp();
         if (lastTemp == 1 && temperature < trigger) // Temp Hot to Cold
         {
             lastTemp = 0;

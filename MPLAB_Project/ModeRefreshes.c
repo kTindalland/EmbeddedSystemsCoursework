@@ -1,39 +1,39 @@
-void RefreshHome()
+void ModeRefreshHome()
 {
     
 }
 
-void RefreshSetDate()
+void ModeRefreshSetDate()
 {
     
 }
 
-void RefreshSetTime()
+void ModeRefreshSetTime()
 {
     
 }
 
-void RefreshSetTrigTemp()
+void ModeRefreshSetTrigTemp()
 {
     
 }
 
-void RefreshSetFakeTemp()
+void ModeRefreshSetFakeTemp()
 {
     
 }
 
-void RefreshSetHotTimer()
+void ModeRefreshSetHotTimer()
 {
     
 }
 
-void RefreshSetColdTimer()
+void ModeRefreshSetColdTimer()
 {
     
 }
 
-void RefreshErrors()
+void ModeRefreshErrors()
 {
     
 }
