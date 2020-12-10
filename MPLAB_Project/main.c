@@ -13,15 +13,13 @@ double trigger = 100.0;
 int hotTime = 0;
 int coldTime = 0;
 
+struct Mode modes[6];
 int currentMode;
 
 void main(void) {
     
-    struct Mode modes[6];
     InstantiateModes(modes);
     currentMode = HOME;
-    modes[HOME].firstLine = "Home";
-    modes[HOME].secondLine = "emoH";
     
     int lastTemp = 1; // 0 for under trigger, 1 for over trigger
     if(IThermometerGetTemp() < trigger)
