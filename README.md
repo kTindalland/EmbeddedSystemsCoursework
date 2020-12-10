@@ -4,7 +4,7 @@
 * Lincoln O'Connell
 
 ## Due date
-11th of January 2021
+6th of January 2021
 
 ## Scenario
 The project is to create a smart thermostat controller. The device will contain a time of day clock and provide the following features and displays:
