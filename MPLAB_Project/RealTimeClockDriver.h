@@ -10,7 +10,6 @@ extern "C" {
 
     #define RTC_READ 0x80
     #define RTC_WRITE 0x00
-    #define NULL -1
     #define AM 0
     #define PM 1
 
@@ -52,7 +51,6 @@ extern "C" {
     
     void writeByte(uch addr, uch data);    
     uch readByte(uch addr);
-    uch readCH();
     void startClock();
     void stopClock();
 

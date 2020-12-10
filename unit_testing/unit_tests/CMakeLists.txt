@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.13.4)
 
 include_directories(../../MPLAB_Project)
-add_executable(SmartHeaterUnitTests main.cpp)
+add_executable(SmartHeaterUnitTests RTC_Tests.cpp)
 
 target_link_libraries(SmartHeaterUnitTests PUBLIC 
     gtest_main
