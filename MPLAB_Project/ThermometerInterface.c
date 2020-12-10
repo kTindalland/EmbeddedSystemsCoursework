@@ -1,10 +1,10 @@
 
-double ITemperatureGetTemp()
+double IThermometerGetTemp()
 {
     
 }
 
-void ITemperatureSetTemp(double temp)
+void IThermometerSetTemp(double temp)
 {
     
 }

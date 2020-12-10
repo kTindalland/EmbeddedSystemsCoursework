@@ -44,6 +44,14 @@
       <itemPath>ModeRefreshes.c</itemPath>
       <itemPath>Mode.c</itemPath>
       <itemPath>RealTimeClockConversions.c</itemPath>
+      <itemPath>ModeHome.c</itemPath>
+      <itemPath>ModeSetDate.c</itemPath>
+      <itemPath>ModeSetTime.c</itemPath>
+      <itemPath>ModeSetTrigTemp.c</itemPath>
+      <itemPath>ModeSetFakeTemp.c</itemPath>
+      <itemPath>ModeSetHotTimer.c</itemPath>
+      <itemPath>ModeSetColdTimer.c</itemPath>
+      <itemPath>ModeErrors.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
