@@ -111,3 +111,42 @@ TEST(ConvertHoursTests, nominalData24hr) {
 	// Assert
 	ASSERT_EQ(result, 0x15);
 }
+
+TEST(ConvertHoursTests, erroneousDataPM) {
+	// Arrange
+	unsigned char result;
+	int hours = 50;
+	int is24hr = 1; // PM
+
+	// Act
+	result = convertHours(hours, is24hr);
+
+	// Assert
+	ASSERT_EQ(result, RTC_ERROR);
+}
+
+TEST(ConvertHoursTests, erroneousDataAM) {
+	// Arrange
+	unsigned char result;
+	int hours = 50;
+	int is24hr = 0; // PM
+
+	// Act
+	result = convertHours(hours, is24hr);
+
+	// Assert
+	ASSERT_EQ(result, RTC_ERROR);
+}
+
+TEST(ConvertHoursTests, erroneousData24hr) {
+	// Arrange
+	unsigned char result;
+	int hours = 50;
+	int is24hr = -1; // PM
+
+	// Act
+	result = convertHours(hours, is24hr);
+
+	// Assert
+	ASSERT_EQ(result, RTC_ERROR);
+}
