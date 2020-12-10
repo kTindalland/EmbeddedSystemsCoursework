@@ -20,11 +20,8 @@
       </logicalFolder>
       <itemPath>main.h</itemPath>
       <itemPath>MathsUtils.h</itemPath>
-<<<<<<< Updated upstream
       <itemPath>HeaterConfigManager.h</itemPath>
       <itemPath>Mode.h</itemPath>
-=======
->>>>>>> Stashed changes
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -50,7 +47,6 @@
       <itemPath>SevenSeg.c</itemPath>
       <itemPath>Delay.c</itemPath>
       <itemPath>main.c</itemPath>
-<<<<<<< Updated upstream
       <itemPath>ButtonDriver.c</itemPath>
       <itemPath>LCDPanelDriver.c</itemPath>
       <itemPath>RealTimeClockDriver.c</itemPath>
@@ -64,8 +60,6 @@
       <itemPath>HeaterConfigManager.c</itemPath>
       <itemPath>ModeRefreshes.c</itemPath>
       <itemPath>Mode.c</itemPath>
-=======
->>>>>>> Stashed changes
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
