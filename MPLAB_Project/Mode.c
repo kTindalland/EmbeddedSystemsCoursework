@@ -92,18 +92,25 @@ extern function_pointer_type ModeErrorsAux1;
 extern function_pointer_type ModeErrorsAux2;
 extern function_pointer_type ModeErrorsAux3;
 
-extern function_pointer_type ModeRefreshesHome;
+extern function_pointer_type ModeRefreshHome;
+extern function_pointer_type ModeRefreshSetDate;
+extern function_pointer_type ModeRefreshSetTime;
+extern function_pointer_type ModeRefreshSetTrigTemp;
+extern function_pointer_type ModeRefreshSetFakeTemp;
+extern function_pointer_type ModeRefreshSetHotTimer;
+extern function_pointer_type ModeRefreshSetColdTimer;
+extern function_pointer_type ModeRefreshErrors;
 
 void InstantiateModes(Mode* modes)
 {
-    modes[HOME].refresh = ModeRefreshesHome;
-    modes[SETDATE].refresh = ModeRefreshesSetDate;
-    modes[SETTIME].refresh = ModeRefreshesSetTime;
-    modes[SETTRIGTEMP].refresh = ModeRefreshesSetTrigTemp;
-    modes[SETFAKETEMP].refresh = ModeRefreshesSetFakeTemp;
-    modes[SETHOTTIMER].refresh = ModeRefreshesSetHotTimer;
-    modes[SETCOLDTIMER].refresh = ModeRefreshesSetColdTimer;
-    modes[ERRORS].refresh = ModeRefreshesErrors;
+    modes[HOME].refresh = ModeRefreshHome;
+    modes[SETDATE].refresh = ModeRefreshSetDate;
+    modes[SETTIME].refresh = ModeRefreshSetTime;
+    modes[SETTRIGTEMP].refresh = ModeRefreshSetTrigTemp;
+    modes[SETFAKETEMP].refresh = ModeRefreshSetFakeTemp;
+    modes[SETHOTTIMER].refresh = ModeRefreshSetHotTimer;
+    modes[SETCOLDTIMER].refresh = ModeRefreshSetColdTimer;
+    modes[ERRORS].refresh = ModeRefreshErrors;
             
             
     modes[HOME].buttons.mode = ModeHomeMode;
