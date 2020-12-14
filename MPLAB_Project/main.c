@@ -16,6 +16,9 @@ int coldTime = 0;
 struct Mode modes[6];
 int currentMode;
 
+int coldTimerTime = 0;
+int hotTimerTime = 0;
+
 void main(void) {
     
     InstantiateModes(modes);

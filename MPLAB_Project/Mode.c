@@ -58,7 +58,6 @@ extern function_pointer_type ModeSetFakeTempSet;
 extern function_pointer_type ModeSetFakeTempInc;
 extern function_pointer_type ModeSetFakeTempDec;
 extern function_pointer_type ModeSetFakeTempCancel;
-extern function_pointer_type ModeSetFakeTempAux1;
 extern function_pointer_type ModeSetFakeTempAux2;
 extern function_pointer_type ModeSetFakeTempAux3;
 
@@ -68,9 +67,6 @@ extern function_pointer_type ModeSetHotTimerSet;
 extern function_pointer_type ModeSetHotTimerInc;
 extern function_pointer_type ModeSetHotTimerDec;
 extern function_pointer_type ModeSetHotTimerCancel;
-extern function_pointer_type ModeSetHotTimerAux1;
-extern function_pointer_type ModeSetHotTimerAux2;
-extern function_pointer_type ModeSetHotTimerAux3;
 
 //Set Cold Timer Button Functionality
 extern function_pointer_type ModeSetColdTimerMode;
@@ -78,20 +74,12 @@ extern function_pointer_type ModeSetColdTimerSet;
 extern function_pointer_type ModeSetColdTimerInc;
 extern function_pointer_type ModeSetColdTimerDec;
 extern function_pointer_type ModeSetColdTimerCancel;
-extern function_pointer_type ModeSetColdTimerAux1;
-extern function_pointer_type ModeSetColdTimerAux2;
-extern function_pointer_type ModeSetColdTimerAux3;
 
 //Set Errors Button Functionality
 extern function_pointer_type ModeErrorsMode;
 extern function_pointer_type ModeErrorsSet;
-extern function_pointer_type ModeErrorsInc;
-extern function_pointer_type ModeErrorsDec;
-extern function_pointer_type ModeErrorsCancel;
-extern function_pointer_type ModeErrorsAux1;
-extern function_pointer_type ModeErrorsAux2;
-extern function_pointer_type ModeErrorsAux3;
 
+// Refresh Display of Each Mode
 extern function_pointer_type ModeRefreshHome;
 extern function_pointer_type ModeRefreshSetDate;
 extern function_pointer_type ModeRefreshSetTime;
@@ -111,7 +99,6 @@ void InstantiateModes(Mode* modes)
     modes[SETHOTTIMER].refresh = ModeRefreshSetHotTimer;
     modes[SETCOLDTIMER].refresh = ModeRefreshSetColdTimer;
     modes[ERRORS].refresh = ModeRefreshErrors;
-            
             
     modes[HOME].buttons.mode = ModeHomeMode;
     modes[HOME].buttons.set = ModeHomeSet;
@@ -154,7 +141,6 @@ void InstantiateModes(Mode* modes)
     modes[SETFAKETEMP].buttons.increment = ModeSetFakeTempInc;
     modes[SETFAKETEMP].buttons.decrement = ModeSetFakeTempDec;
     modes[SETFAKETEMP].buttons.cancel = ModeSetFakeTempCancel;
-    modes[SETFAKETEMP].buttons.aux1 = ModeSetFakeTempAux1;
     modes[SETFAKETEMP].buttons.aux2 = ModeSetFakeTempAux2;
     modes[SETFAKETEMP].buttons.aux3 = ModeSetFakeTempAux3;
     
@@ -163,28 +149,15 @@ void InstantiateModes(Mode* modes)
     modes[SETHOTTIMER].buttons.increment = ModeSetHotTimerInc;
     modes[SETHOTTIMER].buttons.decrement = ModeSetHotTimerDec;
     modes[SETHOTTIMER].buttons.cancel = ModeSetHotTimerCancel;
-    modes[SETHOTTIMER].buttons.aux1 = ModeSetHotTimerAux1;
-    modes[SETHOTTIMER].buttons.aux2 = ModeSetHotTimerAux2;
-    modes[SETHOTTIMER].buttons.aux3 = ModeSetHotTimerAux3;
     
     modes[SETCOLDTIMER].buttons.mode = ModeSetColdTimerMode;
     modes[SETCOLDTIMER].buttons.set = ModeSetColdTimerSet;
     modes[SETCOLDTIMER].buttons.increment = ModeSetColdTimerInc;
     modes[SETCOLDTIMER].buttons.decrement = ModeSetColdTimerDec;
     modes[SETCOLDTIMER].buttons.cancel = ModeSetColdTimerCancel;
-    modes[SETCOLDTIMER].buttons.aux1 = ModeSetColdTimerAux1;
-    modes[SETCOLDTIMER].buttons.aux2 = ModeSetColdTimerAux2;
-    modes[SETCOLDTIMER].buttons.aux3 = ModeSetColdTimerAux3;
     
     modes[ERRORS].buttons.mode = ModeErrorsMode;
     modes[ERRORS].buttons.set = ModeErrorsSet;
-    modes[ERRORS].buttons.increment = ModeErrorsInc;
-    modes[ERRORS].buttons.decrement = ModeErrorsDec;
-    modes[ERRORS].buttons.cancel = ModeErrorsCancel;
-    modes[ERRORS].buttons.aux1 = ModeErrorsAux1;
-    modes[ERRORS].buttons.aux2 = ModeErrorsAux2;
-    modes[ERRORS].buttons.aux3 = ModeErrorsAux3;
-
 }
 
 void ModeDisplay(Mode mode)

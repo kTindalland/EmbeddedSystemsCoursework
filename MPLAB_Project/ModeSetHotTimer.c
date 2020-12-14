@@ -2,8 +2,8 @@
 
 extern int currentMode;
 extern int hotTime;
-
-int hotTimerTime;
+extern struct Mode modes[];
+extern int hotTimerTime;
 
 void ModeSetHotTimerMode()
 {
@@ -15,11 +15,13 @@ void ModeSetHotTimerSet()
     if(hotTimerTime > -1 &&
        hotTimerTime < 61)
     {
-        coldTime = hotTimerTime;
+        hotTime = hotTimerTime;
+        currentMode = HOME;
     }
     else
     {
         currentMode = ERRORS;
+        modes[ERRORS].firstLine = "Hot Timer: Incorrect Value";
     }
 }
 
@@ -33,28 +35,13 @@ void ModeSetHotTimerInc()
 
 void ModeSetHotTimerDec()
 {
-    if (coldTimerTime > 0)
+    if (hotTimerTime > 0)
     {
-        coldTimerTime = coldTimerTime - 1;   
+        hotTimerTime = hotTimerTime - 1;   
     }
 }
 
 void ModeSetHotTimerCancel()
 {
-    currentMode = SETHOTTIMER;
-}
-
-void ModeSetHotTimerAux1()
-{
-   
-}
-
-void ModeSetHotTimerAux2()
-{
-    
-}
-
-void ModeSetHotTimerAux3()
-{
-    
+    hotTimerTime = hotTime;
 }

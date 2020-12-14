@@ -26,20 +26,15 @@ void ModeSetFakeTempDec()
 
 void ModeSetFakeTempCancel()
 {
-    currentMode = SETFAKETEMP;
-}
-
-void ModeSetFakeTempAux1()
-{
-   
+    temp = IThermometerGetTemp();
 }
 
 void ModeSetFakeTempAux2()
 {
-    
+    temp = temp + 0.1;
 }
 
 void ModeSetFakeTempAux3()
 {
-    
+    temp = temp - 0.1;
 }

@@ -14,7 +14,6 @@ void ModeSetTrigTempSet()
 {
     trigger = currentTrigger;
 }
-}
 
 void ModeSetTrigTempInc()
 {
