@@ -1,4 +1,5 @@
 #include "LCDPanelDriver.h"
+#include "StringUtils.h"
 #include <xc.h> 
 
 //begin config
@@ -48,14 +49,6 @@ void WriteChar(char x)
     PORTD=x;     
     Delay(2000);
     e=0;
-}
-
-int StringLength(char s[]) {
-   int c = 0;
-   while (s[c] != '\0') // While String Is Not Null
-      c++;
-   
-   return c;
 }
 
 void WriteString(char s[])

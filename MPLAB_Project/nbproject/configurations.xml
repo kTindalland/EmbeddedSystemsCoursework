@@ -19,6 +19,7 @@
       <itemPath>HeaterConfigManager.h</itemPath>
       <itemPath>Mode.h</itemPath>
       <itemPath>RealTimeClockConversions.h</itemPath>
+      <itemPath>StringUtils.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -52,6 +53,7 @@
       <itemPath>ModeSetHotTimer.c</itemPath>
       <itemPath>ModeSetColdTimer.c</itemPath>
       <itemPath>ModeErrors.c</itemPath>
+      <itemPath>StringUtils.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

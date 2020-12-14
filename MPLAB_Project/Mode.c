@@ -92,6 +92,8 @@ extern function_pointer_type ModeErrorsAux1;
 extern function_pointer_type ModeErrorsAux2;
 extern function_pointer_type ModeErrorsAux3;
 
+extern function_pointer_type ModeRefreshesHome;
+
 void InstantiateModes(Mode* modes)
 {
     modes[HOME].refresh = ModeRefreshesHome;
