@@ -2,6 +2,8 @@
 
 extern int currentMode;
 
+int temp = IThermometerGetTemp();
+
 void ModeSetFakeTempMode()
 {
     currentMode = HOME;
@@ -9,17 +11,17 @@ void ModeSetFakeTempMode()
 
 void ModeSetFakeTempSet()
 {
-    
+    IThermometerSetTemp(temp);
 }
 
 void ModeSetFakeTempInc()
 {
-   
+    temp = temp + 1;
 }
 
 void ModeSetFakeTempDec()
 {
-   
+    temp = temp - 1;
 }
 
 void ModeSetFakeTempCancel()

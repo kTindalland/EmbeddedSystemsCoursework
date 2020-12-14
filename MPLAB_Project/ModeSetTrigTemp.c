@@ -1,6 +1,9 @@
 #include "Mode.h"
 
 extern int currentMode;
+extern double trigger;
+
+double currentTrigger;
 
 void ModeSetTrigTempMode()
 {
@@ -9,21 +12,23 @@ void ModeSetTrigTempMode()
 
 void ModeSetTrigTempSet()
 {
-    
+    trigger = currentTrigger;
+}
 }
 
 void ModeSetTrigTempInc()
 {
-   
+    currentTrigger = currentTrigger + 0.1;
 }
 
 void ModeSetTrigTempDec()
 {
-   
+   currentTrigger = currentTrigger - 0.1;
 }
 
 void ModeSetTrigTempCancel()
 {
+    currentTrigger = trigger;
     currentMode = SETTRIGTEMP;
 }
 
