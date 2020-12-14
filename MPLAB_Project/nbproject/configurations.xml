@@ -20,6 +20,12 @@
       <itemPath>Mode.h</itemPath>
       <itemPath>RealTimeClockConversions.h</itemPath>
       <itemPath>StringUtils.h</itemPath>
+      <itemPath>ModeSetColdTimer.h</itemPath>
+      <itemPath>ModeSetHotTimer.h</itemPath>
+      <itemPath>ModeSetDate.h</itemPath>
+      <itemPath>ModeSetTime.h</itemPath>
+      <itemPath>ModeSetFakeTemp.h</itemPath>
+      <itemPath>ModeSetTrigTemp.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"

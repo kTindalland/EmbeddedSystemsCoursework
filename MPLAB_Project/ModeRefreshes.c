@@ -1,5 +1,11 @@
 #include "Mode.h"
-#includ "StringUtils.h"
+#include "StringUtils.h"
+#include "ModeSetColdTimer.h"
+#include "ModeSetHotTimer.h"
+#include "ModeSetDate.h"
+#include "ModeSetTime.h"
+#include "ModeSetFakeTemp.h"
+#include "ModeSetTrigTemp.h"
 
 extern struct Mode modes;
 extern int currentMode;
