@@ -14,4 +14,6 @@ set(Sources
 
 add_library(SmartHeaterLogicalCode STATIC ${Sources} ${Headers})
 
+add_library(ThermometerCode STATIC ../ThermometerDriver/ThermometerDriver.h ../ThermometerDriver/ThermometerInterface.h ../ThermometerDriver/ThermometerInterface.c)
+
 add_subdirectory(unit_tests)
