@@ -3,21 +3,24 @@
 
 double IThermGetTemperature() {
     // Variable declarations.
-    unsigned char msb;
-    unsigned char lsb;
+    unsigned char msb = 0;
+    unsigned char lsb = 0;
     
-    unsigned char whole_number;
-    unsigned char decimal_number;
+    unsigned char whole_number = 0;
+    unsigned char decimal_number = 0;
     
-    unsigned char sign;
+    unsigned char sign = 0;
     
-    double result;
+    double result = 0;
     
     // Measure current ambient temperature.
     ThermMeasureTemp();
     
     // Populate msb and lsb
     ThermGetTemp(&msb, &lsb);
+
+    // If it's zero.
+    if (msb == 0 && lsb == 0) return 0.0;
     
     // Get the sign.
     sign = msb & 0xF8;

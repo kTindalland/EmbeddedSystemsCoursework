@@ -4,6 +4,7 @@
  *
  * Created on 14 December 2020, 10:56
  */
+ #define __UNIT_TESTING
 #ifndef __UNIT_TESTING
 #include <xc.h>
 #endif 
