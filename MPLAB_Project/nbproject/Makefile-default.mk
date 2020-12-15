@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=SevenSeg.c Delay.c main.c ButtonDriver.c LCDPanelDriver.c RealTimeClockDriver.c ThermometerDriver.c SounderDriver.c ButtonInterface.c LCDPanelInterface.c RealTimeClockInterface.c SounderInterface.c ThermometerInterface.c HeaterConfigManager.c ModeRefreshes.c Mode.c RealTimeClockConversions.c ModeHome.c ModeSetDate.c ModeSetTime.c ModeSetTrigTemp.c ModeSetFakeTemp.c ModeSetHotTimer.c ModeSetColdTimer.c ModeErrors.c StringUtils.c
+SOURCEFILES_QUOTED_IF_SPACED=SevenSeg.c Delay.c main.c ButtonDriver.c LCDPanelDriver.c RealTimeClockDriver.c ThermometerDriver.c SounderDriver.c ButtonInterface.c LCDPanelInterface.c RealTimeClockInterface.c SounderInterface.c ThermometerInterface.c HeaterConfigManager.c ModeRefreshes.c Mode.c RealTimeClockConversions.c NumberConverter.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/SevenSeg.p1 ${OBJECTDIR}/Delay.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/ButtonDriver.p1 ${OBJECTDIR}/LCDPanelDriver.p1 ${OBJECTDIR}/RealTimeClockDriver.p1 ${OBJECTDIR}/ThermometerDriver.p1 ${OBJECTDIR}/SounderDriver.p1 ${OBJECTDIR}/ButtonInterface.p1 ${OBJECTDIR}/LCDPanelInterface.p1 ${OBJECTDIR}/RealTimeClockInterface.p1 ${OBJECTDIR}/SounderInterface.p1 ${OBJECTDIR}/ThermometerInterface.p1 ${OBJECTDIR}/HeaterConfigManager.p1 ${OBJECTDIR}/ModeRefreshes.p1 ${OBJECTDIR}/Mode.p1 ${OBJECTDIR}/RealTimeClockConversions.p1 ${OBJECTDIR}/ModeHome.p1 ${OBJECTDIR}/ModeSetDate.p1 ${OBJECTDIR}/ModeSetTime.p1 ${OBJECTDIR}/ModeSetTrigTemp.p1 ${OBJECTDIR}/ModeSetFakeTemp.p1 ${OBJECTDIR}/ModeSetHotTimer.p1 ${OBJECTDIR}/ModeSetColdTimer.p1 ${OBJECTDIR}/ModeErrors.p1 ${OBJECTDIR}/StringUtils.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/SevenSeg.p1.d ${OBJECTDIR}/Delay.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/ButtonDriver.p1.d ${OBJECTDIR}/LCDPanelDriver.p1.d ${OBJECTDIR}/RealTimeClockDriver.p1.d ${OBJECTDIR}/ThermometerDriver.p1.d ${OBJECTDIR}/SounderDriver.p1.d ${OBJECTDIR}/ButtonInterface.p1.d ${OBJECTDIR}/LCDPanelInterface.p1.d ${OBJECTDIR}/RealTimeClockInterface.p1.d ${OBJECTDIR}/SounderInterface.p1.d ${OBJECTDIR}/ThermometerInterface.p1.d ${OBJECTDIR}/HeaterConfigManager.p1.d ${OBJECTDIR}/ModeRefreshes.p1.d ${OBJECTDIR}/Mode.p1.d ${OBJECTDIR}/RealTimeClockConversions.p1.d ${OBJECTDIR}/ModeHome.p1.d ${OBJECTDIR}/ModeSetDate.p1.d ${OBJECTDIR}/ModeSetTime.p1.d ${OBJECTDIR}/ModeSetTrigTemp.p1.d ${OBJECTDIR}/ModeSetFakeTemp.p1.d ${OBJECTDIR}/ModeSetHotTimer.p1.d ${OBJECTDIR}/ModeSetColdTimer.p1.d ${OBJECTDIR}/ModeErrors.p1.d ${OBJECTDIR}/StringUtils.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/SevenSeg.p1 ${OBJECTDIR}/Delay.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/ButtonDriver.p1 ${OBJECTDIR}/LCDPanelDriver.p1 ${OBJECTDIR}/RealTimeClockDriver.p1 ${OBJECTDIR}/ThermometerDriver.p1 ${OBJECTDIR}/SounderDriver.p1 ${OBJECTDIR}/ButtonInterface.p1 ${OBJECTDIR}/LCDPanelInterface.p1 ${OBJECTDIR}/RealTimeClockInterface.p1 ${OBJECTDIR}/SounderInterface.p1 ${OBJECTDIR}/ThermometerInterface.p1 ${OBJECTDIR}/HeaterConfigManager.p1 ${OBJECTDIR}/ModeRefreshes.p1 ${OBJECTDIR}/Mode.p1 ${OBJECTDIR}/RealTimeClockConversions.p1 ${OBJECTDIR}/NumberConverter.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/SevenSeg.p1.d ${OBJECTDIR}/Delay.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/ButtonDriver.p1.d ${OBJECTDIR}/LCDPanelDriver.p1.d ${OBJECTDIR}/RealTimeClockDriver.p1.d ${OBJECTDIR}/ThermometerDriver.p1.d ${OBJECTDIR}/SounderDriver.p1.d ${OBJECTDIR}/ButtonInterface.p1.d ${OBJECTDIR}/LCDPanelInterface.p1.d ${OBJECTDIR}/RealTimeClockInterface.p1.d ${OBJECTDIR}/SounderInterface.p1.d ${OBJECTDIR}/ThermometerInterface.p1.d ${OBJECTDIR}/HeaterConfigManager.p1.d ${OBJECTDIR}/ModeRefreshes.p1.d ${OBJECTDIR}/Mode.p1.d ${OBJECTDIR}/RealTimeClockConversions.p1.d ${OBJECTDIR}/NumberConverter.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/SevenSeg.p1 ${OBJECTDIR}/Delay.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/ButtonDriver.p1 ${OBJECTDIR}/LCDPanelDriver.p1 ${OBJECTDIR}/RealTimeClockDriver.p1 ${OBJECTDIR}/ThermometerDriver.p1 ${OBJECTDIR}/SounderDriver.p1 ${OBJECTDIR}/ButtonInterface.p1 ${OBJECTDIR}/LCDPanelInterface.p1 ${OBJECTDIR}/RealTimeClockInterface.p1 ${OBJECTDIR}/SounderInterface.p1 ${OBJECTDIR}/ThermometerInterface.p1 ${OBJECTDIR}/HeaterConfigManager.p1 ${OBJECTDIR}/ModeRefreshes.p1 ${OBJECTDIR}/Mode.p1 ${OBJECTDIR}/RealTimeClockConversions.p1 ${OBJECTDIR}/ModeHome.p1 ${OBJECTDIR}/ModeSetDate.p1 ${OBJECTDIR}/ModeSetTime.p1 ${OBJECTDIR}/ModeSetTrigTemp.p1 ${OBJECTDIR}/ModeSetFakeTemp.p1 ${OBJECTDIR}/ModeSetHotTimer.p1 ${OBJECTDIR}/ModeSetColdTimer.p1 ${OBJECTDIR}/ModeErrors.p1 ${OBJECTDIR}/StringUtils.p1
+OBJECTFILES=${OBJECTDIR}/SevenSeg.p1 ${OBJECTDIR}/Delay.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/ButtonDriver.p1 ${OBJECTDIR}/LCDPanelDriver.p1 ${OBJECTDIR}/RealTimeClockDriver.p1 ${OBJECTDIR}/ThermometerDriver.p1 ${OBJECTDIR}/SounderDriver.p1 ${OBJECTDIR}/ButtonInterface.p1 ${OBJECTDIR}/LCDPanelInterface.p1 ${OBJECTDIR}/RealTimeClockInterface.p1 ${OBJECTDIR}/SounderInterface.p1 ${OBJECTDIR}/ThermometerInterface.p1 ${OBJECTDIR}/HeaterConfigManager.p1 ${OBJECTDIR}/ModeRefreshes.p1 ${OBJECTDIR}/Mode.p1 ${OBJECTDIR}/RealTimeClockConversions.p1 ${OBJECTDIR}/NumberConverter.p1
 
 # Source Files
-SOURCEFILES=SevenSeg.c Delay.c main.c ButtonDriver.c LCDPanelDriver.c RealTimeClockDriver.c ThermometerDriver.c SounderDriver.c ButtonInterface.c LCDPanelInterface.c RealTimeClockInterface.c SounderInterface.c ThermometerInterface.c HeaterConfigManager.c ModeRefreshes.c Mode.c RealTimeClockConversions.c ModeHome.c ModeSetDate.c ModeSetTime.c ModeSetTrigTemp.c ModeSetFakeTemp.c ModeSetHotTimer.c ModeSetColdTimer.c ModeErrors.c StringUtils.c
+SOURCEFILES=SevenSeg.c Delay.c main.c ButtonDriver.c LCDPanelDriver.c RealTimeClockDriver.c ThermometerDriver.c SounderDriver.c ButtonInterface.c LCDPanelInterface.c RealTimeClockInterface.c SounderInterface.c ThermometerInterface.c HeaterConfigManager.c ModeRefreshes.c Mode.c RealTimeClockConversions.c NumberConverter.c
 
 
 
@@ -230,77 +230,13 @@ ${OBJECTDIR}/RealTimeClockConversions.p1: RealTimeClockConversions.c  nbproject/
 	@-${MV} ${OBJECTDIR}/RealTimeClockConversions.d ${OBJECTDIR}/RealTimeClockConversions.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/RealTimeClockConversions.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/ModeHome.p1: ModeHome.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/NumberConverter.p1: NumberConverter.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/ModeHome.p1.d 
-	@${RM} ${OBJECTDIR}/ModeHome.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ModeHome.p1 ModeHome.c 
-	@-${MV} ${OBJECTDIR}/ModeHome.d ${OBJECTDIR}/ModeHome.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/ModeHome.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/ModeSetDate.p1: ModeSetDate.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/ModeSetDate.p1.d 
-	@${RM} ${OBJECTDIR}/ModeSetDate.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ModeSetDate.p1 ModeSetDate.c 
-	@-${MV} ${OBJECTDIR}/ModeSetDate.d ${OBJECTDIR}/ModeSetDate.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/ModeSetDate.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/ModeSetTime.p1: ModeSetTime.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/ModeSetTime.p1.d 
-	@${RM} ${OBJECTDIR}/ModeSetTime.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ModeSetTime.p1 ModeSetTime.c 
-	@-${MV} ${OBJECTDIR}/ModeSetTime.d ${OBJECTDIR}/ModeSetTime.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/ModeSetTime.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/ModeSetTrigTemp.p1: ModeSetTrigTemp.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/ModeSetTrigTemp.p1.d 
-	@${RM} ${OBJECTDIR}/ModeSetTrigTemp.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ModeSetTrigTemp.p1 ModeSetTrigTemp.c 
-	@-${MV} ${OBJECTDIR}/ModeSetTrigTemp.d ${OBJECTDIR}/ModeSetTrigTemp.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/ModeSetTrigTemp.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/ModeSetFakeTemp.p1: ModeSetFakeTemp.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/ModeSetFakeTemp.p1.d 
-	@${RM} ${OBJECTDIR}/ModeSetFakeTemp.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ModeSetFakeTemp.p1 ModeSetFakeTemp.c 
-	@-${MV} ${OBJECTDIR}/ModeSetFakeTemp.d ${OBJECTDIR}/ModeSetFakeTemp.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/ModeSetFakeTemp.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/ModeSetHotTimer.p1: ModeSetHotTimer.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/ModeSetHotTimer.p1.d 
-	@${RM} ${OBJECTDIR}/ModeSetHotTimer.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ModeSetHotTimer.p1 ModeSetHotTimer.c 
-	@-${MV} ${OBJECTDIR}/ModeSetHotTimer.d ${OBJECTDIR}/ModeSetHotTimer.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/ModeSetHotTimer.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/ModeSetColdTimer.p1: ModeSetColdTimer.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/ModeSetColdTimer.p1.d 
-	@${RM} ${OBJECTDIR}/ModeSetColdTimer.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ModeSetColdTimer.p1 ModeSetColdTimer.c 
-	@-${MV} ${OBJECTDIR}/ModeSetColdTimer.d ${OBJECTDIR}/ModeSetColdTimer.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/ModeSetColdTimer.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/ModeErrors.p1: ModeErrors.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/ModeErrors.p1.d 
-	@${RM} ${OBJECTDIR}/ModeErrors.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ModeErrors.p1 ModeErrors.c 
-	@-${MV} ${OBJECTDIR}/ModeErrors.d ${OBJECTDIR}/ModeErrors.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/ModeErrors.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/StringUtils.p1: StringUtils.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/StringUtils.p1.d 
-	@${RM} ${OBJECTDIR}/StringUtils.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/StringUtils.p1 StringUtils.c 
-	@-${MV} ${OBJECTDIR}/StringUtils.d ${OBJECTDIR}/StringUtils.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/StringUtils.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	@${RM} ${OBJECTDIR}/NumberConverter.p1.d 
+	@${RM} ${OBJECTDIR}/NumberConverter.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/NumberConverter.p1 NumberConverter.c 
+	@-${MV} ${OBJECTDIR}/NumberConverter.d ${OBJECTDIR}/NumberConverter.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/NumberConverter.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 else
 ${OBJECTDIR}/SevenSeg.p1: SevenSeg.c  nbproject/Makefile-${CND_CONF}.mk
@@ -439,77 +375,13 @@ ${OBJECTDIR}/RealTimeClockConversions.p1: RealTimeClockConversions.c  nbproject/
 	@-${MV} ${OBJECTDIR}/RealTimeClockConversions.d ${OBJECTDIR}/RealTimeClockConversions.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/RealTimeClockConversions.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/ModeHome.p1: ModeHome.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/NumberConverter.p1: NumberConverter.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/ModeHome.p1.d 
-	@${RM} ${OBJECTDIR}/ModeHome.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ModeHome.p1 ModeHome.c 
-	@-${MV} ${OBJECTDIR}/ModeHome.d ${OBJECTDIR}/ModeHome.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/ModeHome.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/ModeSetDate.p1: ModeSetDate.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/ModeSetDate.p1.d 
-	@${RM} ${OBJECTDIR}/ModeSetDate.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ModeSetDate.p1 ModeSetDate.c 
-	@-${MV} ${OBJECTDIR}/ModeSetDate.d ${OBJECTDIR}/ModeSetDate.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/ModeSetDate.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/ModeSetTime.p1: ModeSetTime.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/ModeSetTime.p1.d 
-	@${RM} ${OBJECTDIR}/ModeSetTime.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ModeSetTime.p1 ModeSetTime.c 
-	@-${MV} ${OBJECTDIR}/ModeSetTime.d ${OBJECTDIR}/ModeSetTime.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/ModeSetTime.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/ModeSetTrigTemp.p1: ModeSetTrigTemp.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/ModeSetTrigTemp.p1.d 
-	@${RM} ${OBJECTDIR}/ModeSetTrigTemp.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ModeSetTrigTemp.p1 ModeSetTrigTemp.c 
-	@-${MV} ${OBJECTDIR}/ModeSetTrigTemp.d ${OBJECTDIR}/ModeSetTrigTemp.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/ModeSetTrigTemp.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/ModeSetFakeTemp.p1: ModeSetFakeTemp.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/ModeSetFakeTemp.p1.d 
-	@${RM} ${OBJECTDIR}/ModeSetFakeTemp.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ModeSetFakeTemp.p1 ModeSetFakeTemp.c 
-	@-${MV} ${OBJECTDIR}/ModeSetFakeTemp.d ${OBJECTDIR}/ModeSetFakeTemp.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/ModeSetFakeTemp.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/ModeSetHotTimer.p1: ModeSetHotTimer.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/ModeSetHotTimer.p1.d 
-	@${RM} ${OBJECTDIR}/ModeSetHotTimer.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ModeSetHotTimer.p1 ModeSetHotTimer.c 
-	@-${MV} ${OBJECTDIR}/ModeSetHotTimer.d ${OBJECTDIR}/ModeSetHotTimer.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/ModeSetHotTimer.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/ModeSetColdTimer.p1: ModeSetColdTimer.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/ModeSetColdTimer.p1.d 
-	@${RM} ${OBJECTDIR}/ModeSetColdTimer.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ModeSetColdTimer.p1 ModeSetColdTimer.c 
-	@-${MV} ${OBJECTDIR}/ModeSetColdTimer.d ${OBJECTDIR}/ModeSetColdTimer.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/ModeSetColdTimer.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/ModeErrors.p1: ModeErrors.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/ModeErrors.p1.d 
-	@${RM} ${OBJECTDIR}/ModeErrors.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ModeErrors.p1 ModeErrors.c 
-	@-${MV} ${OBJECTDIR}/ModeErrors.d ${OBJECTDIR}/ModeErrors.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/ModeErrors.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/StringUtils.p1: StringUtils.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/StringUtils.p1.d 
-	@${RM} ${OBJECTDIR}/StringUtils.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/StringUtils.p1 StringUtils.c 
-	@-${MV} ${OBJECTDIR}/StringUtils.d ${OBJECTDIR}/StringUtils.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/StringUtils.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	@${RM} ${OBJECTDIR}/NumberConverter.p1.d 
+	@${RM} ${OBJECTDIR}/NumberConverter.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp=${DFP_DIR}/xc8  -fshort-double -fshort-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/NumberConverter.p1 NumberConverter.c 
+	@-${MV} ${OBJECTDIR}/NumberConverter.d ${OBJECTDIR}/NumberConverter.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/NumberConverter.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

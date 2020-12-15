@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 /* Include any code headers that need testing. */
-#include <ThermometerDriver/ThermometerInterface.h>
-#include <ThermometerDriver/ThermometerDriver.h>
+#include <ThermometerInterface.h>
+#include <ThermometerDriver.h>
 
 unsigned char fake_msb;
 unsigned char fake_lsb;

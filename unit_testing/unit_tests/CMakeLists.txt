@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.13.4)
 
 include_directories(../../MPLAB_Project)
-include_directories(../..)
 
 add_compile_definitions(__UNIT_TESTING)
 

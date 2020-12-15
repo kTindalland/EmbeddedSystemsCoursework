@@ -1,62 +1,37 @@
-// This is a guard condition so that contents of this file are not included
-// more than once.  
-#ifndef XC_HEADER_TEMPLATE_H
-#define	XC_HEADER_TEMPLATE_H
-
-#include <xc.h> // include processor files - each processor file is guarded.  
-
-// TODO Insert appropriate #include <>
-
-// TODO Insert C++ class definitions if appropriate
-
-// TODO Insert declarations
-
-// Comment a function and leverage automatic documentation with slash star star
-/**
-    <p><b>Function prototype:</b></p>
-  
-    <p><b>Summary:</b></p>
-
-    <p><b>Description:</b></p>
-
-    <p><b>Precondition:</b></p>
-
-    <p><b>Parameters:</b></p>
-
-    <p><b>Returns:</b></p>
-
-    <p><b>Example:</b></p>
-    <code>
- 
-    </code>
-
-    <p><b>Remarks:</b></p>
+/* 
+ * File:   DS18B20.h
+ * Author: kaiti
+ *
+ * Created on 14 December 2020, 10:56
  */
-// TODO Insert declarations or function prototypes (right here) to leverage 
-// live documentation
+
+#include <xc.h>
+
+#ifndef DS18B20_H
+#define	DS18B20_H
 
 #ifdef	__cplusplus
 extern "C" {
-#endif /* __cplusplus */
+#endif
+    
+#define DQ RA0
+#define DQ_TRIS TRISA0
+#define DQ_HIGH() DQ_TRIS = 1; 
+#define DQ_LOW() DQ_TRIS = 0; DQ = 0;
+    
 
-    // TODO If C++ is being used, regular C code needs function names to have C 
-    // linkage so the functions can be used by the c code.
-    
-    void set_pin_io(char val);
-    void set_pin(char val);
-    int therm_init();
-    void skip_ROM();
-    void write_bit(char wBit);
-    char read_bit();
-    unsigned char read_byte();
-    void write_byte(unsigned char byte);
-    void therm_delay(char x, char y);
-    double therm_convert_number(int number);
-    
+
+    void ThermInit();
+    void ThermReset();
+    void ThermWriteByte(unsigned char);
+    unsigned char ThermReadByte();
+    void ThermMeasureTemp();
+    void ThermGetTemp(unsigned char* msb, unsigned char* lsb);
+
 
 #ifdef	__cplusplus
 }
-#endif /* __cplusplus */
+#endif
 
-#endif	/* XC_HEADER_TEMPLATE_H */
+#endif	/* DS18B20_H */
 
