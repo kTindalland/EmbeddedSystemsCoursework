@@ -2,8 +2,6 @@ cmake_minimum_required(VERSION 3.13.4)
 
 include_directories(../../MPLAB_Project)
 
-add_compile_definitions(__UNIT_TESTING)
-
 add_executable(SmartHeaterUnitTests RTC_Tests.cpp)
 add_executable(ThermometerUnitTests Thermometer_Tests.cpp)
 
