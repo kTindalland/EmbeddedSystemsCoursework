@@ -6,6 +6,9 @@
 #include "ModeSetTime.h"
 #include "ModeSetFakeTemp.h"
 #include "ModeSetTrigTemp.h"
+#include "NumberConverter.h"
+#include "ThermometerInterface.h"
+#include "RealTimeClockInterface.h"
 
 extern struct Mode modes;
 extern int currentMode;
@@ -20,10 +23,13 @@ void ModeRefreshHome()
 	char result[] = char[sizeA + sizeB + 1];
     Concatenate(time, date, result);
     
-    char temp[] = IThermometerGetTemp();
+    double temperature = IThermGetTemperature();
+    
+    char temperature_string[8];
+    nbrcnvt_convert_double(temperature, temperature_string);
     
     modes[currentMode].firstLine = result;
-    modes[currentMode].secondLine = temp;
+    modes[currentMode].secondLine = temperature_string;
 }
 
 void ModeRefreshSetDate()

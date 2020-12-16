@@ -38,8 +38,8 @@ struct Mode{
     
     char firstLine[];
     char secondLine[];
-} Mode;
-typedef struct Mode Mode;
+};
+typedef struct Mode Mode_t;
 
 #ifdef	__cplusplus
 }

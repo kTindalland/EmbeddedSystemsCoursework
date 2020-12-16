@@ -5,8 +5,8 @@
 extern "C" {
 #endif
 
-int StringLength(char s[])
-char* Concatenate(char sA[], char sB[])
+int StringLength(char s[]);
+char* Concatenate(char sA[], char sB[]);
 
 #ifdef	__cplusplus
 }
