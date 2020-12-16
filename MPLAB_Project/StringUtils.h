@@ -6,7 +6,12 @@ extern "C" {
 #endif
 
 int StringLength(char s[]);
-char* Concatenate(char sA[], char sB[]);
+void StringCopy(char from[], char to[]);
+void Concatenate(char sA[], char sB[], char result[]);
+void ConvertTime12ToString(char* result, int secs, int mins, int hours, int pm);
+void ConvertTime24ToString(char* result, int secs, int mins, int hours);
+void ConvertDateToString(char* result, int date, int month, int year);
+void ConvertDayToString(char* result, int day);
 
 #ifdef	__cplusplus
 }
