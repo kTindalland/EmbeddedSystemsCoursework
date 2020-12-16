@@ -3,5 +3,5 @@
 #define RIGHT_SIDE_HIGH 1
 
 void initialiseButtons();
-int* checkButtons();
+void checkButtons(int*);
 #endif

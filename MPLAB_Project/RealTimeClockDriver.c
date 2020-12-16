@@ -1,7 +1,9 @@
 #include "RealTimeClockDriver.h"
 #include <xc.h>
 
-
+// Ignore conversion warnings
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
 
 void rtcInit(){
     TRISB = 0x00;
@@ -235,7 +237,7 @@ uch reverseBits(uch number) {
     
     while (number > 0) {
         reversedNumber <<= 1;
-        if (number & 1 == 1) {
+        if ((number & 1) == 1) {
             reversedNumber ^= 1;
         } 
         number >>= 1;
@@ -243,3 +245,5 @@ uch reverseBits(uch number) {
     
     return reversedNumber;
 }
+
+#pragma GCC diagnostic pop

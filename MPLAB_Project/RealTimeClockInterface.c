@@ -3,7 +3,7 @@
 double IRTCGetTime12()
 {
     rtcTime getTime;
-    getTime24(getTime*);
+    getTime24(&getTime);
     
     char secs[];
     nbrcnvt_convert_integer(getTime.secs, secs);
@@ -114,16 +114,16 @@ void IRTCSetDate(int date, int month, int year)
     if (month == 1 || month == 3 || month == 5 || 
        month == 7 || month == 8 || month == 10 || month == 12)
     {
-        dayLimit == 31;
+        dayLimit = 31;
     }
     
     if (month == 2 && isLeapYear = 1)
     {
-        dayLimit == 29;
+        dayLimit = 29;
     }
     else if (month == 2 && isLeapYear == 0)
     {
-        dayLimit == 28;
+        dayLimit = 28;
     }
     
     if (date > 0 && date < dayLimit &&

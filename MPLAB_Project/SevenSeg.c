@@ -5,9 +5,8 @@
  * Created on 26 October 2020, 14:25
  */
 
-#include <stdio.h>
-#include <stdlib.h>
 #include <xc.h>
+#include "Delay.h"
 
 // Define Which LED
 #define LED1 0x3E   //00111110
