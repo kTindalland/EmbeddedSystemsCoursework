@@ -89,7 +89,7 @@ extern function_pointer_type ModeRefreshSetHotTimer;
 extern function_pointer_type ModeRefreshSetColdTimer;
 extern function_pointer_type ModeRefreshErrors;
 
-void InstantiateModes(Mode* modes)
+void InstantiateModes(Mode_t* modes)
 {
     modes[HOME].refresh = ModeRefreshHome;
     modes[SETDATE].refresh = ModeRefreshSetDate;
@@ -160,26 +160,26 @@ void InstantiateModes(Mode* modes)
     modes[ERRORS].buttons.set = ModeErrorsSet;
 }
 
-void ModeDisplay(Mode mode)
+void ModeDisplay(Mode_t* mode)
 {
     ILCDPanelSetCursor(0,0);
-    ILCDPanelWrite(mode.firstLine);
+    ILCDPanelWrite(mode->firstLine);
     ILCDPanelSetCursor(1,0);
-    ILCDPanelWrite(mode.secondLine);
+    ILCDPanelWrite(mode->secondLine);
 }
 
-void ModeCheckButtons(Mode mode)
+void ModeCheckButtons(Mode_t* mode)
 {
     char buttonStates[8]; 
     
     IButtonsCheckButtons(buttonStates);
     
-    if(buttonStates[0]) { mode.buttons.mode(); }
-    else if(buttonStates[1]) { mode.buttons.set(); }
-    else if(buttonStates[2]) { mode.buttons.increment(); }
-    else if(buttonStates[3]) { mode.buttons.decrement(); }
-    else if(buttonStates[4]) { mode.buttons.cancel(); }
-    else if(buttonStates[5]) { mode.buttons.aux1(); }
-    else if(buttonStates[6]) { mode.buttons.aux2(); }
-    else if(buttonStates[7]) { mode.buttons.aux3(); }
+    if(buttonStates[0]) { mode->buttons.mode(); }
+    else if(buttonStates[1]) { mode->buttons.set(); }
+    else if(buttonStates[2]) { mode->buttons.increment(); }
+    else if(buttonStates[3]) { mode->buttons.decrement(); }
+    else if(buttonStates[4]) { mode->buttons.cancel(); }
+    else if(buttonStates[5]) { mode->buttons.aux1(); }
+    else if(buttonStates[6]) { mode->buttons.aux2(); }
+    else if(buttonStates[7]) { mode->buttons.aux3(); }
 }

@@ -10,7 +10,7 @@
 #include "ThermometerInterface.h"
 #include "RealTimeClockInterface.h"
 
-extern struct Mode modes;
+extern Mode_t modes[];
 extern int currentMode;
 
 void ModeRefreshHome()

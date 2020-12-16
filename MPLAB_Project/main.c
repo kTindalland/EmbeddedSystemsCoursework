@@ -2,6 +2,7 @@
 #include "LCDPanelInterface.h"
 #include "HeaterConfigManager.h"
 #include "Mode.h"
+#include "SounderInterface.h"
 
 #pragma config FOSC = HS
 #pragma config WDTE = OFF
@@ -25,7 +26,7 @@ void main(void) {
     currentMode = HOME;
     
     int lastTemp = 1; // 0 for under trigger, 1 for over trigger
-    if(IThermometerGetTemp() < trigger)
+    if(IThermGetTemperature() < trigger)
     {
         lastTemp = 0;  
     }
@@ -38,12 +39,12 @@ void main(void) {
     
     while(1)
     {
-        Mode mode = modes[currentMode];
+        Mode_t mode = modes[currentMode];
         mode.refresh();
-        ModeDisplay(mode);
-        ModeCheckButtons(mode);
+        ModeDisplay(&mode);
+        ModeCheckButtons(&mode);
         
-        temperature = IThermometerGetTemp();
+        temperature = IThermGetTemperature();
         if (lastTemp == 1 && temperature < trigger) // Temp Hot to Cold
         {
             lastTemp = 0;

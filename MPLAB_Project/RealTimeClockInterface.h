@@ -1,4 +1,4 @@
 
 
-char[] IRTCGetTime(void);
-char[] IRTCGetDate(void);
+char* IRTCGetTime(void);
+char* IRTCGetDate(void);
