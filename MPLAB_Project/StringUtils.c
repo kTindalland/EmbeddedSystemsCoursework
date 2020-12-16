@@ -1,4 +1,5 @@
 #include "NumberConverter.h"
+#include "StringUtils.h"
 
 int StringLength(char s[]) {
    int c = 0;
@@ -194,15 +195,15 @@ void ConvertDateToString(char* result, int date, int month, int year)
 
 void ConvertDayToString(char* result, int day)
 {
-    if (day < 0 || day > 6)
+    if (day < 1 || day > 7)
     {
         //Error
     }
     
     char* days[] = {"MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"};
     
-    result[0] = days[day][0];
-    result[1] = days[day][1];
-    result[2] = days[day][2];
+    result[0] = days[day-1][0];
+    result[1] = days[day-1][1];
+    result[2] = days[day-1][2];
     result[3] = '\0';
 }
