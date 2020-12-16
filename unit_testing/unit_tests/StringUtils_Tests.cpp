@@ -17,7 +17,7 @@ TEST(StringLengthTests, sunnyDay) {
 TEST(StringLengthTests, lowerRange) {
 	// Arrange
 	int result;
-	char noLength[];
+	char noLength[0];
 		
 	// Act
 	result = StringLength(noLength);
