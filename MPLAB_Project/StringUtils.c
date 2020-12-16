@@ -8,6 +8,18 @@ int StringLength(char s[]) {
    return c;
 }
 
+void StringCopy(char from[], char to[])
+{
+    int i;
+    
+    for (i = 0; from[i] != '\0'; ++i)
+    {
+        to[i] = from[i];
+    }
+    
+    to[i] = '\0';
+}
+
 void Concatenate(char sA[], char sB[], char result[])
 {
     int sALength = StringLength(sA);
