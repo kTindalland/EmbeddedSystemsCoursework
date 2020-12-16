@@ -23,3 +23,7 @@ void Concatenate(char sA[], char sB[], char result[])
     // Add Terminating Character
 	result[sizeA + sizeB] = '\0';
 }
+
+char* AddToString(){
+    
+}

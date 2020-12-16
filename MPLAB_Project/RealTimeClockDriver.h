@@ -28,6 +28,9 @@ extern "C" {
     #define SCLK RB0
     #define RTC_IO RB4
     
+    #define IRTC_SUCCESS 1
+    #define IRTC_ERROR 2
+    
     typedef struct rtcTime {
         int secs;
         int mins;

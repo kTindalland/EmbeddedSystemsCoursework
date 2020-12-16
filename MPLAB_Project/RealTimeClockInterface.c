@@ -4,10 +4,29 @@ double IRTCGetTime12()
 {
     rtcTime getTime;
     getTime24(getTime*);
+    
+    char secs[];
+    nbrcnvt_convert_integer(getTime.secs, secs);
+    
+    char mins[];
+    nbrcnvt_convert_integer(getTime.mins, mins);
+    
+    char hours[];
+    nbrcnvt_convert_integer(getTime.hours, hours);
+    
+    char result[] = MakeTimeString(result, secs, mins, hours, pm);
+    result[] = AddToString(result, mins);
+    result[] = AddToString(result, hours);
+    
+    if (getTime.AMPM == AM){ result[] = AddToString(result, hours);}
+    
+    
     int seconds = getTime.secs;
     int minutes = getTime.mins;
     int hours = getTime.hours;
     int pm = getTime.AMPM;
+    
+    nbrcnvt_convert_integer(seconds,)
 }
 
 void IRTCGetTime24()
@@ -30,7 +49,7 @@ double IRTCGetDate()
     int day = getDate.day;
 }
 
-void IRTCSetTime24(int hour, int minutes, int seconds)
+int IRTCSetTime24(int hour, int minutes, int seconds)
 {
     if (hour > -1 && hour < 24 &&
     minutes > 0 && minutes < 61 &&
@@ -43,10 +62,11 @@ void IRTCSetTime24(int hour, int minutes, int seconds)
         setTime.AMPM = NULL;
         
         setTime(setTime);
+        return IRTC_SUCCESS;
     }
     else
     {
-        // Error?
+        return IRTC_ERROR; // IRTC_ERROR_UNDERZERO etc
     }
 }
 

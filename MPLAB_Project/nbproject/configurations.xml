@@ -21,6 +21,7 @@
       <itemPath>RealTimeClockConversions.h</itemPath>
       <itemPath>Delay.h</itemPath>
       <itemPath>NumberConverter.h</itemPath>
+      <itemPath>StringUtils.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -47,6 +48,7 @@
       <itemPath>Mode.c</itemPath>
       <itemPath>RealTimeClockConversions.c</itemPath>
       <itemPath>NumberConverter.c</itemPath>
+      <itemPath>StringUtils.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
