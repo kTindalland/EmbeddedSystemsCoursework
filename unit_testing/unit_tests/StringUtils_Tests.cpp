@@ -32,7 +32,7 @@ TEST(StringCopyTests, sunnyDay) {
 	char to[4];
 		
 	// Act
-	result = StringCopy(from, to);
+	StringCopy(from, to);
 
 	// Assert
 	ASSERT_EQ(from, to);
@@ -44,7 +44,7 @@ TEST(StringCopyTests, clearingString) {
 	char to[3] = {'A', 'B', 'C'};
 		
 	// Act
-	result = StringCopy(from, to);
+	StringCopy(from, to);
 
 	// Assert
 	ASSERT_EQ(from, to);
