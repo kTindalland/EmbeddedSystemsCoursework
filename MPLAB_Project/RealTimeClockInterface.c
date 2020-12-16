@@ -36,14 +36,19 @@ int IRTCGetTime24(char result[])
     }
 }
 
-double IRTCGetDate()
+double IRTCGetDate(char date[], char day[])
 {
-    rtcDate getDate;
-    getDate(getDate*);
-    int date = getDate.date;
-    int month = getDate.month;
-    int year = getDate.year;
-    int day = getDate.day;
+    int lengthDate = sizeof(date) / sizeof(char);
+    int lengthDay = sizeof(day) / sizeof(char);
+    
+    if (lengthDate < 11 && lengthDay < 4)
+    {
+        rtcDate getDate;
+        getDate(getDate*);
+    
+        ConvertDateToString(date, getDate.date, getDate.month, getDate.year);
+        ConvertDayToString(day, getDate.day);
+    }
 }
 
 int IRTCSetTime24(int hour, int minutes, int seconds)

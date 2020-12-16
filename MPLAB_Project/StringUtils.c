@@ -29,7 +29,7 @@ void Concatenate(char sA[], char sB[], char result[])
 	result[sALength + sBLength] = '\0';
 }
 
-char* ConvertTime12ToString(char* result, int secs, int mins, int hours, int pm)
+void ConvertTime12ToString(char* result, int secs, int mins, int hours, int pm)
 {
     char s[3];
     nbrcnvt_convert_integer(secs, s);
@@ -78,7 +78,7 @@ char* ConvertTime12ToString(char* result, int secs, int mins, int hours, int pm)
     result[12] = '\0';
 }
 
-char* ConvertTime24ToString(char* result, int secs, int mins, int hours)
+void ConvertTime24ToString(char* result, int secs, int mins, int hours)
 {
     char s[3];
     nbrcnvt_convert_integer(secs, s);
@@ -119,4 +119,78 @@ char* ConvertTime24ToString(char* result, int secs, int mins, int hours)
     {
         result[i + 6] = s[i];
     }
+}
+
+void ConvertDateToString(char* result, int date, int month, int year)
+{
+    char d[3];
+    nbrcnvt_convert_integer(date, d);
+    if (date < 10)
+    {
+        d[1] = d[0];
+        d[0] = '0'; 
+    }
+    d[2] = '/';
+    
+    char m[3];
+    nbrcnvt_convert_integer(month, m);
+    if (month < 10)
+    {
+        m[1] = m[0];
+        m[0] = '0'; 
+    }
+    m[2] = '/';
+    
+    char y[5];
+    nbrcnvt_convert_integer(year, y);
+    if (year < 10) // Future Proofing
+    { 
+        y[3] = y[0];
+        y[2] = '0';
+        y[1] = '0';
+        y[0] = '0';
+    }
+    else if (year < 100) // Future Proofing
+    {
+        y[2] = y[0];
+        y[3] = y[1];
+        y[0] = '0';
+        y[1] = '0';
+    }
+    else if (year < 1000) // Future Proofing
+    {
+        y[3] = y[2];
+        y[2] = y[1];
+        y[1] = y[0];
+        y[0] = '0';
+    }
+    y[4] = '\0';
+    
+    for (int i = 0; i < 3; i++)
+    {
+        result[i] = d[i];
+    }
+    for (int i = 0; i < 3; i++)
+    {
+        result[i + 3] = m[i];
+    }
+    for (int i = 0; i < 5; i++)
+    {
+        result[i + 6] = y[i];
+    }
+}
+
+void ConvertDayToString(char* result, int day)
+{
+    if (day < 0 || day > 6)
+    {
+        //Error
+    }
+    
+    char* days[] = {"MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"};
+    
+    result[0] = days[day][0];
+    result[1] = days[day][1];
+    result[2] = days[day][2];
+    result[3] = '\0';
 }
