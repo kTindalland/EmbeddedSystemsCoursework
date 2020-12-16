@@ -36,10 +36,14 @@ struct Mode{
     struct Buttons buttons;
     void (*refresh) (void);
     
-    char firstLine[];
-    char secondLine[];
+    char firstLine[17];
+    char secondLine[17];
 };
 typedef struct Mode Mode_t;
+
+void InstantiateModes(Mode_t*);
+void ModeDisplay(Mode_t* mode);
+void ModeCheckButtons(Mode_t* mode);
 
 #ifdef	__cplusplus
 }

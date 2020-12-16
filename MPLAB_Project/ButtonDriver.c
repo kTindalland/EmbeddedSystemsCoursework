@@ -8,9 +8,8 @@ void initialiseButtons() {
         TRISB = 0xFF;
 }
 
-int* checkButtons() {
+void checkButtons(int* button_array) {
     initialiseButtons();
-    int result[8] = { 0 };
 
     unsigned int mask;
     int i = 0;
@@ -18,7 +17,7 @@ int* checkButtons() {
     for (mask = 1; mask != 16; mask <<= 1) {
 
         if (PORTB & mask) {
-            result[i] = RIGHT_SIDE_HIGH;
+            button_array[i] = RIGHT_SIDE_HIGH;
         }
         i++;
     }
@@ -26,9 +25,8 @@ int* checkButtons() {
     for (mask = 1; mask != 16; mask <<= 1) {
 
         if (PORTA & mask) {
-            result[i] = RIGHT_SIDE_HIGH;
+            button_array[i] = RIGHT_SIDE_HIGH;
         }
         i++;
     }
-    return result;
 }
