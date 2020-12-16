@@ -25,3 +25,27 @@ TEST(StringLengthTests, lowerRange) {
 	// Assert
 	ASSERT_EQ(result, 0);
 }
+
+TEST(StringCopyTests, sunnyDay) {
+	// Arrange
+	char from[4] = {'A', 'B', 'C', 'D'};
+	char to[4];
+		
+	// Act
+	result = StringCopy(from, to);
+
+	// Assert
+	ASSERT_EQ(from, to);
+}
+
+TEST(StringCopyTests, clearingString) {
+	// Arrange
+	char from[0];
+	char to[3] = {'A', 'B', 'C'};
+		
+	// Act
+	result = StringCopy(from, to);
+
+	// Assert
+	ASSERT_EQ(from, to);
+}
