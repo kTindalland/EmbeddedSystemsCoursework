@@ -16,6 +16,8 @@ add_compile_definitions(__UNIT_TESTING)
 
 add_library(SmartHeaterLogicalCode STATIC ${Sources} ${Headers})
 
+add_library(StringUtilsCode STATIC ../MPLAB_Project/StringUtils.h ../MPLAB_Project/StringUtils.c ../MPLAB_Project/NumberConverter.h ../MPLAB_Project/NumberConverter.c)
+
 add_library(ThermometerCode STATIC ../MPLAB_Project/ThermometerDriver.h ../MPLAB_Project/ThermometerInterface.h ../MPLAB_Project/ThermometerInterface.c)
 
 add_subdirectory(unit_tests)

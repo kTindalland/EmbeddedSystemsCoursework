@@ -11,6 +11,11 @@ target_link_libraries(SmartHeaterUnitTests PUBLIC
     SmartHeaterLogicalCode
 )
 
+target_link_libraries(StringUtilsUnitTests PUBLIC 
+    gtest_main
+    StringUtilsCode
+)
+
 target_link_libraries(ThermometerUnitTests PUBLIC
     gtest_main
     ThermometerCode
