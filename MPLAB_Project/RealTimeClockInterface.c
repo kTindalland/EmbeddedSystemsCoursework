@@ -1,42 +1,39 @@
 #include "RealTimeClockDriver.h"
 
-double IRTCGetTime12()
+int IRTCGetTime12(char result[]) // Have 12 in result
 {
-    rtcTime getTime;
-    getTime24(getTime*);
+    int length = sizeof(result) / sizeof(char);
     
-    char secs[];
-    nbrcnvt_convert_integer(getTime.secs, secs);
+    if (length < 12) // 12 Is Minimum Chars To Store Formatted 12H Time
+    {
+        return IRTC_ERROR;
+    }
+    else
+    {
+        rtcTime getTime;
+        getTime12(getTime*);
     
-    char mins[];
-    nbrcnvt_convert_integer(getTime.mins, mins);
-    
-    char hours[];
-    nbrcnvt_convert_integer(getTime.hours, hours);
-    
-    char result[] = MakeTimeString(result, secs, mins, hours, pm);
-    result[] = AddToString(result, mins);
-    result[] = AddToString(result, hours);
-    
-    if (getTime.AMPM == AM){ result[] = AddToString(result, hours);}
-    
-    
-    int seconds = getTime.secs;
-    int minutes = getTime.mins;
-    int hours = getTime.hours;
-    int pm = getTime.AMPM;
-    
-    nbrcnvt_convert_integer(seconds,)
+        ConvertTime12ToString(result, getTime.secs, getTime.mins, getTime.hours, getTime.AMPM);
+        return IRTC_SUCCESS;
+    }
 }
 
-void IRTCGetTime24()
+int IRTCGetTime24(char result[])
 {
-    rtcTime getTime;
-    getTime24(getTime*);
-    int seconds = getTime.secs;
-    int minutes = getTime.mins;
-    int hours = getTime.hours;
-    int pm = NULL;
+    int length = sizeof(result) / sizeof(char);
+    
+    if (length < 9) // 9 Is Minimum Chars To Store Formatted 24H Time
+    {
+        return IRTC_ERROR;
+    }
+    else
+    {
+        rtcTime getTime;
+        getTime24(getTime*);
+    
+        ConvertTime24ToString(result, getTime.secs, getTime.mins, getTime.hours);
+        return IRTC_SUCCESS;
+    }
 }
 
 double IRTCGetDate()
