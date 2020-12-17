@@ -162,7 +162,7 @@ int ConvertTime24ToString(char* result, int secs, int mins, int hours, int lengt
 
 int ConvertDateToString(char* result, int date, int month, int year, int length)
 {
-    if (date < 1 || date > 30 ||
+    if (date < 1 || date > 31 ||
         month < 1 || month > 12 ||
         year < 2000 || year > 2099 || // Check Year Limits
         length < 10 || length > 10)
