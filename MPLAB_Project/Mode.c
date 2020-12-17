@@ -100,64 +100,64 @@ void InstantiateModes(Mode_t* modes)
     modes[SETCOLDTIMER].refresh = ModeRefreshSetColdTimer;
     modes[ERRORS].refresh = ModeRefreshErrors;
             
-    modes[HOME].buttons.mode = ModeHomeMode;
-    modes[HOME].buttons.set = ModeHomeSet;
-    modes[HOME].buttons.increment = ModeHomeInc;
-    modes[HOME].buttons.decrement = ModeHomeDec;
-    modes[HOME].buttons.cancel = ModeHomeCancel;
-    modes[HOME].buttons.aux1 = ModeHomeAux1;
-    modes[HOME].buttons.aux2 = ModeHomeAux2;
-    modes[HOME].buttons.aux3 = ModeHomeAux3;
+    modes[HOME]->buttons.mode = ModeHomeMode;
+    modes[HOME]->buttons.set = ModeHomeSet;
+    modes[HOME]->buttons.increment = ModeHomeInc;
+    modes[HOME]->buttons.decrement = ModeHomeDec;
+    modes[HOME]->buttons.cancel = ModeHomeCancel;
+    modes[HOME]->buttons.aux1 = ModeHomeAux1;
+    modes[HOME]->buttons.aux2 = ModeHomeAux2;
+    modes[HOME]->buttons.aux3 = ModeHomeAux3;
     
-    modes[SETDATE].buttons.mode = ModeSetDateMode;
-    modes[SETDATE].buttons.set = ModeSetDateSet;
-    modes[SETDATE].buttons.increment = ModeSetDateInc;
-    modes[SETDATE].buttons.decrement = ModeSetDateDec;
-    modes[SETDATE].buttons.cancel = ModeSetDateCancel;
-    modes[SETDATE].buttons.aux1 = ModeSetDateAux1;
-    modes[SETDATE].buttons.aux2 = ModeSetDateAux2;
-    modes[SETDATE].buttons.aux3 = ModeSetDateAux3;
+    modes[SETDATE]->buttons.mode = ModeSetDateMode;
+    modes[SETDATE]->buttons.set = ModeSetDateSet;
+    modes[SETDATE]->buttons.increment = ModeSetDateInc;
+    modes[SETDATE]->buttons.decrement = ModeSetDateDec;
+    modes[SETDATE]->buttons.cancel = ModeSetDateCancel;
+    modes[SETDATE]->buttons.aux1 = ModeSetDateAux1;
+    modes[SETDATE]->buttons.aux2 = ModeSetDateAux2;
+    modes[SETDATE]->buttons.aux3 = ModeSetDateAux3;
     
-    modes[SETTIME].buttons.mode = ModeSetTimeMode;
-    modes[SETTIME].buttons.set = ModeSetTimeSet;
-    modes[SETTIME].buttons.increment = ModeSetTimeInc;
-    modes[SETTIME].buttons.decrement = ModeSetTimeDec;
-    modes[SETTIME].buttons.cancel = ModeSetTimeCancel;
-    modes[SETTIME].buttons.aux1 = ModeSetTimeAux1;
-    modes[SETTIME].buttons.aux2 = ModeSetTimeAux2;
-    modes[SETTIME].buttons.aux3 = ModeSetTimeAux3;
+    modes[SETTIME]->buttons.mode = ModeSetTimeMode;
+    modes[SETTIME]->buttons.set = ModeSetTimeSet;
+    modes[SETTIME]->buttons.increment = ModeSetTimeInc;
+    modes[SETTIME]->buttons.decrement = ModeSetTimeDec;
+    modes[SETTIME]->buttons.cancel = ModeSetTimeCancel;
+    modes[SETTIME]->buttons.aux1 = ModeSetTimeAux1;
+    modes[SETTIME]->buttons.aux2 = ModeSetTimeAux2;
+    modes[SETTIME]->buttons.aux3 = ModeSetTimeAux3;
     
-    modes[SETTRIGTEMP].buttons.mode = ModeSetTrigTempMode;
-    modes[SETTRIGTEMP].buttons.set = ModeSetTrigTempSet;
-    modes[SETTRIGTEMP].buttons.increment = ModeSetTrigTempInc;
-    modes[SETTRIGTEMP].buttons.decrement = ModeSetTrigTempDec;
-    modes[SETTRIGTEMP].buttons.cancel = ModeSetTrigTempCancel;
-    modes[SETTRIGTEMP].buttons.aux1 = ModeSetTrigTempAux1;
-    modes[SETTRIGTEMP].buttons.aux2 = ModeSetTrigTempAux2;
-    modes[SETTRIGTEMP].buttons.aux3 = ModeSetTrigTempAux3;
+    modes[SETTRIGTEMP]->buttons.mode = ModeSetTrigTempMode;
+    modes[SETTRIGTEMP]->buttons.set = ModeSetTrigTempSet;
+    modes[SETTRIGTEMP]->buttons.increment = ModeSetTrigTempInc;
+    modes[SETTRIGTEMP]->buttons.decrement = ModeSetTrigTempDec;
+    modes[SETTRIGTEMP]->buttons.cancel = ModeSetTrigTempCancel;
+    modes[SETTRIGTEMP]->buttons.aux1 = ModeSetTrigTempAux1;
+    modes[SETTRIGTEMP]->buttons.aux2 = ModeSetTrigTempAux2;
+    modes[SETTRIGTEMP]->buttons.aux3 = ModeSetTrigTempAux3;
    
-    modes[SETFAKETEMP].buttons.mode = ModeSetFakeTempMode;
-    modes[SETFAKETEMP].buttons.set = ModeSetFakeTempSet;
-    modes[SETFAKETEMP].buttons.increment = ModeSetFakeTempInc;
-    modes[SETFAKETEMP].buttons.decrement = ModeSetFakeTempDec;
-    modes[SETFAKETEMP].buttons.cancel = ModeSetFakeTempCancel;
-    modes[SETFAKETEMP].buttons.aux2 = ModeSetFakeTempAux2;
-    modes[SETFAKETEMP].buttons.aux3 = ModeSetFakeTempAux3;
+    modes[SETFAKETEMP]->buttons.mode = ModeSetFakeTempMode;
+    modes[SETFAKETEMP]->buttons.set = ModeSetFakeTempSet;
+    modes[SETFAKETEMP]->buttons.increment = ModeSetFakeTempInc;
+    modes[SETFAKETEMP]->buttons.decrement = ModeSetFakeTempDec;
+    modes[SETFAKETEMP]->buttons.cancel = ModeSetFakeTempCancel;
+    modes[SETFAKETEMP]->buttons.aux2 = ModeSetFakeTempAux2;
+    modes[SETFAKETEMP]->buttons.aux3 = ModeSetFakeTempAux3;
     
-    modes[SETHOTTIMER].buttons.mode = ModeSetHotTimerMode;
-    modes[SETHOTTIMER].buttons.set = ModeSetHotTimerSet;
-    modes[SETHOTTIMER].buttons.increment = ModeSetHotTimerInc;
-    modes[SETHOTTIMER].buttons.decrement = ModeSetHotTimerDec;
-    modes[SETHOTTIMER].buttons.cancel = ModeSetHotTimerCancel;
+    modes[SETHOTTIMER]->buttons.mode = ModeSetHotTimerMode;
+    modes[SETHOTTIMER]->buttons.set = ModeSetHotTimerSet;
+    modes[SETHOTTIMER]->buttons.increment = ModeSetHotTimerInc;
+    modes[SETHOTTIMER]->buttons.decrement = ModeSetHotTimerDec;
+    modes[SETHOTTIMER]->buttons.cancel = ModeSetHotTimerCancel;
     
-    modes[SETCOLDTIMER].buttons.mode = ModeSetColdTimerMode;
-    modes[SETCOLDTIMER].buttons.set = ModeSetColdTimerSet;
-    modes[SETCOLDTIMER].buttons.increment = ModeSetColdTimerInc;
-    modes[SETCOLDTIMER].buttons.decrement = ModeSetColdTimerDec;
-    modes[SETCOLDTIMER].buttons.cancel = ModeSetColdTimerCancel;
+    modes[SETCOLDTIMER]->buttons.mode = ModeSetColdTimerMode;
+    modes[SETCOLDTIMER]->buttons.set = ModeSetColdTimerSet;
+    modes[SETCOLDTIMER]->buttons.increment = ModeSetColdTimerInc;
+    modes[SETCOLDTIMER]->buttons.decrement = ModeSetColdTimerDec;
+    modes[SETCOLDTIMER]->buttons.cancel = ModeSetColdTimerCancel;
     
-    modes[ERRORS].buttons.mode = ModeErrorsMode;
-    modes[ERRORS].buttons.set = ModeErrorsSet;
+    modes[ERRORS]->buttons.mode = ModeErrorsMode;
+    modes[ERRORS]->buttons.set = ModeErrorsSet;
 }
 
 void ModeDisplay(Mode_t* mode)
