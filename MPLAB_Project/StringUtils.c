@@ -9,6 +9,28 @@ int StringLength(char s[]) {
    return c;
 }
 
+int StringLength(char s[]) {
+	// Get char array length.
+	int array_length = sizeof(s) / sizeof(char);
+
+	if (array_length == 0) return 0;
+
+	int hitNull = 0;
+	int count = 0;
+
+	for (int i = 0; i < array_length; i++) {
+		if (s[i] == '\0') {
+			hitNull = 1;
+			break;
+		} else {
+			count++;
+		}
+	}
+
+	if (hitNull == 0) return 0;
+	else return count;
+}
+
 int StringCopy(char from[], char to[])
 {
     int lengthFrom = StringLength(from);
