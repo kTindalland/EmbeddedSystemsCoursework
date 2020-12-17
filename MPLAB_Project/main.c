@@ -3,6 +3,7 @@
 #include "HeaterConfigManager.h"
 #include "Mode.h"
 #include "SounderInterface.h"
+#include "ThermometerInterface.h"
 
 #pragma config FOSC = HS
 #pragma config WDTE = OFF
@@ -26,12 +27,11 @@ void main(void) {
     currentMode = HOME;
     
     int lastTemp = 1; // 0 for under trigger, 1 for over trigger
-    if(IThermGetTemperature() < trigger)
+    double temperature = IThermGetTemperature();
+    if( temperature < trigger)
     {
         lastTemp = 0;  
     }
-    
-    double temperature;
     
     int startTime; // Change to appropriate type
     int currentTime; // Change to appropriate type

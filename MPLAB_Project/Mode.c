@@ -1,4 +1,5 @@
 #include "Mode.h"
+#include "ModeRefreshes.h"
 
 typedef void(*function_pointer_type)(void);
 

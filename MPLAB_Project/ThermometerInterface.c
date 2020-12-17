@@ -1,7 +1,7 @@
 #include "ThermometerInterface.h"
 #include "ThermometerDriver.h"
 
-double IThermGetTemperature() {
+double IThermGetTemperature(void) {
     // Variable declarations.
     unsigned char msb;
     unsigned char lsb;
