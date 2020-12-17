@@ -5,7 +5,7 @@
 TEST(StringLengthTests, sunnyDay) {
 	// Arrange
 	int result;
-	char twoLength[2] = {'A', 'B'};
+	char twoLength[3] = {'A', 'B', '\0'};
 		
 	// Act
 	result = StringLength(twoLength);
@@ -28,8 +28,8 @@ TEST(StringLengthTests, lowerRange) {
 
 TEST(StringCopyTests, sunnyDay) {
 	// Arrange
-	char from[4] = {'A', 'B', 'C', 'D'};
-	char to[4];
+	char from[5] = {'A', 'B', 'C', 'D', '\0'};
+	char to[5];
 	int result;
 		
 	// Act
@@ -42,7 +42,7 @@ TEST(StringCopyTests, sunnyDay) {
 
 TEST(StringCopyTests, fromSmallerThanTo) {
 	// Arrange
-	char from[1] = {'A'};
+	char from[2] = {'A', '\0'};
 	char to[3] = {'A', 'B', 'C'};
 	int result;		
 
@@ -56,8 +56,8 @@ TEST(StringCopyTests, fromSmallerThanTo) {
 
 TEST(StringCopyTests, fromBiggerThanTo){
 	// Arrange
-	char from[3] = {'A', 'B', 'C'};
-	char to[1] = {'A'};
+	char from[3] = {'A', 'B', 'C', '\0'};
+	char to[1] = {'A', '\0'};
 	int result;
 		
 	// Act
@@ -82,10 +82,10 @@ TEST(StringCopyTests, emptyArrayFrom){
 
 TEST(ConcatenateTests, sunnyDay){
 	// Arrange
-	char a[3] = {'H', 'E', 'L'};
-	char b[2] = {'L', 'O'};
+	char a[3] = {'H', 'E', 'L', '\0'};
+	char b[2] = {'L', 'O', '\0'};
 	char result[6];
-	char expected[5] = {'H', 'E', 'L', 'L', 'O'};
+	char expected[6] = {'H', 'E', 'L', 'L', 'O', '\0'};
 		
 	// Act
 	Concatenate(a, b, result);
@@ -97,7 +97,7 @@ TEST(ConcatenateTests, sunnyDay){
 TEST(ConcatenateTests, oneEmptyString){
 	// Arrange
 	char a[0];
-	char b[2] = {'L', 'O'};
+	char b[2] = {'L', 'O', '\0'};
 	char result[2];
 	char expected[2] = {'L', 'O'};
 		
@@ -138,10 +138,10 @@ TEST(ConcatenateTests, smallResult){
 
 TEST(ConcatenateTests, largeResult){
 	// Arrange
-	char a[1] = {'A'};
-	char b[1] = {'B'};
-	char result[3];
-	char expected[2] = {'A', 'B'};
+	char a[1] = {'A', '\0'};
+	char b[1] = {'B', '\0'};
+	char result[7];
+	char expected[3] = {'A', 'B', '\0'};
 		
 	// Act
 	Concatenate(a, b, result);
