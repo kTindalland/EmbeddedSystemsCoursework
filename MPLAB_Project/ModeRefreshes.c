@@ -34,6 +34,7 @@ void ModeRefreshHome()
 
 void ModeRefreshSetDate()
 {
+    
     modes[currentMode].firstLine = "Home";
     modes[currentMode].secondLine = "2";
 }
