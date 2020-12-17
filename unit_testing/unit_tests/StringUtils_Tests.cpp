@@ -56,8 +56,8 @@ TEST(StringCopyTests, fromSmallerThanTo) {
 
 TEST(StringCopyTests, fromBiggerThanTo){
 	// Arrange
-	char from[3] = {'A', 'B', 'C', '\0'};
-	char to[1] = {'A', '\0'};
+	char from[4] = {'A', 'B', 'C', '\0'};
+	char to[2] = {'A', '\0'};
 	int result;
 		
 	// Act
@@ -82,8 +82,8 @@ TEST(StringCopyTests, emptyArrayFrom){
 
 TEST(ConcatenateTests, sunnyDay){
 	// Arrange
-	char a[3] = {'H', 'E', 'L', '\0'};
-	char b[2] = {'L', 'O', '\0'};
+	char a[4] = {'H', 'E', 'L', '\0'};
+	char b[3] = {'L', 'O', '\0'};
 	char result[6];
 	char expected[6] = {'H', 'E', 'L', 'L', 'O', '\0'};
 		
@@ -97,7 +97,7 @@ TEST(ConcatenateTests, sunnyDay){
 TEST(ConcatenateTests, oneEmptyString){
 	// Arrange
 	char a[0];
-	char b[2] = {'L', 'O', '\0'};
+	char b[3] = {'L', 'O', '\0'};
 	char result[2];
 	char expected[2] = {'L', 'O'};
 		
@@ -138,8 +138,8 @@ TEST(ConcatenateTests, smallResult){
 
 TEST(ConcatenateTests, largeResult){
 	// Arrange
-	char a[1] = {'A', '\0'};
-	char b[1] = {'B', '\0'};
+	char a[2] = {'A', '\0'};
+	char b[2] = {'B', '\0'};
 	char result[7];
 	char expected[3] = {'A', 'B', '\0'};
 		
