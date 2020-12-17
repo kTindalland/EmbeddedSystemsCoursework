@@ -387,7 +387,7 @@ TEST(ConvertDayToStringTests, sunnyDay){
 	int resultNo = ConvertDayToString(result, day, 4);
 
 	// Assert
-	ASSERT_STREQ(result, "TUE";
+	ASSERT_STREQ(result, "TUE");
 	ASSERT_EQ(resultNo, 1);
 }
 
