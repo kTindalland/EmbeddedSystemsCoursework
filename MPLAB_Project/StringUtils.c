@@ -9,8 +9,20 @@ int StringLength(char s[]) {
    return c;
 }
 
-void StringCopy(char from[], char to[])
+int StringCopy(char from[], char to[])
 {
+    int lengthFrom = StringLength(from);
+    int lengthTo = StringLength(to);
+    
+    if (lengthFrom == 0)
+    {
+        return 0;
+    }
+    if (lengthTo < lengthFrom)
+    {
+        return 0;
+    }
+    
     int i;
     
     for (i = 0; from[i] != '\0'; ++i)
@@ -19,12 +31,20 @@ void StringCopy(char from[], char to[])
     }
     
     to[i] = '\0';
+    
+    return 1;
 }
 
-void Concatenate(char sA[], char sB[], char result[])
+int Concatenate(char sA[], char sB[], char result[])
 {
+    int rLength = StringLength(result);
     int sALength = StringLength(sA);
     int sBLength = StringLength(sB);
+    
+    if (rLength < (sALength + sBLength + 1))
+    {
+        return 0;
+    }
     
     // Storing Contents of A in Result
 	for (int i = 0; i < sALength; i++)
@@ -40,6 +60,8 @@ void Concatenate(char sA[], char sB[], char result[])
 
     // Add Terminating Character
 	result[sALength + sBLength] = '\0';
+    
+    return 1;
 }
 
 void ConvertTime12ToString(char* result, int secs, int mins, int hours, int pm)
