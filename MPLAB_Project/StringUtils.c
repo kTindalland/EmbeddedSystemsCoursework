@@ -42,7 +42,7 @@ int Concatenate(char sA[], char sB[], char result[], int rLength)
 	StringCopy(sA, result, sALength);
 
 	// Storing Contents of B in Result
-	StringCopy(sB, result[sALength], sBLength);
+	StringCopy(sB, &result[sALength], sBLength);
 
 	return 1;
 }

@@ -74,7 +74,7 @@ TEST(StringCopyTests, emptyArrayFrom){
 	int result;
 		
 	// Act
-	result = StringCopy(from, to);
+	result = StringCopy(from, to, 1);
 
 	// Assert
 	ASSERT_EQ(result, 0);
@@ -88,7 +88,7 @@ TEST(ConcatenateTests, sunnyDay){
 	char expected[6] = {'H', 'E', 'L', 'L', 'O', '\0'};
 		
 	// Act
-	Concatenate(a, b, result);
+	Concatenate(a, b, result, 6);
 
 	// Assert
 	ASSERT_STREQ(result, expected);
@@ -102,7 +102,7 @@ TEST(ConcatenateTests, oneEmptyString){
 	char expected[3] = {'L', 'O', '\0'};
 		
 	// Act
-	Concatenate(a, b, result);
+	Concatenate(a, b, result, 3);
 
 	// Assert
 	ASSERT_STREQ(result, expected);
@@ -116,7 +116,7 @@ TEST(ConcatenateTests, twoEmptyStrings){
 	char expected[0];
 		
 	// Act
-	Concatenate(a, b, result);
+	Concatenate(a, b, result, 0);
 
 	// Assert
 	ASSERT_STREQ(result, expected);
@@ -130,7 +130,7 @@ TEST(ConcatenateTests, smallResult){
 	int result;
 
 	// Act
-	result = Concatenate(a, b, combined);
+	result = Concatenate(a, b, combined, 3);
 
 	// Assert
 	ASSERT_EQ(result, 0);
@@ -144,7 +144,7 @@ TEST(ConcatenateTests, largeResult){
 	char expected[3] = {'A', 'B', '\0'};
 		
 	// Actl
-	Concatenate(a, b, result);
+	Concatenate(a, b, result, 3);
 
 	// Assert
 	ASSERT_STREQ(result, expected);
