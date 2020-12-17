@@ -1,4 +1,4 @@
-name: String Utils Unit Tests
+name: Real Time Clock Unit Tests
 
 on: [push, workflow_dispatch]
 

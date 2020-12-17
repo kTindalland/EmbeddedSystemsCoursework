@@ -1,4 +1,4 @@
-name: String Utils Unit Tests
+name: Thermometer Unit Tests
 
 on: [push, workflow_dispatch]
 
