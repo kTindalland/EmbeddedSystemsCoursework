@@ -18,11 +18,14 @@ int StringCopy(char from[], char to[], int length)
 
 	if (stringLength < length) return 0; // String not big enough to satisfy length.
 
-	for (int i = 0; i < length; i++) {
+	int i;
+	for (i = 0; i < length; i++) {
 		to[i] = from[i];
 	}
 
 	to[i+1] = '\0';
+
+	return 1;
 }
 
 int Concatenate(char sA[], char sB[], char result[], int rLength)
