@@ -1,5 +1,6 @@
 #include "LCDPanelDriver.h"
 #include "StringUtils.h"
+#include "Delay.h"
 #include <xc.h> 
 
 //begin config

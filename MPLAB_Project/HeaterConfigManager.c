@@ -1,4 +1,5 @@
 #include "HeaterConfigManager.h"
+#include "StringUtils.h"
 
 void IncrementMode()
 {
@@ -25,10 +26,13 @@ void SetTriggerTemp()
     double temp;
     temp = heater.displayTemp;
     
-    if (temp <  - 50 || temp > 150)
-        heater.error = "Trigger Temp Not Between -50 and 150 degrees.";
-    else
-        heater.triggerTemp = temp;
+    if (temp <  - 50 || temp > 150) {
+        char errorMsg[] = "Trigger Temp Not Between -50 and 150 degrees.";
+        StringCopy(errorMsg, heater.errorLine1, 16);
+        StringCopy(&errorMsg[16], heater.errorLine2, 16);
+    }
+    else { heater.triggerTemp = temp; }
+        
 }
 
 double GetTriggerTemp()
@@ -40,8 +44,11 @@ void SetHotTimer(int time)
 {
     if (time < 0  || time > 90)
         heater.hotTimer = time;
-    else
-        heater.error = "Hot timer not between 0 and 90 seconds.";
+    else {
+        char errorMsg[] = "Hot timer not between 0 and 90 seconds.";
+        StringCopy(errorMsg, heater.errorLine1, 16);
+        StringCopy(&errorMsg[16], heater.errorLine2, 16);
+    }
 }
 
 int GetHotTimer()
@@ -53,8 +60,11 @@ void SetColdTimer(int time)
 {
     if (time < 0  || time > 90)
         heater.hotTimer = time;
-    else
-        heater.error = "Cold timer not between 0 and 60 seconds.";
+    else {
+        char errorMsg[] = "Cold timer not between 0 and 60 seconds.";
+        StringCopy(errorMsg, heater.errorLine1, 16);
+        StringCopy(&errorMsg[16], heater.errorLine2, 16);
+    }
 }
 
 int GetColdTimer()

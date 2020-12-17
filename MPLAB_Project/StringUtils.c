@@ -19,7 +19,7 @@ int StringCopy(char from[], char to[], int length)
 	if (stringLength < length) return 0; // String not big enough to satisfy length.
 
 	int i;
-	for (i = 0; i < length; i++) {
+	for (i = 0; i < length && from[i] != '\0'; i++) {
 		to[i] = from[i];
 	}
 
@@ -99,7 +99,7 @@ int ConvertTime12ToString(char* result, int secs, int mins, int hours, int pm, i
     }
     
     result[9] = 'A';
-    if (pm = 1) { result[9] = 'P'; }
+    if (pm == 1) { result[9] = 'P'; }
     
     result[10] = 'M';
     result[11] = '\0';

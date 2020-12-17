@@ -3,6 +3,10 @@
 /* Doubles will only convert the first digit after the decimal point. */
 /* Converter will only handle numbers between 9999 and -99. */
 
+// Ignore conversion warnings
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
+
 char nbrcnvt_convert_digit(int digit ) {
 	if (digit >= 0 && digit <= 9) {
 		return 48 + digit; /* ASCII 0 character is code 48. */
@@ -11,6 +15,8 @@ char nbrcnvt_convert_digit(int digit ) {
 		return 69; /* ASCII code for E. Represents Error. */
 	}
 }
+
+#pragma GCC diagnostic pop
 
 void nbrcnvt_convert_integer(int number, char* output) {
 	int thousands;

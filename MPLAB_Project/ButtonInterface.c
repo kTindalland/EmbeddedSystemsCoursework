@@ -1,6 +1,7 @@
+#include "ButtonDriver.h"
 
 void IButtonsCheckButtons(int* result)
 {
     initialiseButtons();
-    result = checkButtons();
+    checkButtons(result);
 }

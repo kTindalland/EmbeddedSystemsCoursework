@@ -14,7 +14,8 @@ struct Heater {
     double displayTemp;
     int hotTimer;
     int coldTimer;
-    char error[];
+    char errorLine1[17];
+    char errorLine2[17];
 } heater;
 
 void SetTriggerTemp(double temp);

@@ -9,68 +9,71 @@
 #include "NumberConverter.h"
 #include "ThermometerInterface.h"
 #include "RealTimeClockInterface.h"
+#include "StringUtils.h"
 
 extern Mode_t modes[];
 extern int currentMode;
 
 void ModeRefreshHome()
 {
-    char time[] = IRTCGetTime(); 
-    char date[] = IRTCGetDate();
+    char time[12];
+    IRTCGetTime12(time, 12); 
     
-	int sizeA = StringLength(time);
-	int sizeB = StringLength(date);
-	char result[] = char[sizeA + sizeB + 1];
-    Concatenate(time, date, result);
+    char date[11];
+    char day[4];
+    
+    IRTCGetDate(date, 11, day, 4);
+    
+	char result[22];
+    Concatenate(time, date, result, 22);
     
     double temperature = IThermGetTemperature();
     
     char temperature_string[8];
     nbrcnvt_convert_double(temperature, temperature_string);
     
-    modes[currentMode].firstLine = result;
-    modes[currentMode].secondLine = temperature_string;
+    StringCopy(result, modes[currentMode].firstLine, StringLength(result));
+    StringCopy(temperature_string, modes[currentMode].secondLine, StringLength(temperature_string));
 }
 
 void ModeRefreshSetDate()
 {
-    
-    modes[currentMode].firstLine = "Home";
-    modes[currentMode].secondLine = "2";
+    StringCopy("Home", modes[currentMode].firstLine, 4);
+    StringCopy("2", modes[currentMode].secondLine, 1);
 }
 
 void ModeRefreshSetTime()
 {
-    modes[currentMode].firstLine = "Home";
-    modes[currentMode].secondLine = "3";
+    StringCopy("Home", modes[currentMode].firstLine, 4);
+    StringCopy("3", modes[currentMode].secondLine, 1);
 }
 
 void ModeRefreshSetTrigTemp()
 {
-    modes[currentMode].firstLine = "Home";
-    modes[currentMode].secondLine = "4";
+    StringCopy("Home", modes[currentMode].firstLine, 4);
+    StringCopy("4", modes[currentMode].secondLine, 1);
 }
 
 void ModeRefreshSetFakeTemp()
 {
-    modes[currentMode].firstLine = "Home";
-    modes[currentMode].secondLine = "5";
+    StringCopy("Home", modes[currentMode].firstLine, 4);
+    StringCopy("5", modes[currentMode].secondLine, 1);
 }
 
 void ModeRefreshSetHotTimer()
 {
-    modes[currentMode].firstLine = "Home";
-    modes[currentMode].secondLine = "6";
+    StringCopy("Home", modes[currentMode].firstLine, 4);
+    StringCopy("6", modes[currentMode].secondLine, 1);
 }
 
 void ModeRefreshSetColdTimer()
 {
-    modes[currentMode].firstLine = "Home";
-    modes[currentMode].secondLine = "7";
+    StringCopy("Home", modes[currentMode].firstLine, 4);
+    StringCopy("7", modes[currentMode].secondLine, 1);
 }
 
 void ModeRefreshErrors()
 {
-    modes[currentMode].firstLine = "Home";
-    modes[currentMode].secondLine = "8";
+    StringCopy("Home", modes[currentMode].firstLine, 4);
+    StringCopy("8", modes[currentMode].secondLine, 1);
 }

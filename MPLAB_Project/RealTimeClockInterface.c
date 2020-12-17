@@ -1,8 +1,7 @@
 #include "RealTimeClockDriver.h"
 
-int IRTCGetTime12(char result[]) // Have 12 in result
+int IRTCGetTime12(char result[], int length) // Have 12 in result
 {
-    int length = sizeof(result) / sizeof(char);
     
     if (length < 12) // 12 Is Minimum Chars To Store Formatted 12H Time
     {
@@ -11,16 +10,15 @@ int IRTCGetTime12(char result[]) // Have 12 in result
     else
     {
         rtcTime getTime;
-        getTime12(getTime*);
+        getTime12(&getTime);
     
         ConvertTime12ToString(result, getTime.secs, getTime.mins, getTime.hours, getTime.AMPM);
         return IRTC_SUCCESS;
     }
 }
 
-int IRTCGetTime24(char result[])
+int IRTCGetTime24(char result[], int length)
 {
-    int length = sizeof(result) / sizeof(char);
     
     if (length < 9) // 9 Is Minimum Chars To Store Formatted 24H Time
     {
@@ -29,25 +27,22 @@ int IRTCGetTime24(char result[])
     else
     {
         rtcTime getTime;
-        getTime24(getTime*);
+        getTime24(&getTime);
     
         ConvertTime24ToString(result, getTime.secs, getTime.mins, getTime.hours);
         return IRTC_SUCCESS;
     }
 }
 
-double IRTCGetDate(char date[], char day[])
+void IRTCGetDate(char date[], int lengthDate, char day[], int lengthDay)
 {
-    int lengthDate = sizeof(date) / sizeof(char);
-    int lengthDay = sizeof(day) / sizeof(char);
-    
-    if (lengthDate < 11 && lengthDay < 4)
+    if (lengthDate >= 11 && lengthDay >= 4)
     {
-        rtcDate getDate;
-        getDate(getDate*);
+        rtcDate date_var;
+        getDate(&date_var);
     
-        ConvertDateToString(date, getDate.date, getDate.month, getDate.year);
-        ConvertDayToString(day, getDate.day);
+        ConvertDateToString(date, date_var.date, date_var.month, date_var.year);
+        ConvertDayToString(day, date_var.day);
     }
 }
 
@@ -57,13 +52,13 @@ int IRTCSetTime24(int hour, int minutes, int seconds)
     minutes > 0 && minutes < 61 &&
     seconds > 0 && seconds < 61)
     {
-        rtcTime setTime;
-        setTime.secs = seconds;
-        setTime.mins = minutes;
-        setTime.hours = hour;
-        setTime.AMPM = NULL;
+        rtcTime time;
+        time.secs = seconds;
+        time.mins = minutes;
+        time.hours = hour;
+        time.AMPM = NULL;
         
-        setTime(setTime);
+        setTime(time);
         return IRTC_SUCCESS;
     }
     else
@@ -79,13 +74,13 @@ void IRTCSetTime12(int hour, int minutes, int seconds, int pm)
         seconds > 0 && seconds < 61
         && (pm == 0 || pm == 1))
     {
-        rtcTime setTime;
-        setTime.secs = seconds;
-        setTime.mins = minutes;
-        setTime.hours = hour;
-        setTime.AMPM = pm;
+        rtcTime time;
+        time.secs = seconds;
+        time.mins = minutes;
+        time.hours = hour;
+        time.AMPM = pm;
         
-        setTime(setTime);
+        setTime(time);
     }
     else
     {
@@ -119,7 +114,7 @@ void IRTCSetDate(int date, int month, int year)
         dayLimit = 31;
     }
     
-    if (month == 2 && isLeapYear = 1)
+    if (month == 2 && isLeapYear == 1)
     {
         dayLimit = 29;
     }
@@ -132,12 +127,12 @@ void IRTCSetDate(int date, int month, int year)
         month > 0 && month < 13 &&
         year > 0 && year < 2099) // Check Year
     {
-        rtcDate setDate;
-        setDate.date = date;
-        setDate.month = month;
-        setDate.year = year;
+        rtcDate date_var;
+        date_var.date = date;
+        date_var.month = month;
+        date_var.year = year;
         
-        setDate(setDate);
+        setDate(date_var);
     }
     else
     {
