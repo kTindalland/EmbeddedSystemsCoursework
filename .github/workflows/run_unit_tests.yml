@@ -48,3 +48,8 @@ jobs:
       # Execute tests defined by the CMake configuration.  
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: ctest -C $BUILD_TYPE
+
+    - name: Run String Tests
+      working-directory: ${{runner.workspace}}/build
+      shell: bash
+      run: ./unit_testing/unit_tests/StringUtilsUnitTests
