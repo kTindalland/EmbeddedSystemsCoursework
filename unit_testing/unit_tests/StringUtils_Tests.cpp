@@ -288,7 +288,7 @@ TEST(ConvertDateToStringTests, sunnyDay){
 	int resultNo = ConvertDateToString(result, date, month, year, 10);
 
 	// Assert
-	EXPECT_EQSTR(result, "19/04/2093");
+	EXPECT_STREQ(result, "19/04/2093");
 	ASSERT_EQ(resultNo, 1);
 }
 
@@ -303,7 +303,7 @@ TEST(ConvertDateToStringTests, sunnyDayDoubleDigitMonth){
 	int resultNo = ConvertDateToString(result, date, month, year, 10);
 
 	// Assert
-	EXPECT_EQSTR(result, "19/11/2093");
+	EXPECT_STREQ(result, "19/11/2093");
 	ASSERT_EQ(resultNo, 1);
 }
 
