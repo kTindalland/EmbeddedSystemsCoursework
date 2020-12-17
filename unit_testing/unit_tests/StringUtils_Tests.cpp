@@ -85,7 +85,7 @@ TEST(ConcatenateTests, sunnyDay){
 	char a[3] = {'H', 'E', 'L'};
 	char b[2] = {'L', 'O'};
 	char result[6];
-	char* expected = {'H', 'E', 'L', 'L', 'O'};
+	char expected[5] = {'H', 'E', 'L', 'L', 'O'};
 		
 	// Act
 	Concatenate(a, b, result);
@@ -99,7 +99,7 @@ TEST(ConcatenateTests, oneEmptyString){
 	char a[0];
 	char b[2] = {'L', 'O'};
 	char result[2];
-	char* expected = {'L', 'O'};
+	char expected[2] = {'L', 'O'};
 		
 	// Act
 	Concatenate(a, b, result);
@@ -141,7 +141,7 @@ TEST(ConcatenateTests, largeResult){
 	char a[1] = {'A'};
 	char b[1] = {'B'};
 	char result[3];
-	char* expected = {'A', 'B'};
+	char expected[2] = {'A', 'B'};
 		
 	// Act
 	Concatenate(a, b, result);
