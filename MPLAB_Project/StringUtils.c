@@ -2,14 +2,6 @@
 #include "StringUtils.h"
 
 int StringLength(char s[]) {
-   int c = 0;
-   while (s[c] != '\0') // While Current Character Is Not Null Terminator
-      c++;
-   
-   return c;
-}
-
-int StringLength(char s[]) {
 	// Get char array length.
 	int array_length = sizeof(s) / sizeof(char);
 
