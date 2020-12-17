@@ -377,3 +377,64 @@ TEST(ConvertDateToStringTests, overLength){
 	// Assert
 	ASSERT_EQ(resultNo, 0);
 }
+
+TEST(ConvertDayToStringTests, sunnyDay){
+	// Arrange
+	char result[4];
+	int day = 2;
+		
+	// Act
+	int resultNo = ConvertDayToString(result, day, 4);
+
+	// Assert
+	ASSERT_STREQ(result, "TUE";
+	ASSERT_EQ(resultNo, 1);
+}
+
+TEST(ConvertDayToStringTests, lowerBounds){
+	// Arrange
+	char result[4];
+	int day = 0;
+		
+	// Act
+	int resultNo = ConvertDayToString(result, day, 4);
+
+	// Assert
+	ASSERT_EQ(resultNo, 0);
+}
+
+TEST(ConvertDayToStringTests, upperBounds){
+	// Arrange
+	char result[4];
+	int day = 8;
+		
+	// Act
+	int resultNo = ConvertDayToString(result, day, 4);
+
+	// Assert
+	ASSERT_EQ(resultNo, 0);
+}
+
+TEST(ConvertDayToStringTests, underLength){
+	// Arrange
+	char result[4];
+	int day = 2;
+		
+	// Act
+	int resultNo = ConvertDayToString(result, day, 3);
+
+	// Assert
+	ASSERT_EQ(resultNo, 0);
+}
+
+TEST(ConvertDayToStringTests, overLength){
+	// Arrange
+	char result[4];
+	int day = 2;
+		
+	// Act
+	int resultNo = ConvertDayToString(result, day, 5);
+
+	// Assert
+	ASSERT_EQ(resultNo, 0);
+}
