@@ -18,6 +18,8 @@ double IThermGetTemperature() {
     
     // Populate msb and lsb
     ThermGetTemp(&msb, &lsb);
+
+    if (msb == 0 && lsb == 0) return 0.0;
     
     // Get the sign.
     sign = msb & 0xF8;
