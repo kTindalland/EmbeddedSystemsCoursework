@@ -3,79 +3,45 @@
 
 int StringLength(char s[]) {
 	// Get char array length.
-	int array_length = sizeof(s) / sizeof(char);
-
-	if (array_length == 0) return 0;
-
-	int hitNull = 0;
 	int count = 0;
 
-	for (int i = 0; i < array_length; i++) {
-		if (s[i] == '\0') {
-			hitNull = 1;
-			break;
-		} else {
-			count++;
-		}
+	for (int i = 0; s[i] != '\0'; i++) {
+		count++;
 	}
 
-	if (hitNull == 0) return 0;
-	else return count;
+	return count;
 }
 
-int StringCopy(char from[], char to[])
+int StringCopy(char from[], char to[], int length)
 {
-    int lengthFrom = StringLength(from);
-    int lengthTo = StringLength(to);
-    
-    if (lengthFrom == 0)
-    {
-        return 0;
-    }
-    if (lengthTo < lengthFrom)
-    {
-        return 0;
-    }
-    
-    int i;
-    
-    for (i = 0; from[i] != '\0'; ++i)
-    {
-        to[i] = from[i];
-    }
-    
-    to[i] = '\0';
-    
-    return 1;
+	int stringLength = StringLength(from); 
+
+	if (stringLength < length) return 0; // String not big enough to satisfy length.
+
+	for (int i = 0; i < length; i++) {
+		to[i] = from[i];
+	}
+
+	to[i+1] = '\0';
 }
 
-int Concatenate(char sA[], char sB[], char result[])
+int Concatenate(char sA[], char sB[], char result[], int rLength)
 {
-    int rLength = StringLength(result);
-    int sALength = StringLength(sA);
-    int sBLength = StringLength(sB);
-    
-    if (rLength < (sALength + sBLength + 1))
-    {
-        return 0;
-    }
-    
-    // Storing Contents of A in Result
-	for (int i = 0; i < sALength; i++)
-	{
-		result[i] = sA[i];
-	}
+	int sALength = StringLength(sA);
+	int sBLength = StringLength(sB);
 
-    // Storing Contents of B in Result
-	for (int i = 0; i < sBLength; i++)
+	if (rLength < (sALength + sBLength + 1)) // Check result has enough space for the strings.
 	{
-		result[i + sALength] = sB[i];
+		return 0;
 	}
-
-    // Add Terminating Character
-	result[sALength + sBLength] = '\0';
     
-    return 1;
+	// Storing Contents of A in Result
+	StringCopy(sA, result, sALength);
+
+	// Storing Contents of B in Result
+	StringCopy(sB, result[sALength], sBLength);
+
+	return 1;
 }
 
 void ConvertTime12ToString(char* result, int secs, int mins, int hours, int pm)

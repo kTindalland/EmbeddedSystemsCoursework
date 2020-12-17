@@ -5,7 +5,7 @@
 TEST(StringLengthTests, sunnyDay) {
 	// Arrange
 	int result;
-	char twoLength[2] = {'A', 'B'};
+	char twoLength[3] = {'A', 'B', '\0'};
 		
 	// Act
 	result = StringLength(twoLength);
@@ -17,7 +17,7 @@ TEST(StringLengthTests, sunnyDay) {
 TEST(StringLengthTests, lowerRange) {
 	// Arrange
 	int result;
-	char noLength[0];
+	char noLength[1] = {'\0'};
 		
 	// Act
 	result = StringLength(noLength);
@@ -28,12 +28,12 @@ TEST(StringLengthTests, lowerRange) {
 
 TEST(StringCopyTests, sunnyDay) {
 	// Arrange
-	char from[4] = {'A', 'B', 'C', 'D'};
-	char to[4];
+	char from[5] = {'A', 'B', 'C', 'D', '\0'};
+	char to[5];
 	int result;
 		
 	// Act
-	result = StringCopy(from, to);
+	result = StringCopy(from, to, 4);
 
 	// Assert
 	EXPECT_STREQ(from, to);
@@ -42,35 +42,35 @@ TEST(StringCopyTests, sunnyDay) {
 
 TEST(StringCopyTests, fromSmallerThanTo) {
 	// Arrange
-	char from[1] = {'A'};
-	char to[3] = {'A', 'B', 'C'};
+	char from[2] = {'A', '\0'};
+	char to[4] = {'A', 'B', 'C', '\0'};
 	int result;		
 
 	// Act
-	result = StringCopy(from, to);
+	result = StringCopy(from, to, 1);
 
 	// Assert
-	EXPECT_STREQ(from, to);
+	EXPECT_STREQ(to, "A");
 	ASSERT_EQ(result, 1);
 }
 
 TEST(StringCopyTests, fromBiggerThanTo){
 	// Arrange
-	char from[3] = {'A', 'B', 'C'};
-	char to[1] = {'A'};
+	char from[4] = {'A', 'B', 'C', '\0'};
+	char to[2] = {'A', '\0'};
 	int result;
 		
 	// Act
-	result = StringCopy(from, to);
+	result = StringCopy(from, to, 1);
 
 	// Assert
-	ASSERT_EQ(result, 0);
+	ASSERT_EQ(result, 1);
 }
 
 TEST(StringCopyTests, emptyArrayFrom){
 	// Arrange
 	char from[0];
-	char to[1] = {'A'};
+	char to[2] = {'A', '\0'};
 	int result;
 		
 	// Act
@@ -82,10 +82,10 @@ TEST(StringCopyTests, emptyArrayFrom){
 
 TEST(ConcatenateTests, sunnyDay){
 	// Arrange
-	char a[3] = {'H', 'E', 'L'};
-	char b[2] = {'L', 'O'};
+	char a[4] = {'H', 'E', 'L', '\0'};
+	char b[3] = {'L', 'O', '\0'};
 	char result[6];
-	char expected[5] = {'H', 'E', 'L', 'L', 'O'};
+	char expected[6] = {'H', 'E', 'L', 'L', 'O', '\0'};
 		
 	// Act
 	Concatenate(a, b, result);
@@ -97,9 +97,9 @@ TEST(ConcatenateTests, sunnyDay){
 TEST(ConcatenateTests, oneEmptyString){
 	// Arrange
 	char a[0];
-	char b[2] = {'L', 'O'};
-	char result[2];
-	char expected[2] = {'L', 'O'};
+	char b[3] = {'L', 'O', '\0'};
+	char result[3];
+	char expected[3] = {'L', 'O', '\0'};
 		
 	// Act
 	Concatenate(a, b, result);
@@ -124,9 +124,9 @@ TEST(ConcatenateTests, twoEmptyStrings){
 
 TEST(ConcatenateTests, smallResult){
 	// Arrange
-	char a[1] = {'A'};
-	char b[1] = {'B'};
-	char combined[1];
+	char a[2] = {'A', '\0'};
+	char b[2] = {'B', '\0'};
+	char combined[3];
 	int result;
 
 	// Act
@@ -138,10 +138,10 @@ TEST(ConcatenateTests, smallResult){
 
 TEST(ConcatenateTests, largeResult){
 	// Arrange
-	char a[1] = {'A'};
-	char b[1] = {'B'};
+	char a[2] = {'A', '\0'};
+	char b[2] = {'B', '\0'};
 	char result[3];
-	char expected[2] = {'A', 'B'};
+	char expected[3] = {'A', 'B', '\0'};
 		
 	// Act
 	Concatenate(a, b, result);
