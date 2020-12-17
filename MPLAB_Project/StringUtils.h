@@ -11,7 +11,7 @@ int Concatenate(char sA[], char sB[], char result[], int rLength);
 int ConvertTime12ToString(char* result, int secs, int mins, int hours, int pm, int length);
 int ConvertTime24ToString(char* result, int secs, int mins, int hours, int length);
 int ConvertDateToString(char* result, int date, int month, int year, int length);
-void ConvertDayToString(char* result, int day);
+int ConvertDayToString(char* result, int day, int length);
 
 #ifdef	__cplusplus
 }

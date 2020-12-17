@@ -229,11 +229,12 @@ int ConvertDateToString(char* result, int date, int month, int year, int length)
     return 1;
 }
 
-void ConvertDayToString(char* result, int day)
+int ConvertDayToString(char* result, int day, int length)
 {
-    if (day < 1 || day > 7)
+    if (day < 1 || day > 7 ||
+        length != 4)
     {
-        //Error
+        return 0;
     }
     
     char* days[] = {"MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"};
@@ -242,4 +243,5 @@ void ConvertDayToString(char* result, int day)
     result[1] = days[day-1][1];
     result[2] = days[day-1][2];
     result[3] = '\0';
+    return 1;
 }
