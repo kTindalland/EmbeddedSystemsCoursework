@@ -143,7 +143,7 @@ TEST(ConcatenateTests, largeResult){
 	char result[7];
 	char expected[3] = {'A', 'B', '\0'};
 		
-	// Act
+	// Actl
 	Concatenate(a, b, result);
 
 	// Assert
