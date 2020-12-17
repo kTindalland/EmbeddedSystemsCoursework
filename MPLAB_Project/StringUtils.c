@@ -52,8 +52,8 @@ int ConvertTime12ToString(char* result, int secs, int mins, int hours, int pm, i
     if (secs < 0 || secs > 59 ||
         mins < 0 || mins > 59 ||
         hours < 1 || hours > 12 ||
-        (pm != 0 && pm != 1)
-        || length < 11 || length > 11)
+        (pm != 0 && pm != 1) ||
+        length < 11 || length > 11)
     {
         return 0;
     }
@@ -112,7 +112,7 @@ int ConvertTime24ToString(char* result, int secs, int mins, int hours, int lengt
     if (secs < 0 || secs > 59 ||
         mins < 0 || mins > 59 ||
         hours < 1 || hours > 12 ||
-        || length < 8 || length > 8)
+        length < 8 || length > 8)
     {
         return 0;
     }
