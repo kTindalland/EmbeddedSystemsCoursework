@@ -44,7 +44,7 @@ TEST(StringCopyTests, fromSmallerThanTo) {
 	// Arrange
 	char from[1] = {'A'};
 	char to[3] = {'A', 'B', 'C'};
-			
+	int result;		
 
 	// Act
 	result = StringCopy(from, to);
@@ -133,7 +133,7 @@ TEST(ConcatenateTests, smallResult){
 	result = Concatenate(a, b, combined);
 
 	// Assert
-	ASSERT_STREQ(result, 0);
+	ASSERT_EQ(result, 0);
 }
 
 TEST(ConcatenateTests, largeResult){
