@@ -300,3 +300,104 @@ TEST(ConvertTime24ToStringTests, overLength){
 	// Assert
 	ASSERT_EQ(resultNo, 0);
 }
+
+TEST(ConvertDateToStringTests, sunnyDay){
+	// Arrange
+	char result[10];
+	int date = 19;
+	int month = 4;
+	int year = 2093;
+		
+	// Act
+	int resultNo = ConvertDateToString(result, date, month, year, 10);
+
+	// Assert
+	EXPECT_EQSTR(result, "19/04/2093");
+	ASSERT_EQ(resultNo, 1);
+}
+
+TEST(ConvertDateToStringTests, sunnyDayDoubleDigitMonth){
+	// Arrange
+	char result[10];
+	int date = 19;
+	int month = 11;
+	int year = 2093;
+		
+	// Act
+	int resultNo = ConvertDateToString(result, date, month, year, 10);
+
+	// Assert
+	EXPECT_EQSTR(result, "19/11/2093");
+	ASSERT_EQ(resultNo, 1);
+}
+
+TEST(ConvertDateToStringTests, sunnyDayEarlierYear){
+	// Arrange
+	char result[10];
+	int date = 19;
+	int month = 4;
+	int year = 2003;
+		
+	// Act
+	int resultNo = ConvertDateToString(result, date, month, year, 10);
+
+	// Assert
+	EXPECT_STREQ(result, "19/04/2003");
+	ASSERT_EQ(resultNo, 1);
+}
+
+TEST(ConvertDateToStringTests, lowerBounds){
+	// Arrange
+	char result[10];
+	int date = -3;
+	int month = 4;
+	int year = 2093;
+		
+	// Act
+	int resultNo = ConvertDateToString(result, date, month, year, 10);
+
+	// Assert
+	ASSERT_EQ(resultNo, 0);
+}
+
+TEST(ConvertDateToStringTests, upperBounds){
+	// Arrange
+	char result[10];
+	int date = 34;
+	int month = 4;
+	int year = 2093;
+		
+	// Act
+	int resultNo = ConvertDateToString(result, date, month, year, 10);
+
+	// Assert
+	ASSERT_EQ(resultNo, 0);
+}
+
+TEST(ConvertDateToStringTests, underLength){
+	// Arrange
+	char result[10];
+	int date = 3;
+	int month = 4;
+	int year = 2093;
+		
+	// Act
+	int resultNo = ConvertDateToString(result, date, month, year, 9);
+
+	// Assert
+	ASSERT_EQ(resultNo, 0);
+}
+
+TEST(ConvertDateToStringTests, overLength){
+	// Arrange
+	char result[10];
+	int date = 3;
+	int month = 4;
+	int year = 2093;
+		
+	// Act
+	int resultNo = ConvertDateToString(result, date, month, year, 11);
+
+	// Assert
+	ASSERT_EQ(resultNo, 0);
+}
