@@ -23,7 +23,7 @@ int StringCopy(char from[], char to[], int length)
 		to[i] = from[i];
 	}
 
-	to[i+1] = '\0';
+	to[i] = '\0';
 
 	return 1;
 }
