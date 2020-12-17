@@ -10,8 +10,8 @@ int StringCopy(char from[], char to[], int length);
 int Concatenate(char sA[], char sB[], char result[], int rLength);
 int ConvertTime12ToString(char* result, int secs, int mins, int hours, int pm, int length);
 int ConvertTime24ToString(char* result, int secs, int mins, int hours, int length);
-void ConvertDateToString(char* result, int date, int month, int year);
-void ConvertDayToString(char* result, int day);
+int ConvertDateToString(char* result, int date, int month, int year, int length);
+int ConvertDayToString(char* result, int day, int length);
 
 #ifdef	__cplusplus
 }
