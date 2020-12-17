@@ -1,8 +1,7 @@
-#include <stdio.h>
 #include "NumberConverter.h"
 
 /* Doubles will only convert the first digit after the decimal point. */
-/* Converter will only handle numbers between 153 and -50. */
+/* Converter will only handle numbers between 9999 and -99. */
 
 char nbrcnvt_convert_digit(int digit ) {
 	if (digit >= 0 && digit <= 9) {
@@ -14,6 +13,8 @@ char nbrcnvt_convert_digit(int digit ) {
 }
 
 void nbrcnvt_convert_integer(int number, char* output) {
+	int thousands;
+	int hundreds;
 	int tens;
 	int units;
 	int count = 0;
@@ -25,17 +26,26 @@ void nbrcnvt_convert_integer(int number, char* output) {
 		number = number * -1;
 	}
 
-	if (number >= 100 && number <= 153) {
-		output[count] = '1';
+	units = number % 10;
+	tens = ((number - units) % 100) / 10;
+	hundreds = ((number - units - (tens * 10)) % 1000) / 100;
+	thousands = ((number - units - (tens * 10) - (hundreds * 100)) % 10000) / 1000;
+
+	int has_thousands = 0;
+	if (thousands != 0) {
+		has_thousands = 1;
+		output[count] = nbrcnvt_convert_digit(thousands);
 		count++;
-		number = number - 100;
-		has_hundred = 1;
 	}
 
-	units = number % 10;
-	tens = (number - units) / 10;
+	int has_hundreds = 0;
+	if (has_thousands || hundreds != 0) {
+		has_hundreds = 1;
+		output[count] = nbrcnvt_convert_digit(hundreds);
+		count++;
+	}
 
-	if (has_hundred == 1 || tens != 0) {
+	if (has_hundreds || tens != 0) {
 		output[count] = nbrcnvt_convert_digit(tens);
 		count++;
 	}
@@ -51,10 +61,12 @@ void nbrcnvt_convert_integer(int number, char* output) {
 
 void nbrcnvt_convert_double(double number, char* output) {
 	int decimal;
+	int thousands;
+	int hundreds;
 	int tens;
 	int units;
 	int count = 0;
-	int has_hundred = 0;
+	int zero_flag = 0;
 
 	if (number < 0) {
 		output[count] = '-';
@@ -62,17 +74,24 @@ void nbrcnvt_convert_double(double number, char* output) {
 		number = number * -1;
 	}
 
-	if (number >= 100 && number <= 153) {
-		output[count] = '1';
+	units = (int)number % 10;
+	tens = (((int)(number - units)) % 100) / 10;
+	hundreds = ((int)(number - units - (tens * 10)) % 1000) / 100;
+	thousands = ((int)(number - units - (tens * 10) - (hundreds * 100)) % 10000) / 1000;
+
+	if (thousands != 0) {
+		zero_flag = 1;
+		output[count] = nbrcnvt_convert_digit(thousands);
 		count++;
-		number = number - 100;
-		has_hundred = 1;
 	}
 
-	units = (int)number % 10;
-	tens = (number - units) / 10;
+	if (zero_flag || hundreds != 0) {
+		zero_flag = 1;
+		output[count] = nbrcnvt_convert_digit(hundreds);
+		count++;
+	}
 
-	if (has_hundred == 1 || tens != 0) {
+	if (zero_flag || tens != 0) {
 		output[count] = nbrcnvt_convert_digit(tens);
 		count++;
 	}
@@ -103,8 +122,11 @@ int nbrcnvt_check_length_int(int number) {
 	else if (number >= 10 && number <= 99) {
 		return 3;
 	}
-	else if (number >= 100 && number <= 153) {
+	else if (number >= 100 && number <= 999) {
 		return 4;
+	}
+	else if (number >= 1000 && number <= 9999) {
+		return 5;
 	}
 	else { /* Default */
 		return -1;
@@ -124,8 +146,11 @@ int nbrcnvt_check_length_double(double number) {
 	else if (number >= 10 && number <= 99) {
 		return 5;
 	}
-	else if (number >= 100 && number <= 153) {
+	else if (number >= 100 && number <= 999) {
 		return 6;
+	}
+	else if (number >= 1000 && number <= 9999) {
+		return 7;
 	}
 	else { /* Default */
 		return -1;
