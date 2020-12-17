@@ -47,8 +47,17 @@ int Concatenate(char sA[], char sB[], char result[], int rLength)
 	return 1;
 }
 
-void ConvertTime12ToString(char* result, int secs, int mins, int hours, int pm)
+int ConvertTime12ToString(char* result, int secs, int mins, int hours, int pm, int length)
 {
+    if (secs < 0 || secs > 59 ||
+        mins < 0 || mins > 59 ||
+        hours < 1 || hours > 12 ||
+        (pm != 0 && pm != 1)
+        || length < 11 || length > 11)
+    {
+        return 0;
+    }
+    
     char s[3];
     nbrcnvt_convert_integer(secs, s);
     if (secs < 10)
@@ -94,10 +103,20 @@ void ConvertTime12ToString(char* result, int secs, int mins, int hours, int pm)
     
     result[10] = 'M';
     result[11] = '\0';
+   
+    return 1;
 }
 
-void ConvertTime24ToString(char* result, int secs, int mins, int hours)
+int ConvertTime24ToString(char* result, int secs, int mins, int hours, int length)
 {
+    if (secs < 0 || secs > 59 ||
+        mins < 0 || mins > 59 ||
+        hours < 1 || hours > 12 ||
+        || length < 8 || length > 8)
+    {
+        return 0;
+    }
+    
     char s[3];
     nbrcnvt_convert_integer(secs, s);
     if (secs < 10)
@@ -137,6 +156,8 @@ void ConvertTime24ToString(char* result, int secs, int mins, int hours)
     {
         result[i + 6] = s[i];
     }
+    
+    return 1;
 }
 
 void ConvertDateToString(char* result, int date, int month, int year)

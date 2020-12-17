@@ -161,8 +161,142 @@ TEST(ConvertTime12ToStringTests, sunnyDay){
 	char* expected = "09:40:15 PM";
 		
 	// Act
-	ConvertTime12ToString(result, secs, mins, hours, pm);
+	int resultNo = ConvertTime12ToString(result, secs, mins, hours, pm, 11);
 
 	// Assert
-	ASSERT_STREQ(result, expected);
+	EXPECT_STREQ(result, expected);
+	ASSERT_EQ(resultNo, 1);
+}
+
+TEST(ConvertTime12ToStringTests, lowerBounds){
+	// Arrange
+	char result[11];
+	int secs = -1;
+	int mins = 40;
+	int hours = 9;
+	int pm = 1;
+		
+	// Act
+	int resultNo = ConvertTime12ToString(result, secs, mins, hours, pm, 11);
+
+	// Assert
+	ASSERT_EQ(resultNo, 0);
+}
+
+TEST(ConvertTime12ToStringTests, upperBounds){
+	// Arrange
+	char result[11];
+	int secs = 60;
+	int mins = 40;
+	int hours = 9;
+	int pm = 1;
+		
+	// Act
+	int resultNo = ConvertTime12ToString(result, secs, mins, hours, pm, 11);
+
+	// Assert
+	ASSERT_EQ(resultNo, 0);
+}
+
+TEST(ConvertTime12ToStringTests, underLength){
+	// Arrange
+	char result[11];
+	int secs = 60;
+	int mins = 40;
+	int hours = 9;
+	int pm = 1;
+		
+	// Act
+	int resultNo = ConvertTime12ToString(result, secs, mins, hours, pm, 9);
+
+	// Assert
+	ASSERT_EQ(resultNo, 0);
+}
+
+TEST(ConvertTime12ToStringTests, overLength){
+	// Arrange
+	char result[11];
+	int secs = 60;
+	int mins = 40;
+	int hours = 9;
+	int pm = 1;
+		
+	// Act
+	int resultNo = ConvertTime12ToString(result, secs, mins, hours, pm, 14);
+
+	// Assert
+	ASSERT_EQ(resultNo, 0);
+}
+
+TEST(ConvertTime24ToStringTests, sunnyDay){
+	// Arrange
+	char result[8];
+	int secs = 15;
+	int mins = 40;
+	int hours = 9;
+
+	char* expected = "09:40:15";
+		
+	// Act
+	int resultNo = ConvertTime24ToString(result, secs, mins, hours, 8);
+
+	// Assert
+	EXPECT_STREQ(result, expected);
+	ASSERT_EQ(resultNo, 1);
+}
+
+TEST(ConvertTime24ToStringTests, lowerBounds){
+	// Arrange
+	char result[8];
+	int secs = -1;
+	int mins = 40;
+	int hours = 9;
+		
+	// Act
+	int resultNo = ConvertTime24ToString(result, secs, mins, hours, 8);
+
+	// Assert
+	ASSERT_EQ(resultNo, 0);
+}
+
+TEST(ConvertTime24ToStringTests, upperBounds){
+	// Arrange
+	char result[8];
+	int secs = 60;
+	int mins = 40;
+	int hours = 9;
+		
+	// Act
+	int resultNo = ConvertTime24ToString(result, secs, mins, hours, 8);
+
+	// Assert
+	ASSERT_EQ(resultNo, 0);
+}
+
+TEST(ConvertTime24ToStringTests, underLength){
+	// Arrange
+	char result[8];
+	int secs = 60;
+	int mins = 40;
+	int hours = 9;
+		
+	// Act
+	int resultNo = ConvertTime24ToString(result, secs, mins, hours, 5);
+
+	// Assert
+	ASSERT_EQ(resultNo, 0);
+}
+
+TEST(ConvertTime24ToStringTests, overLength){
+	// Arrange
+	char result[8];
+	int secs = 60;
+	int mins = 40;
+	int hours = 9;
+		
+	// Act
+	int resultNo = ConvertTime24ToString(result, secs, mins, hours, 14);
+
+	// Assert
+	ASSERT_EQ(resultNo, 0);
 }
