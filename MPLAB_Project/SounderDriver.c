@@ -1,11 +1,11 @@
 #include <xc.h>
 
-void initialiseSounder()
+void InitialiseSounder()
 {
     TRISC = 0;
 }
 
-void beepSounder(int time)
+void BeepSounder(int time)
 {
     for (int i = 0; i < time; i++)
     {
