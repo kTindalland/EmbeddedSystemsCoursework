@@ -2,66 +2,49 @@
 #include "StringUtils.h"
 
 int StringLength(char s[]) {
-   int c = 0;
-   while (s[c] != '\0') // While Current Character Is Not Null Terminator
-      c++;
-   
-   return c;
-}
+	// Get char array length.
+	int count = 0;
 
-int StringCopy(char from[], char to[])
-{
-    int lengthFrom = StringLength(from);
-    int lengthTo = StringLength(to);
-    
-    if (lengthFrom == 0)
-    {
-        return 0;
-    }
-    if (lengthTo < lengthFrom)
-    {
-        return 0;
-    }
-    
-    int i;
-    
-    for (i = 0; from[i] != '\0'; ++i)
-    {
-        to[i] = from[i];
-    }
-    
-    to[i] = '\0';
-    
-    return 1;
-}
-
-int Concatenate(char sA[], char sB[], char result[])
-{
-    int rLength = StringLength(result);
-    int sALength = StringLength(sA);
-    int sBLength = StringLength(sB);
-    
-    if (rLength < (sALength + sBLength + 1))
-    {
-        return 0;
-    }
-    
-    // Storing Contents of A in Result
-	for (int i = 0; i < sALength; i++)
-	{
-		result[i] = sA[i];
+	for (int i = 0; s[i] != '\0'; i++) {
+		count++;
 	}
 
-    // Storing Contents of B in Result
-	for (int i = 0; i < sBLength; i++)
-	{
-		result[i + sALength] = sB[i];
+	return count;
+}
+
+int StringCopy(char from[], char to[], int length)
+{
+	int stringLength = StringLength(from); 
+
+	if (stringLength < length) return 0; // String not big enough to satisfy length.
+
+	int i;
+	for (i = 0; i < length; i++) {
+		to[i] = from[i];
 	}
 
-    // Add Terminating Character
-	result[sALength + sBLength] = '\0';
+	to[i+1] = '\0';
+
+	return 1;
+}
+
+int Concatenate(char sA[], char sB[], char result[], int rLength)
+{
+	int sALength = StringLength(sA);
+	int sBLength = StringLength(sB);
+
+	if (rLength < (sALength + sBLength + 1)) // Check result has enough space for the strings.
+	{
+		return 0;
+	}
     
-    return 1;
+	// Storing Contents of A in Result
+	StringCopy(sA, result, sALength);
+
+	// Storing Contents of B in Result
+	StringCopy(sB, &result[sALength], sBLength);
+
+	return 1;
 }
 
 void ConvertTime12ToString(char* result, int secs, int mins, int hours, int pm)

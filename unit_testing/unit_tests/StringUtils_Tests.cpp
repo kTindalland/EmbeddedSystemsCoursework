@@ -17,7 +17,7 @@ TEST(StringLengthTests, sunnyDay) {
 TEST(StringLengthTests, lowerRange) {
 	// Arrange
 	int result;
-	char noLength[0];
+	char noLength[1] = {'\0'};
 		
 	// Act
 	result = StringLength(noLength);
@@ -33,7 +33,7 @@ TEST(StringCopyTests, sunnyDay) {
 	int result;
 		
 	// Act
-	result = StringCopy(from, to);
+	result = StringCopy(from, to, 4);
 
 	// Assert
 	EXPECT_STREQ(from, to);
@@ -43,14 +43,14 @@ TEST(StringCopyTests, sunnyDay) {
 TEST(StringCopyTests, fromSmallerThanTo) {
 	// Arrange
 	char from[2] = {'A', '\0'};
-	char to[3] = {'A', 'B', 'C'};
+	char to[4] = {'A', 'B', 'C', '\0'};
 	int result;		
 
 	// Act
-	result = StringCopy(from, to);
+	result = StringCopy(from, to, 1);
 
 	// Assert
-	EXPECT_STREQ(from, to);
+	EXPECT_STREQ(to, "A");
 	ASSERT_EQ(result, 1);
 }
 
@@ -61,20 +61,20 @@ TEST(StringCopyTests, fromBiggerThanTo){
 	int result;
 		
 	// Act
-	result = StringCopy(from, to);
+	result = StringCopy(from, to, 1);
 
 	// Assert
-	ASSERT_EQ(result, 0);
+	ASSERT_EQ(result, 1);
 }
 
 TEST(StringCopyTests, emptyArrayFrom){
 	// Arrange
 	char from[0];
-	char to[1] = {'A'};
+	char to[2] = {'A', '\0'};
 	int result;
 		
 	// Act
-	result = StringCopy(from, to);
+	result = StringCopy(from, to, 1);
 
 	// Assert
 	ASSERT_EQ(result, 0);
@@ -88,7 +88,7 @@ TEST(ConcatenateTests, sunnyDay){
 	char expected[6] = {'H', 'E', 'L', 'L', 'O', '\0'};
 		
 	// Act
-	Concatenate(a, b, result);
+	Concatenate(a, b, result, 6);
 
 	// Assert
 	ASSERT_STREQ(result, expected);
@@ -98,11 +98,11 @@ TEST(ConcatenateTests, oneEmptyString){
 	// Arrange
 	char a[0];
 	char b[3] = {'L', 'O', '\0'};
-	char result[2];
-	char expected[2] = {'L', 'O'};
+	char result[3];
+	char expected[3] = {'L', 'O', '\0'};
 		
 	// Act
-	Concatenate(a, b, result);
+	Concatenate(a, b, result, 3);
 
 	// Assert
 	ASSERT_STREQ(result, expected);
@@ -116,7 +116,7 @@ TEST(ConcatenateTests, twoEmptyStrings){
 	char expected[0];
 		
 	// Act
-	Concatenate(a, b, result);
+	Concatenate(a, b, result, 0);
 
 	// Assert
 	ASSERT_STREQ(result, expected);
@@ -124,13 +124,13 @@ TEST(ConcatenateTests, twoEmptyStrings){
 
 TEST(ConcatenateTests, smallResult){
 	// Arrange
-	char a[1] = {'A'};
-	char b[1] = {'B'};
-	char combined[1];
+	char a[2] = {'A', '\0'};
+	char b[2] = {'B', '\0'};
+	char combined[3];
 	int result;
 
 	// Act
-	result = Concatenate(a, b, combined);
+	result = Concatenate(a, b, combined, 3);
 
 	// Assert
 	ASSERT_EQ(result, 0);
@@ -140,11 +140,11 @@ TEST(ConcatenateTests, largeResult){
 	// Arrange
 	char a[2] = {'A', '\0'};
 	char b[2] = {'B', '\0'};
-	char result[7];
+	char result[3];
 	char expected[3] = {'A', 'B', '\0'};
 		
 	// Actl
-	Concatenate(a, b, result);
+	Concatenate(a, b, result, 3);
 
 	// Assert
 	ASSERT_STREQ(result, expected);

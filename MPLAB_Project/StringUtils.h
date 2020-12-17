@@ -6,8 +6,8 @@ extern "C" {
 #endif
 
 int StringLength(char s[]);
-int StringCopy(char from[], char to[]);
-int Concatenate(char sA[], char sB[], char result[]);
+int StringCopy(char from[], char to[], int length);
+int Concatenate(char sA[], char sB[], char result[], int rLength);
 void ConvertTime12ToString(char* result, int secs, int mins, int hours, int pm);
 void ConvertTime24ToString(char* result, int secs, int mins, int hours);
 void ConvertDateToString(char* result, int date, int month, int year);
