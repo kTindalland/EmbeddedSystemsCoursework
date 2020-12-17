@@ -143,10 +143,26 @@ TEST(ConcatenateTests, largeResult){
 	char result[3];
 	char expected[3] = {'A', 'B', '\0'};
 		
-	// Actl
+	// Act
 	Concatenate(a, b, result, 3);
 
 	// Assert
 	ASSERT_STREQ(result, expected);
 }
 
+TEST(ConvertTime12ToStringTests, sunnyDay){
+	// Arrange
+	char result[11];
+	int secs = 15;
+	int mins = 40;
+	int hours = 9;
+	int pm = 1;
+
+	char* expected = "09:40:15 PM";
+		
+	// Act
+	ConvertTime12ToString(result, secs, mins, hours, pm);
+
+	// Assert
+	ASSERT_STREQ(result, expected);
+}

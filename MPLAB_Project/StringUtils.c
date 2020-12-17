@@ -89,11 +89,11 @@ void ConvertTime12ToString(char* result, int secs, int mins, int hours, int pm)
         result[i + 6] = s[i];
     }
     
-    result[10] = 'A';
-    if (pm = 1) { result[10] = 'P'; }
+    result[9] = 'A';
+    if (pm = 1) { result[9] = 'P'; }
     
-    result[11] = 'M';
-    result[12] = '\0';
+    result[10] = 'M';
+    result[11] = '\0';
 }
 
 void ConvertTime24ToString(char* result, int secs, int mins, int hours)
