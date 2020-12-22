@@ -61,14 +61,7 @@ void Home(void) {
     
     getTime(&time);
         
-    
-
     PrintTimeToLCD(time);
-
-    // Temperature stuff now
-    if (time.secs % 6 == 0) { // Every 6 secs to reduce time.
-        home_temperature = IThermGetTemperature();
-    }
 
     nbrcnvt_convert_double(home_temperature, string);
 
@@ -190,8 +183,8 @@ void main(void) {
                 getTime(&current_time);
                                
                 unsigned char current_time_int = (current_time.mins * 60) + current_time.secs;
-                unsigned char  start_trig_time_int = (start_trig_time.mins * 60) + start_trig_time.secs;
-                unsigned char  time_difference = current_time_int - start_trig_time_int;
+                unsigned char start_trig_time_int = (start_trig_time.mins * 60) + start_trig_time.secs;
+                unsigned char time_difference = current_time_int - start_trig_time_int;
                 
                 if (temp_last == 0 && 
                     start_trig_time_int + cold_timer_actual >= current_time_int)
