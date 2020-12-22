@@ -2,6 +2,18 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/linco/Desktop/University/Embedded%20Coursework/EmbeddedSystemsCoursework/Coursework2.X/main.c</file>
+            <file>file:/C:/Users/linco/Desktop/University/Embedded%20Coursework/EmbeddedSystemsCoursework/Coursework2.X/RealTimeClockDriver.c</file>
+            <file>file:/C:/Users/linco/Desktop/University/Embedded%20Coursework/EmbeddedSystemsCoursework/Coursework2.X/StringUtils.c</file>
+            <file>file:/C:/Users/linco/Desktop/University/Embedded%20Coursework/EmbeddedSystemsCoursework/Coursework2.X/ThermometerDriver.c</file>
+            <file>file:/C:/Users/linco/Desktop/University/Embedded%20Coursework/EmbeddedSystemsCoursework/Coursework2.X/NumberConverter.c</file>
+            <file>file:/C:/Users/linco/Desktop/University/Embedded%20Coursework/EmbeddedSystemsCoursework/Coursework2.X/LCDPanelInterface.c</file>
+            <file>file:/C:/Users/linco/Desktop/University/Embedded%20Coursework/EmbeddedSystemsCoursework/Coursework2.X/LCDPanelDriver.c</file>
+            <file>file:/C:/Users/linco/Desktop/University/Embedded%20Coursework/EmbeddedSystemsCoursework/Coursework2.X/Delay.c</file>
+            <file>file:/C:/Users/linco/Desktop/University/Embedded%20Coursework/EmbeddedSystemsCoursework/Coursework2.X/RealTimeClockConversions.c</file>
+            <file>file:/C:/Users/linco/Desktop/University/Embedded%20Coursework/EmbeddedSystemsCoursework/Coursework2.X/buttons.c</file>
+            <file>file:/C:/Users/linco/Desktop/University/Embedded%20Coursework/EmbeddedSystemsCoursework/Coursework2.X/buttons.h</file>
+        </group>
     </open-files>
 </project-private>
