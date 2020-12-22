@@ -71,8 +71,6 @@ extern "C" {
     void getDateTime(rtcDateTime* datetime);
     void convertHourFormat(rtcTime* time);
     
-    uch reverseBits(uch number);
-    
 #ifdef	__cplusplus
 }
 #endif

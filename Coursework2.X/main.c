@@ -41,10 +41,9 @@ void PrintTimeToLCD(rtcTime time) {
     PrintTimeNumber(time.hours, ":");
     PrintTimeNumber(time.mins, ":");
     PrintTimeNumber(time.secs, " ");
-        
-    if (time.AMPM == AM) ILCDPanelWrite("AM");
-    else if (time.AMPM == PM) ILCDPanelWrite("PM");
-    else ILCDPanelWrite("  ");
+    
+    char* tags[] = {"  ", "AM", "PM" };
+    ILCDPanelWrite(tags[time.AMPM + 1]);
 }
 
 void Home(void) {
@@ -81,13 +80,12 @@ void SetTime(void) {
     
     ILCDPanelSetCursor(1, 0);
     PrintTimeToLCD(set_time_time);
-    rtcTime prevTime;
-    prevTime = set_time_time;
     
     unsigned char buttons = checkButtons();
     
     if (buttons) set_time_flag = 0;
     
+    // TODO: Needs validation.
     set_time_time.hours = set_time_time.hours + ((buttons & 0x10) >> 4);
     set_time_time.hours = set_time_time.hours - (buttons & 0x01);
     
@@ -195,13 +193,32 @@ void main(void) {
                 
         
         ILCDPanelSetCursor(0,0);
-        // Run mode function.
-        if (mode == HOME) { Home(); }
-        else if (mode == SETTIME) { SetTime(); }
-        else if (mode == TRIGTEMP) { SetTriggerTemperature(); }
-        else if (mode == FAKETEMP) { SetFakeTemperature(); }
-        else if (mode == HOTTIME) { SetHotTime(); }
-        else if (mode == COLDTIME) {SetColdTime(); }
+        // Run mode function.       
+        switch (mode) {
+            case HOME:
+                Home();
+                break;
+                
+            case SETTIME:
+                SetTime();
+                break;
+                
+            case TRIGTEMP:
+                SetTriggerTemperature();
+                break;
+                
+            case FAKETEMP:
+                SetFakeTemperature();
+                break;
+                
+            case HOTTIME:
+                SetHotTime();
+                break;
+                
+            case COLDTIME:
+                SetColdTime();
+                break;
+        }
     }
     
     return;

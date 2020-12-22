@@ -81,11 +81,7 @@ uch readByte(uch addr) {
         SCLK = 0;
     }
     
-    RST = 0;
-    
-    // Flip the result
-    //result = reverseBits(result);
-    
+    RST = 0;   
     
     return result;    
 }
@@ -231,20 +227,6 @@ void convertHourFormat(rtcTime* time) {
 void getDateTime(rtcDateTime* datetime) {
     getTime(&datetime->time);
     getDate(&datetime->date);
-}
-
-uch reverseBits(uch number) {
-    uch reversedNumber = 0;
-    
-    while (number > 0) {
-        reversedNumber <<= 1;
-        if ((number & 1) == 1) {
-            reversedNumber ^= 1;
-        } 
-        number >>= 1;
-    }
-    
-    return reversedNumber;
 }
 
 #pragma GCC diagnostic pop
