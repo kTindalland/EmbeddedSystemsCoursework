@@ -13,6 +13,7 @@
 #include "ThermometerInterface.h"
 #include "NumberConverter.h"
 #include "buttons.h"
+#include "SounderInterface.h"
 
 #define HOME 0
 #define SETTIME 1
@@ -185,18 +186,24 @@ void main(void) {
             }
             else if (trigger_timer_passed == 0)
             {
-                rtcTime current_time = getTime(&current_time);
+                rtcTime current_time;
+                getTime(&current_time);
+                               
+                int current_time_int = (current_time.mins * 60) + current_time.secs;
+                int start_trig_time_int = (start_trig_time.mins * 60) + start_trig_time.secs;
+                int time_difference = current_time_int - start_trig_time_int;
+                
                 if (temp_last == 0 && 
-                    start_trig_time + cold_timer_actual >= current_time)
+                    start_trig_time_int + cold_timer_actual >= current_time_int)
                 {
                     trigger_timer_passed = 1;
-                    SounderBuzz(0);
+                    ISounderBuzz(0);
                 }
                 else if (temp_last == 1 &&
-                         start_trig_time + hot_timer_actual >= current_time)
+                         start_trig_time_int + hot_timer_actual >= current_time_int)
                 {
                     trigger_timer_passed = 1;  
-                    SounderBuzz(1);
+                    ISounderBuzz(1);
                 }
             }
         }
