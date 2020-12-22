@@ -205,15 +205,15 @@ void main(void) {
         getTime(&time);
         
         if (time.secs % 6 == 0) { // Every 6 secs to reduce time.
-            home_temperature = IThermGetTemperature();
+            IThermGetTemperature(&home_temperature_whole, &home_temperature_decimal);
             
-            if (home_temperature < trigger_temperature && temp_last == 1)
+            if (home_temperature_whole < trigger_temperature && temp_last == 1)
             {
                 trigger_timer_passed = 0;
                 temp_last = 0;
                 getTime(&start_trig_time);
             }
-            else if (home_temperature > trigger_temperature && temp_last == 0)
+            else if (home_temperature_whole > trigger_temperature && temp_last == 0)
             {
                 trigger_timer_passed = 0;
                 temp_last = 1;
