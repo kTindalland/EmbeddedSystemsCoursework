@@ -27,6 +27,12 @@ unsigned char set_time_flag;
 double set_trig_temp;
 double trigger_temperature;
 
+unsigned char hot_time_actual;
+unsigned char hot_time_temp;
+
+unsigned char cold_time_actual;
+unsigned char cold_time_temp;
+
 void PrintTimeNumber(int number, char* endString) {
     char string[10];
     
@@ -130,12 +136,22 @@ void SetFakeTemperature() {
     ILCDPanelWrite("Set Fake Temp.");
 }
 
-void SetHotTime() {
-    ILCDPanelWrite("Set Hot Timer");
-}
-
-void SetColdTime() {
-    ILCDPanelWrite("Set Cold Timer");
+void SetHotColdTime(unsigned char* actual, unsigned char* temp, unsigned char bound, char* title) {
+    ILCDPanelWrite(title);
+    
+    if (*actual != *temp) ILCDPanelWrite("*");
+    else ILCDPanelWrite(" ");
+    
+    unsigned char buttons;
+    buttons = checkButtons();
+    
+    *temp = *temp - (buttons & 0x01);
+    *temp = *temp + ((buttons & 0x10) >> 4);
+    
+    if (*temp > bound) *temp = bound;
+    
+    if (buttons & 0x02) *temp = *actual; // Cancel;
+    if (buttons & 0x20) *actual = *temp; // Set;
 }
 
 void main(void) {
@@ -212,11 +228,11 @@ void main(void) {
                 break;
                 
             case HOTTIME:
-                SetHotTime();
+                SetHotColdTime(&hot_time_actual, &hot_time_temp, 60, "Set Hot Timer");
                 break;
                 
             case COLDTIME:
-                SetColdTime();
+                SetHotColdTime(&cold_time_actual, &cold_time_temp, 90, "Set Cold Timer");
                 break;
         }
     }
