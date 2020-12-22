@@ -202,7 +202,7 @@ void main(void) {
         }
         
         // Get button states.
-        int buttonResults[4][4] = {0};
+        unsigned char buttonResults[4][4] = {0};
         // Check buttons for mode change.
         checkMatrixButtons(buttonResults);
         

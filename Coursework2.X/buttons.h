@@ -18,7 +18,7 @@ extern "C" {
     unsigned char checkButtons();
     
     void initialiseMatrixButtons();
-    void checkMatrixButtons(int results[4][4]);
+    void checkMatrixButtons(unsigned char results[4][4]);
     
     
     
