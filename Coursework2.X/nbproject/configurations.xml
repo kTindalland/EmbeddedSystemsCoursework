@@ -5,24 +5,16 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>main.h</itemPath>
-      <itemPath>ButtonDriver.h</itemPath>
-      <itemPath>ButtonInterface.h</itemPath>
       <itemPath>LCDPanelDriver.h</itemPath>
       <itemPath>LCDPanelInterface.h</itemPath>
+      <itemPath>Delay.h</itemPath>
+      <itemPath>NumberConverter.h</itemPath>
+      <itemPath>StringUtils.h</itemPath>
+      <itemPath>RealTimeClockConversions.h</itemPath>
       <itemPath>RealTimeClockDriver.h</itemPath>
-      <itemPath>RealTimeClockInterface.h</itemPath>
-      <itemPath>SounderDriver.h</itemPath>
-      <itemPath>SounderInterface.h</itemPath>
       <itemPath>ThermometerDriver.h</itemPath>
       <itemPath>ThermometerInterface.h</itemPath>
-      <itemPath>MathsUtils.h</itemPath>
-      <itemPath>HeaterConfigManager.h</itemPath>
-      <itemPath>Mode.h</itemPath>
-      <itemPath>RealTimeClockConversions.h</itemPath>
-      <itemPath>NumberConverter.h</itemPath>
-      <itemPath>Delay.h</itemPath>
-      <itemPath>StringUtils.h</itemPath>
-      <itemPath>ModeRefreshes.h</itemPath>
+      <itemPath>buttons.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -31,24 +23,17 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>Delay.c</itemPath>
       <itemPath>main.c</itemPath>
-      <itemPath>ButtonDriver.c</itemPath>
       <itemPath>LCDPanelDriver.c</itemPath>
-      <itemPath>RealTimeClockDriver.c</itemPath>
-      <itemPath>ThermometerDriver.c</itemPath>
-      <itemPath>SounderDriver.c</itemPath>
-      <itemPath>ButtonInterface.c</itemPath>
       <itemPath>LCDPanelInterface.c</itemPath>
-      <itemPath>RealTimeClockInterface.c</itemPath>
-      <itemPath>SounderInterface.c</itemPath>
-      <itemPath>ThermometerInterface.c</itemPath>
-      <itemPath>HeaterConfigManager.c</itemPath>
-      <itemPath>ModeRefreshes.c</itemPath>
-      <itemPath>Mode.c</itemPath>
-      <itemPath>RealTimeClockConversions.c</itemPath>
+      <itemPath>Delay.c</itemPath>
       <itemPath>NumberConverter.c</itemPath>
       <itemPath>StringUtils.c</itemPath>
+      <itemPath>RealTimeClockConversions.c</itemPath>
+      <itemPath>RealTimeClockDriver.c</itemPath>
+      <itemPath>ThermometerDriver.c</itemPath>
+      <itemPath>ThermometerInterface.c</itemPath>
+      <itemPath>buttons.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -67,7 +52,7 @@
         <targetDevice>PIC16F877A</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool></platformTool>
+        <platformTool>PICkit3PlatformTool</platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>2.30</languageToolchainVersion>
         <platform>3</platform>
@@ -84,7 +69,7 @@
         </archiverTool>
         <loading>
           <useAlternateLoadableFile>false</useAlternateLoadableFile>
-          <parseOnProdLoad>true</parseOnProdLoad>
+          <parseOnProdLoad>false</parseOnProdLoad>
           <alternateLoadableFile></alternateLoadableFile>
         </loading>
         <subordinates>
@@ -106,7 +91,7 @@
         <property key="default-bitfield-type" value="true"/>
         <property key="default-char-type" value="true"/>
         <property key="define-macros" value=""/>
-        <property key="disable-optimizations" value="false"/>
+        <property key="disable-optimizations" value="true"/>
         <property key="extra-include-directories" value=""/>
         <property key="favor-optimization-for" value="-speed,+space"/>
         <property key="garbage-collect-data" value="true"/>
@@ -120,7 +105,7 @@
         <property key="optimization-debug" value="false"/>
         <property key="optimization-invariant-enable" value="false"/>
         <property key="optimization-invariant-value" value="16"/>
-        <property key="optimization-level" value="-O1"/>
+        <property key="optimization-level" value="-O0"/>
         <property key="optimization-speed" value="false"/>
         <property key="optimization-stable-enable" value="false"/>
         <property key="pack-struct" value="true"/>
@@ -149,10 +134,10 @@
         <property key="code-model-rom" value=""/>
         <property key="create-html-files" value="false"/>
         <property key="data-model-ram" value=""/>
-        <property key="data-model-size-of-double" value="24"/>
-        <property key="data-model-size-of-double-gcc" value="short-double"/>
-        <property key="data-model-size-of-float" value="24"/>
-        <property key="data-model-size-of-float-gcc" value="short-float"/>
+        <property key="data-model-size-of-double" value="32"/>
+        <property key="data-model-size-of-double-gcc" value="no-short-double"/>
+        <property key="data-model-size-of-float" value="32"/>
+        <property key="data-model-size-of-float-gcc" value="no-short-float"/>
         <property key="display-class-usage" value="false"/>
         <property key="display-hex-usage" value="false"/>
         <property key="display-overall-usage" value="true"/>
@@ -171,7 +156,7 @@
         <property key="keep-generated-startup.as" value="false"/>
         <property key="link-in-c-library" value="true"/>
         <property key="link-in-c-library-gcc" value=""/>
-        <property key="link-in-peripheral-library" value="true"/>
+        <property key="link-in-peripheral-library" value="false"/>
         <property key="managed-stack" value="false"/>
         <property key="opt-xc8-linker-file" value="false"/>
         <property key="opt-xc8-linker-link_startup" value="false"/>
@@ -179,55 +164,13 @@
         <property key="program-the-device-with-default-config-words" value="true"/>
         <property key="remove-unused-sections" value="true"/>
       </HI-TECH-LINK>
-      <PICkit3PlatformTool>
-        <property key="AutoSelectMemRanges" value="auto"/>
-        <property key="Freeze Peripherals" value="true"/>
-        <property key="SecureSegment.SegmentProgramming" value="FullChipProgramming"/>
-        <property key="ToolFirmwareFilePath"
-                  value="Press to browse for a specific firmware version"/>
-        <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
-        <property key="debugoptions.useswbreakpoints" value="false"/>
-        <property key="hwtoolclock.frcindebug" value="false"/>
-        <property key="memories.aux" value="false"/>
-        <property key="memories.bootflash" value="true"/>
-        <property key="memories.configurationmemory" value="true"/>
-        <property key="memories.configurationmemory2" value="true"/>
-        <property key="memories.dataflash" value="true"/>
-        <property key="memories.eeprom" value="true"/>
-        <property key="memories.flashdata" value="true"/>
-        <property key="memories.id" value="true"/>
-        <property key="memories.instruction.ram" value="true"/>
-        <property key="memories.instruction.ram.ranges"
-                  value="${memories.instruction.ram.ranges}"/>
-        <property key="memories.programmemory" value="true"/>
-        <property key="memories.programmemory.ranges" value="0-1fff"/>
-        <property key="poweroptions.powerenable" value="false"/>
-        <property key="programmertogo.imagename" value=""/>
-        <property key="programoptions.donoteraseauxmem" value="false"/>
-        <property key="programoptions.eraseb4program" value="true"/>
-        <property key="programoptions.pgmspeed" value="2"/>
-        <property key="programoptions.preservedataflash" value="false"/>
-        <property key="programoptions.preservedataflash.ranges"
-                  value="${programoptions.preservedataflash.ranges}"/>
-        <property key="programoptions.preserveeeprom" value="false"/>
-        <property key="programoptions.preserveeeprom.ranges" value="0-ff"/>
-        <property key="programoptions.preserveprogram.ranges" value=""/>
-        <property key="programoptions.preserveprogramrange" value="false"/>
-        <property key="programoptions.preserveuserid" value="false"/>
-        <property key="programoptions.programcalmem" value="false"/>
-        <property key="programoptions.programuserotp" value="false"/>
-        <property key="programoptions.testmodeentrymethod" value="VDDFirst"/>
-        <property key="programoptions.usehighvoltageonmclr" value="false"/>
-        <property key="programoptions.uselvpprogramming" value="false"/>
-        <property key="voltagevalue" value="5.0"/>
-      </PICkit3PlatformTool>
       <XC8-CO>
         <property key="coverage-enable" value=""/>
       </XC8-CO>
       <XC8-config-global>
         <property key="advanced-elf" value="true"/>
-        <property key="gcc-opt-driver-new" value="false"/>
-        <property key="gcc-opt-std" value="--std=c89"/>
+        <property key="gcc-opt-driver-new" value="true"/>
+        <property key="gcc-opt-std" value="-std=c99"/>
         <property key="gcc-output-file-format" value="dwarf-3"/>
         <property key="omit-pack-options" value="false"/>
         <property key="omit-pack-options-new" value="1"/>

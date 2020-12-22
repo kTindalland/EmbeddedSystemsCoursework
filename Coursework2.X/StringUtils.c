@@ -47,6 +47,7 @@ int Concatenate(char sA[], char sB[], char result[], int rLength)
 	return 1;
 }
 
+/*
 int ConvertTime12ToString(char* result, int secs, int mins, int hours, int pm, int length)
 {
     if (secs < 0 || secs > 59 ||
@@ -245,3 +246,5 @@ int ConvertDayToString(char* result, int day, int length)
     result[3] = '\0';
     return 1;
 }
+
+*/

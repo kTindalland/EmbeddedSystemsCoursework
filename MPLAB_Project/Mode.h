@@ -33,7 +33,7 @@ struct Buttons{
 };
 
 struct Mode{
-    struct Buttons buttons;
+    struct Buttons* buttons;
     void (*refresh) (void);
     
     char firstLine[17];

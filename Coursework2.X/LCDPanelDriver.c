@@ -65,18 +65,3 @@ void SetCursorPos(char line, char col){
     char basePos = line ? 0xC0 : 0x80;
     WriteCmd(basePos + col);
 }
-
-void ExampleLcd() // Example of Driver Use
-{
-    ClearCmd();
-    LcdInit();
-    while(1)
-    {
-        SetCursorPos(0,3);
-        WriteString("Hello");
-        SetCursorPos(1,5);
-        WriteString("World!");
-    }
-}
-
-// Tested on Sim, Not Board

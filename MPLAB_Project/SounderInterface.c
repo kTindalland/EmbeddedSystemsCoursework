@@ -1,4 +1,5 @@
 #include "SounderDriver.h"
+#include "Delay.h"
 
 void ISounderBuzz(int hot) // 1 for hot 0 for cold;
 {
@@ -12,7 +13,7 @@ void ISounderBuzz(int hot) // 1 for hot 0 for cold;
     else 
     {
         BeepSounder(500);
-        Delay(500)
+        Delay(500);
         BeepSounder(500);
         Delay(500);
         BeepSounder(500);

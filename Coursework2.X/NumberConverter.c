@@ -24,7 +24,7 @@ void nbrcnvt_convert_integer(int number, char* output) {
 	int tens;
 	int units;
 	int count = 0;
-	int has_hundred = 0;
+	int zero_flag = 0;
 
 	if (number < 0) {
 		output[count] = '-';
@@ -37,21 +37,19 @@ void nbrcnvt_convert_integer(int number, char* output) {
 	hundreds = ((number - units - (tens * 10)) % 1000) / 100;
 	thousands = ((number - units - (tens * 10) - (hundreds * 100)) % 10000) / 1000;
 
-	int has_thousands = 0;
 	if (thousands != 0) {
-		has_thousands = 1;
+		zero_flag = 1;
 		output[count] = nbrcnvt_convert_digit(thousands);
 		count++;
 	}
 
-	int has_hundreds = 0;
-	if (has_thousands || hundreds != 0) {
-		has_hundreds = 1;
+	if (zero_flag || hundreds != 0) {
+		zero_flag = 1;
 		output[count] = nbrcnvt_convert_digit(hundreds);
 		count++;
 	}
 
-	if (has_hundreds || tens != 0) {
+	if (zero_flag || tens != 0) {
 		output[count] = nbrcnvt_convert_digit(tens);
 		count++;
 	}
