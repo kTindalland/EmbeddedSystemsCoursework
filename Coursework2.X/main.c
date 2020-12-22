@@ -189,9 +189,9 @@ void main(void) {
                 rtcTime current_time;
                 getTime(&current_time);
                                
-                int current_time_int = (current_time.mins * 60) + current_time.secs;
-                int start_trig_time_int = (start_trig_time.mins * 60) + start_trig_time.secs;
-                int time_difference = current_time_int - start_trig_time_int;
+                unsigned char current_time_int = (current_time.mins * 60) + current_time.secs;
+                unsigned char  start_trig_time_int = (start_trig_time.mins * 60) + start_trig_time.secs;
+                unsigned char  time_difference = current_time_int - start_trig_time_int;
                 
                 if (temp_last == 0 && 
                     start_trig_time_int + cold_timer_actual >= current_time_int)
