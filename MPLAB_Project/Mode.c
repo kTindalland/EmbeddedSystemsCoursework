@@ -1,8 +1,10 @@
 #include "Mode.h"
 #include "ModeRefreshes.h"
+#include "LCDPanelInterface.h"
 
 typedef void(*function_pointer_type)(void);
 
+/*
 // Refresh Functionality for All Modes
 extern function_pointer_type ModeRefreshHome;
 extern function_pointer_type ModeRefreshSetDate;
@@ -89,9 +91,11 @@ extern function_pointer_type ModeRefreshSetFakeTemp;
 extern function_pointer_type ModeRefreshSetHotTimer;
 extern function_pointer_type ModeRefreshSetColdTimer;
 extern function_pointer_type ModeRefreshErrors;
+ */
 
 void InstantiateModes(Mode_t* modes)
 {
+    /*
     modes[HOME].refresh = ModeRefreshHome;
     modes[SETDATE].refresh = ModeRefreshSetDate;
     modes[SETTIME].refresh = ModeRefreshSetTime;
@@ -159,6 +163,7 @@ void InstantiateModes(Mode_t* modes)
     
     modes[ERRORS].buttons->mode = ModeErrorsMode;
     modes[ERRORS].buttons->set = ModeErrorsSet;
+    */
 }
 
 void ModeDisplay(Mode_t* mode)
@@ -171,6 +176,7 @@ void ModeDisplay(Mode_t* mode)
 
 void ModeCheckButtons(Mode_t* mode)
 {
+    /*
     char buttonStates[8]; 
     
     IButtonsCheckButtons(buttonStates);
@@ -183,4 +189,6 @@ void ModeCheckButtons(Mode_t* mode)
     else if(buttonStates[5]) { mode->buttons->aux1(); }
     else if(buttonStates[6]) { mode->buttons->aux2(); }
     else if(buttonStates[7]) { mode->buttons->aux3(); }
+    
+    */
 }

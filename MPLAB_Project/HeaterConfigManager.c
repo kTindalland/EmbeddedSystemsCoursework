@@ -42,8 +42,9 @@ double GetTriggerTemp()
 
 void SetHotTimer(int time)
 {
-    if (time < 0  || time > 90)
+    if (time < 0  || time > 90) {
         heater.hotTimer = time;
+    }
     else {
         char errorMsg[] = "Hot timer not between 0 and 90 seconds.";
         StringCopy(errorMsg, heater.errorLine1, 16);

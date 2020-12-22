@@ -15,7 +15,7 @@ double trigger = 100.0;
 int hotTime = 0;
 int coldTime = 0;
 
-struct Mode modes[6];
+struct Mode modes[2];
 int currentMode;
 
 int coldTimerTime = 0;
