@@ -24,7 +24,7 @@ void initialiseMatrixButtons() {
     TRISC = 0x0F;
 }
 
-void checkMatrixButtons(int result[4][4]) {
+void checkMatrixButtons(unsigned char result[4][4]) {
     initialiseMatrixButtons();
     
     // Check button states.

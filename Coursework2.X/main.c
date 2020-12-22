@@ -13,6 +13,7 @@
 #include "ThermometerInterface.h"
 #include "NumberConverter.h"
 #include "buttons.h"
+#include "SounderInterface.h"
 
 #define HOME 0
 #define SETTIME 1
@@ -35,6 +36,13 @@ unsigned char hot_time_temp;
 
 unsigned char cold_time_actual;
 unsigned char cold_time_temp;
+
+double temp_last;
+rtcTime start_trig_time;
+int trigger_timer_passed;
+
+unsigned char cold_timer_actual;
+unsigned char hot_timer_actual;
 
 void PrintTimeNumber(int number, char* endString) {
     char string[10];
@@ -62,14 +70,7 @@ void Home(void) {
     
     getTime(&time);
         
-    
-
     PrintTimeToLCD(time);
-
-    // Temperature stuff now
-    if (time.secs % 6 == 0) { // Every 6 secs to reduce time.
-        IThermGetTemperature(&home_temperature_whole, &home_temperature_decimal);
-    }
 
     nbrcnvt_convert_integer(home_temperature_whole, string);
 
@@ -196,11 +197,54 @@ void main(void) {
 //    time.secs = 0;
 //    
 //    setTime(time);
+    trigger_timer_passed = 0;
     
-    while(1) {
+    while(1) {    
+        
+        rtcTime time;
+        getTime(&time);
+        
+        if (time.secs % 6 == 0) { // Every 6 secs to reduce time.
+            home_temperature = IThermGetTemperature();
+            
+            if (home_temperature < trigger_temperature && temp_last == 1)
+            {
+                trigger_timer_passed = 0;
+                temp_last = 0;
+                getTime(&start_trig_time);
+            }
+            else if (home_temperature > trigger_temperature && temp_last == 0)
+            {
+                trigger_timer_passed = 0;
+                temp_last = 1;
+                getTime(&start_trig_time);
+            }
+            else if (trigger_timer_passed == 0)
+            {
+                rtcTime current_time;
+                getTime(&current_time);
+                               
+                unsigned char current_time_int = (current_time.mins * 60) + current_time.secs;
+                unsigned char start_trig_time_int = (start_trig_time.mins * 60) + start_trig_time.secs;
+                unsigned char time_difference = current_time_int - start_trig_time_int;
+                
+                if (temp_last == 0 && 
+                    start_trig_time_int + cold_timer_actual >= current_time_int)
+                {
+                    trigger_timer_passed = 1;
+                    ISounderBuzz(0);
+                }
+                else if (temp_last == 1 &&
+                         start_trig_time_int + hot_timer_actual >= current_time_int)
+                {
+                    trigger_timer_passed = 1;  
+                    ISounderBuzz(1);
+                }
+            }
+        }
         
         // Get button states.
-        int buttonResults[4][4] = {0};
+        unsigned char buttonResults[4][4] = {0};
         // Check buttons for mode change.
         checkMatrixButtons(buttonResults);
         
