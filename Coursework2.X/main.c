@@ -22,11 +22,20 @@
 #define HOTTIME 4
 #define COLDTIME 5
 
-double home_temperature;
+signed char home_temperature_whole;
+unsigned char home_temperature_decimal;
+
 rtcTime set_time_time;
 unsigned char set_time_flag;
-double set_trig_temp;
-double trigger_temperature;
+
+unsigned char set_trig_temp;
+unsigned char trigger_temperature;
+
+unsigned char hot_time_actual;
+unsigned char hot_time_temp;
+
+unsigned char cold_time_actual;
+unsigned char cold_time_temp;
 
 double temp_last;
 rtcTime start_trig_time;
@@ -63,10 +72,15 @@ void Home(void) {
         
     PrintTimeToLCD(time);
 
-    nbrcnvt_convert_double(home_temperature, string);
+    nbrcnvt_convert_integer(home_temperature_whole, string);
 
     ILCDPanelSetCursor(1,0);
     ILCDPanelWrite(string);
+    ILCDPanelWrite(".");
+    
+    nbrcnvt_convert_integer(home_temperature_decimal, string);
+    ILCDPanelWrite(string);
+    
 
     string[0] = 0xDF; // Degree symbol.
     string[1] = 'C';
@@ -120,10 +134,22 @@ void SetTriggerTemperature() {
     if (set_trig_temp != trigger_temperature) ILCDPanelWrite("*"); // Change indicator.
     else ILCDPanelWrite(" ");
     
-    ILCDPanelSetCursor(1, 0);
+    unsigned char buttons;
+    buttons = checkButtons();
     
+    set_trig_temp = set_trig_temp + ((buttons & 0x10) >> 4); // Add 1
+    set_trig_temp = set_trig_temp - (buttons & 0x01); // Sub 1
+    
+    //set_trig_temp = set_trig_temp + ((buttons & 0x20) >> 5); // Add 0.1
+    
+    //set_trig_temp = set_trig_temp - ((buttons & 0x02) >> 1); // Sub 0.1
+
+    if (buttons & 0x40) trigger_temperature = set_trig_temp; // Set
+    if (buttons & 0x04) set_trig_temp = trigger_temperature; // Cancel
+    
+    ILCDPanelSetCursor(1, 0);
     char string[10];
-    nbrcnvt_convert_double(set_trig_temp, string);
+    nbrcnvt_convert_integer(set_trig_temp, string);
     ILCDPanelWrite(string);
 }
 
@@ -131,12 +157,28 @@ void SetFakeTemperature() {
     ILCDPanelWrite("Set Fake Temp.");
 }
 
-void SetHotTime() {
-    ILCDPanelWrite("Set Hot Timer");
-}
-
-void SetColdTime() {
-    ILCDPanelWrite("Set Cold Timer");
+void SetHotColdTime(unsigned char* actual, unsigned char* temp, unsigned char bound, char* title) {
+    ILCDPanelWrite(title);
+    
+    if (*actual != *temp) ILCDPanelWrite("*");
+    else ILCDPanelWrite(" ");
+    
+    unsigned char buttons;
+    buttons = checkButtons();
+    
+    *temp = *temp - (buttons & 0x01);
+    *temp = *temp + ((buttons & 0x10) >> 4);
+    
+    if (*temp > bound) *temp = bound;
+    
+    if (buttons & 0x02) *temp = *actual; // Cancel;
+    if (buttons & 0x20) *actual = *temp; // Set;
+    
+    char string[10];
+    nbrcnvt_convert_integer(temp, string);
+    
+    ILCDPanelSetCursor(1,0);
+    ILCDPanelWrite(string);
 }
 
 void main(void) {
@@ -145,8 +187,8 @@ void main(void) {
     
     getTime(&set_time_time);
     
-    set_trig_temp = 20.0;
-    trigger_temperature = 20.0;
+    set_trig_temp = 20;
+    trigger_temperature = 20;
     
     int mode = HOME;
 //    time.AMPM = PM;
@@ -256,11 +298,11 @@ void main(void) {
                 break;
                 
             case HOTTIME:
-                SetHotTime();
+                SetHotColdTime(&hot_time_actual, &hot_time_temp, 60, "Set Hot Timer");
                 break;
                 
             case COLDTIME:
-                SetColdTime();
+                SetHotColdTime(&cold_time_actual, &cold_time_temp, 90, "Set Cold Timer");
                 break;
         }
     }
