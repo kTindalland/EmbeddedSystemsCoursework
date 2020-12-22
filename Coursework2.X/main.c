@@ -27,6 +27,13 @@ unsigned char set_time_flag;
 double set_trig_temp;
 double trigger_temperature;
 
+double temp_last;
+rtcTime start_trig_time;
+int trigger_timer_passed;
+
+unsigned char cold_timer_actual;
+unsigned char hot_timer_actual;
+
 void PrintTimeNumber(int number, char* endString) {
     char string[10];
     
@@ -154,8 +161,45 @@ void main(void) {
 //    time.secs = 0;
 //    
 //    setTime(time);
+    trigger_timer_passed = 0;
     
-    while(1) {
+    while(1) {    
+        
+        rtcTime time;
+        getTime(&time);
+        
+        if (time.secs % 6 == 0) { // Every 6 secs to reduce time.
+            home_temperature = IThermGetTemperature();
+            
+            if (home_temperature < trigger_temperature && temp_last == 1)
+            {
+                trigger_timer_passed = 0;
+                temp_last = 0;
+                getTime(&start_trig_time);
+            }
+            else if (home_temperature > trigger_temperature && temp_last == 0)
+            {
+                trigger_timer_passed = 0;
+                temp_last = 1;
+                getTime(&start_trig_time);
+            }
+            else if (trigger_timer_passed == 0)
+            {
+                rtcTime current_time = getTime(&current_time);
+                if (temp_last == 0 && 
+                    start_trig_time + cold_timer_actual >= current_time)
+                {
+                    trigger_timer_passed = 1;
+                    SounderBuzz(0);
+                }
+                else if (temp_last == 1 &&
+                         start_trig_time + hot_timer_actual >= current_time)
+                {
+                    trigger_timer_passed = 1;  
+                    SounderBuzz(1);
+                }
+            }
+        }
         
         // Get button states.
         int buttonResults[4][4] = {0};
