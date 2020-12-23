@@ -9,21 +9,21 @@ extern "C" {
 #define RTC_ERROR 0xFF
 #define NULL -1
     
-uch convertSecs(int sec);
-uch convertMins(int mins);
-uch convertHours(int hours, int is24Hour);
-uch convertDate(int date, int month, int year);
-uch convertMonth(int month);
-uch convertDay(int day);
-uch convertYear(int year);
+uch convertSecs(unsigned char sec);
+uch convertMins(unsigned char mins);
+uch convertHours(unsigned char hours, unsigned char is24Hour);
+uch convertDate(unsigned char date, unsigned char month, short year);
+uch convertMonth(unsigned char month);
+uch convertDay(unsigned char day);
+uch convertYear(short year);
 
-int convertReadSecs(uch secs);
-int convertReadMins(uch mins);
-int convertReadHours(uch hours, int* AMPM);
-int convertReadDate(uch date);
-int convertReadMonth(uch month);
-int convertReadDay(uch day);
-int convertReadYear(uch year);
+unsigned char convertReadSecs(uch secs);
+unsigned char convertReadMins(uch mins);
+unsigned char convertReadHours(uch hours, unsigned char* AMPM);
+unsigned char convertReadDate(uch date);
+unsigned char convertReadMonth(uch month);
+unsigned char convertReadDay(uch day);
+short convertReadYear(uch year);
 
 uch readCH();
 

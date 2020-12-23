@@ -12,7 +12,7 @@
 extern "C" {
 #endif
 
-void ISounderBuzz(int);
+void ISounderBuzz(unsigned char);
 
 
 #ifdef	__cplusplus

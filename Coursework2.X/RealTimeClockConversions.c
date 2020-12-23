@@ -138,7 +138,7 @@ unsigned char convertReadMins(uch mins) {
     return result;
 }
 
-unsigned char convertReadHours(uch hours, int* AMPM) {
+unsigned char convertReadHours(uch hours, unsigned char* AMPM) {
     unsigned char result = 0;
     
     uch hour12 = hours & 0x80;
