@@ -37,14 +37,14 @@ unsigned char hot_time_temp;
 unsigned char cold_time_actual;
 unsigned char cold_time_temp;
 
-double temp_last;
+unsigned char temp_last;
 rtcTime start_trig_time;
-int trigger_timer_passed;
+unsigned char trigger_timer_passed;
 
 unsigned char cold_timer_actual;
 unsigned char hot_timer_actual;
 
-void PrintTimeNumber(int number, char* endString) {
+void PrintTimeNumber(unsigned char number, char* endString) {
     char string[10];
     
     nbrcnvt_convert_integer(number, string);
@@ -197,7 +197,7 @@ void main(void) {
     cold_time_actual = 45;
     cold_time_temp = 45;
     
-    int mode = HOME;
+    unsigned char mode = HOME;
 //    time.AMPM = PM;
 //    time.hours = 2;
 //    time.mins = 36;

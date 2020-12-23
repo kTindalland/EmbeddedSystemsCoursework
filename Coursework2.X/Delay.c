@@ -1,8 +1,8 @@
 #include "Delay.h"
 
-void Delay(int n)
+void Delay(unsigned short n)
 {
- for(int i=0;i<n;i++);
+ for(unsigned short i=0;i<n;i++);
 }
 
 void therm_delay(char x, char y) {

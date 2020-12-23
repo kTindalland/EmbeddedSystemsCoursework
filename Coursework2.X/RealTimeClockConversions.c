@@ -1,6 +1,6 @@
 #include "RealTimeClockConversions.h"
 
-uch convertSecs(int sec) {
+uch convertSecs(unsigned char sec) {
 	if (sec < 0 || sec >= 60) return RTC_ERROR;
     
     uch result = 0;
@@ -16,7 +16,7 @@ uch convertSecs(int sec) {
     return result;
 }
 
-uch convertMins(int mins) {
+uch convertMins(unsigned char mins) {
 	if (mins < 0 || mins >= 60) return RTC_ERROR;
     
     uch result = 0;
@@ -30,7 +30,7 @@ uch convertMins(int mins) {
     return result;
 }
 
-uch convertHours(int hours, int AMPM) {
+uch convertHours(unsigned char hours, unsigned char AMPM) {
 	if (AMPM == NULL && (hours < 0 || hours >= 24)) return RTC_ERROR;
     if (AMPM != NULL && (hours < 1 || hours >= 13)) return RTC_ERROR;
     
@@ -50,7 +50,7 @@ uch convertHours(int hours, int AMPM) {
     return result;
 }
 
-uch convertDate(int date, int month, int year) {
+uch convertDate(unsigned char date, unsigned char month, short year) {
 	if (month != 2){
         if ((month == 1) || (month == 3) || (month == 5) || (month == 7) || (month == 8) ||(month == 10) ||  (month == 12)){
             if (date < 1 || date >= 31) return RTC_ERROR;
@@ -79,7 +79,7 @@ uch convertDate(int date, int month, int year) {
     return result;
 }
 
-uch convertMonth(int month) {
+uch convertMonth(unsigned char month) {
 	if (month < 1 || month >= 13) return RTC_ERROR;
     
     uch result = 0;
@@ -93,7 +93,7 @@ uch convertMonth(int month) {
     return result;
 }
 
-uch convertDay(int day) {
+uch convertDay(unsigned char day) {
 	if (day < 1 || day >= 8) return RTC_ERROR;
     
     uch result = 0;
@@ -102,7 +102,7 @@ uch convertDay(int day) {
     return result;
 }
 
-uch convertYear(int year) {
+uch convertYear(short year) {
 	if (year < 0 || year >= 100) return RTC_ERROR;
     
     uch result = 0;
@@ -116,8 +116,8 @@ uch convertYear(int year) {
     return result;
 }
 
-int convertReadSecs(uch secs) {
-	int result = 0;
+unsigned char convertReadSecs(uch secs) {
+	unsigned char result = 0;
     uch ones = secs & 0x0F;
     uch tens = ((secs & 0x70) >> 4 ) * 10;
     
@@ -127,8 +127,8 @@ int convertReadSecs(uch secs) {
     return result;
 }
 
-int convertReadMins(uch mins) {
-	int result = 0;
+unsigned char convertReadMins(uch mins) {
+	unsigned char result = 0;
     uch ones = mins & 0x0F;
     uch tens = ((mins & 0x70) >> 4 ) * 10;
     
@@ -138,8 +138,8 @@ int convertReadMins(uch mins) {
     return result;
 }
 
-int convertReadHours(uch hours, int* AMPM) {
-    int result = 0;
+unsigned char convertReadHours(uch hours, int* AMPM) {
+    unsigned char result = 0;
     
     uch hour12 = hours & 0x80;
     if (hour12) { *AMPM = (hours & 0x20) >> 5; }
@@ -157,8 +157,8 @@ int convertReadHours(uch hours, int* AMPM) {
 	return result;
 }
 
-int convertReadDate(uch date) {
-	int result = 0;
+unsigned char convertReadDate(uch date) {
+	unsigned char result = 0;
     uch ones = date & 0x0F;
     uch tens = ((date & 0x30) >> 4 ) * 10;
     
@@ -168,8 +168,8 @@ int convertReadDate(uch date) {
     return result;
 }
 
-int convertReadMonth(uch month) {
-	int result = 0;
+unsigned char convertReadMonth(uch month) {
+	unsigned char result = 0;
     uch ones = month & 0x0F;
     uch tens = ((month & 0x10) >> 4 ) * 10;
     
@@ -179,16 +179,16 @@ int convertReadMonth(uch month) {
     return result;
 }
 
-int convertReadDay(uch day) {
-	int result = 0;
+unsigned char convertReadDay(uch day) {
+	unsigned char result = 0;
     
     result = day & 0x07;
     
     return result;
 }
 
-int convertReadYear(uch year) {
-	int result = 0;
+short convertReadYear(uch year) {
+	short result = 0;
     uch ones = year & 0x0F;
     uch tens = ((year & 0xF0) >> 4 ) * 10;
     

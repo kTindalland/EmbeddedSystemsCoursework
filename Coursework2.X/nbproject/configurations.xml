@@ -15,8 +15,8 @@
       <itemPath>ThermometerDriver.h</itemPath>
       <itemPath>ThermometerInterface.h</itemPath>
       <itemPath>buttons.h</itemPath>
-      <itemPath>SounderDriver.h</itemPath>
       <itemPath>SounderInterface.h</itemPath>
+      <itemPath>SounderDriver.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"

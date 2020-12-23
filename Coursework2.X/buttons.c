@@ -28,13 +28,13 @@ void checkMatrixButtons(unsigned char result[4][4]) {
     initialiseMatrixButtons();
     
     // Check button states.
-    for (int row = 0; row < 4; row++) {
+    for (unsigned char row = 0; row < 4; row++) {
         
         PORTC |= 0xF0; // Clear output
         PORTC &= ~(1 << (row + 4)); // Set row
-        int inputs = ~(PORTC | 0xF0);
+        unsigned char inputs = ~(PORTC | 0xF0);
         
-        for (int col = 0; col < 4; col++) {
+        for (unsigned char col = 0; col < 4; col++) {
             result[row][col] = 0;
             
             if (inputs & (1 << col)) {
@@ -44,7 +44,7 @@ void checkMatrixButtons(unsigned char result[4][4]) {
             
         }
         
-        for (int i = 0; i < 5000; i++);
+        for (unsigned char i = 0; i < 255; i++);
     }
     
 }

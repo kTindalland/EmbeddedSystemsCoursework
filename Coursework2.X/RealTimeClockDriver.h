@@ -32,17 +32,17 @@ extern "C" {
     #define IRTC_ERROR 2
     
     typedef struct rtcTime {
-        int secs;
-        int mins;
-        int hours;       
-        int AMPM;
+        unsigned char secs;
+        unsigned char mins;
+        unsigned char hours;       
+        unsigned char AMPM;
     } rtcTime;
     
     typedef struct rtcDate {
-        int date;
-        int month;
-        int year;
-        int day;        
+        unsigned char date;
+        unsigned char month;
+        short year;
+        unsigned char day;        
     } rtcDate;
     
     typedef struct rtcDateTime {
@@ -61,7 +61,7 @@ extern "C" {
     void setDate(rtcDate date);
     void setTime(rtcTime time);
     void setDateTime(rtcDateTime datetime);
-    void set24HourMode(int mode);
+    void set24HourMode(unsigned char mode);
     
     void getDate(rtcDate* date);
     void getTime(rtcTime* time);

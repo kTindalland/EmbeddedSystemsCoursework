@@ -5,9 +5,9 @@ void InitialiseSounder()
     TRISC = 0;
 }
 
-void BeepSounder(int time)
+void BeepSounder(short time)
 {
-    for (int i = 0; i < time; i++)
+    for (short i = 0; i < time; i++)
     {
         PORTC = 1;
     }

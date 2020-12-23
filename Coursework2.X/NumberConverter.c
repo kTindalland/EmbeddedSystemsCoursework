@@ -7,7 +7,7 @@
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wconversion"
 
-char nbrcnvt_convert_digit(int digit ) {
+char nbrcnvt_convert_digit(unsigned short digit ) {
 	if (digit >= 0 && digit <= 9) {
 		return 48 + digit; /* ASCII 0 character is code 48. */
 	}
@@ -18,13 +18,13 @@ char nbrcnvt_convert_digit(int digit ) {
 
 #pragma GCC diagnostic pop
 
-void nbrcnvt_convert_integer(int number, char* output) {
-	int thousands;
-	int hundreds;
-	int tens;
-	int units;
-	int count = 0;
-	int zero_flag = 0;
+void nbrcnvt_convert_integer(unsigned short number, char* output) {
+	unsigned char thousands;
+	unsigned char hundreds;
+	unsigned char tens;
+	unsigned char units;
+	unsigned char count = 0;
+	unsigned char zero_flag = 0;
 
 	if (number < 0) {
 		output[count] = '-';
