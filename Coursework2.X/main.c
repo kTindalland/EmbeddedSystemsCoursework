@@ -231,18 +231,18 @@ void main(void) {
                 rtcTime current_time;
                 getTime(&current_time);
                                
-                unsigned char current_time_int = (current_time.mins * 60) + current_time.secs;
-                unsigned char start_trig_time_int = (start_trig_time.mins * 60) + start_trig_time.secs;
-                unsigned char time_difference = current_time_int - start_trig_time_int;
+                unsigned char current_time_char = (current_time.mins * 60) + current_time.secs;
+                unsigned char start_trig_time_char = (start_trig_time.mins * 60) + start_trig_time.secs;
+                unsigned char time_difference = current_time_char - start_trig_time_char;
                 
                 if (temp_last == 0 && 
-                    start_trig_time_int + cold_timer_actual >= current_time_int)
+                    start_trig_time_char + cold_timer_actual >= current_time_char)
                 {
                     trigger_timer_passed = 1;
                     ISounderBuzz(0);
                 }
                 else if (temp_last == 1 &&
-                         start_trig_time_int + hot_timer_actual >= current_time_int)
+                         start_trig_time_char + hot_timer_actual >= current_time_char)
                 {
                     trigger_timer_passed = 1;  
                     ISounderBuzz(1);

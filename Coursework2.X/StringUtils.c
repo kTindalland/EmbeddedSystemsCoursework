@@ -48,7 +48,7 @@ unsigned char Concatenate(char sA[], char sB[], char result[], unsigned char rLe
 }
 
 /*
-int ConvertTime12ToString(char* result, int secs, int mins, int hours, int pm, int length)
+unsigned char ConvertTime12ToString(char* result, unsigned char secs, unsigned char mins, unsigned char hours, unsigned char pm, unsigned char length)
 {
     if (secs < 0 || secs > 59 ||
         mins < 0 || mins > 59 ||
@@ -86,15 +86,15 @@ int ConvertTime12ToString(char* result, int secs, int mins, int hours, int pm, i
     }
     h[2] = ':';
     
-    for (int i = 0; i < 3; i++)
+    for (unsigned char i = 0; i < 3; i++)
     {
         result[i] = h[i];
     }
-    for (int i = 0; i < 3; i++)
+    for (unsigned char i = 0; i < 3; i++)
     {
         result[i + 3] = m[i];
     }
-    for (int i = 0; i < 3; i++)
+    for (unsigned char i = 0; i < 3; i++)
     {
         result[i + 6] = s[i];
     }
@@ -108,7 +108,7 @@ int ConvertTime12ToString(char* result, int secs, int mins, int hours, int pm, i
     return 1;
 }
 
-int ConvertTime24ToString(char* result, unsigned char secs, unsigned char mins, unsigned char hours, unsigned char length)
+unsigned char ConvertTime24ToString(char* result, unsigned char secs, unsigned char mins, unsigned char hours, unsigned char length)
 {
     if (secs < 0 || secs > 59 ||
         mins < 0 || mins > 59 ||
@@ -161,7 +161,7 @@ int ConvertTime24ToString(char* result, unsigned char secs, unsigned char mins, 
     return 1;
 }
 
-int ConvertDateToString(unsigned char* result, unsigned char date, unsigned char month, short year, unsigned char length)
+unsigned char ConvertDateToString(unsigned char* result, unsigned char date, unsigned char month, short year, unsigned char length)
 {
     if (date < 1 || date > 31 ||
         month < 1 || month > 12 ||

@@ -63,7 +63,7 @@ void nbrcnvt_convert_integer(unsigned short number, char* output) {
 
 }
 
-int nbrcnvt_check_length_int(int number) {
+unsigned char nbrcnvt_check_length_int(signed short number) {
 	if (number < 0 && number > -10) {
 		return 3; /* -X\0 */
 	}
