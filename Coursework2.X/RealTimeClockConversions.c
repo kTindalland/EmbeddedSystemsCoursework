@@ -58,7 +58,7 @@ uch convertDate(unsigned char date, unsigned char month, short year) {
         else if (date < 1 || date >= 30) return RTC_ERROR; // Month
     }
     else{
-        int isLeapYear = 0;
+        unsigned char isLeapYear = 0;
         if (year % 400 == 0)        isLeapYear = 1;
         else if (year % 100 == 0)   isLeapYear = 0;
         else if (year % 4 == 0)     isLeapYear = 1;

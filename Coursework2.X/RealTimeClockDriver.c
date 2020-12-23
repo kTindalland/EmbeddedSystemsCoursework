@@ -53,7 +53,7 @@ uch readByte(uch addr) {
     uch value;
     // Send addr
     TRISB = TRISB & 0xEF; // Set TRISB4 to output
-    for (int i = 0; i < 8; i++) {
+    for (unsigned char i = 0; i < 8; i++) {
         value = (readAddr & 0x80) >> 7;
         RTC_IO = value;
                
@@ -66,7 +66,7 @@ uch readByte(uch addr) {
     
     TRISB = TRISB | 0x10; // Set TRISB4 to input
     // Read result 
-    for (int i = 0; i < 8; i++) {
+    for (unsigned char i = 0; i < 8; i++) {
         // Read
         value = RTC_IO;
         
@@ -98,7 +98,7 @@ void writeByte(uch addr, uch data) {
     uch value;
     // Send addr
     TRISB = TRISB & 0xEF; // Set TRISB4 to output
-    for (int i = 0; i < 8; i++) {
+    for (unsigned char i = 0; i < 8; i++) {
         value = (writeAddr & 0x80) >> 7;
         
         RTC_IO = value;
@@ -111,7 +111,7 @@ void writeByte(uch addr, uch data) {
     }
     
     // Send data
-    for (int i = 0; i < 8; i++) {
+    for (unsigned char i = 0; i < 8; i++) {
         value = (data & 0x01);
         
         RTC_IO = value;

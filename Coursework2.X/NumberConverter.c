@@ -64,11 +64,11 @@ void nbrcnvt_convert_integer(unsigned short number, char* output) {
 }
 
 void nbrcnvt_convert_double(double number, char* output) {
-	int decimal;
-	int thousands;
-	int hundreds;
-	int tens;
-	int units;
+	unsigned char decimal;
+	unsigned char thousands;
+	unsigned char hundreds;
+	unsigned char tens;
+	unsigned char units;
 	int count = 0;
 	int zero_flag = 0;
 

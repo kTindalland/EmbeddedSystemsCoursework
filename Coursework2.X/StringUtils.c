@@ -1,24 +1,24 @@
 #include "NumberConverter.h"
 #include "StringUtils.h"
 
-int StringLength(char s[]) {
+unsigned char StringLength(char s[]) {
 	// Get char array length.
-	int count = 0;
+	unsigned char count = 0;
 
-	for (int i = 0; s[i] != '\0'; i++) {
+	for (unsigned char i = 0; s[i] != '\0'; i++) {
 		count++;
 	}
 
 	return count;
 }
 
-int StringCopy(char from[], char to[], int length)
+unsigned char StringCopy(char from[], char to[], unsigned char length)
 {
-	int stringLength = StringLength(from); 
+	unsigned char stringLength = StringLength(from); 
 
 	if (stringLength < length) return 0; // String not big enough to satisfy length.
 
-	int i;
+	unsigned char i;
 	for (i = 0; i < length && from[i] != '\0'; i++) {
 		to[i] = from[i];
 	}
@@ -28,10 +28,10 @@ int StringCopy(char from[], char to[], int length)
 	return 1;
 }
 
-int Concatenate(char sA[], char sB[], char result[], int rLength)
+unsigned char Concatenate(char sA[], char sB[], char result[], unsigned char rLength)
 {
-	int sALength = StringLength(sA);
-	int sBLength = StringLength(sB);
+	unsigned char sALength = StringLength(sA);
+	unsigned char sBLength = StringLength(sB);
 
 	if (rLength < (sALength + sBLength + 1)) // Check result has enough space for the strings.
 	{
@@ -108,7 +108,7 @@ int ConvertTime12ToString(char* result, int secs, int mins, int hours, int pm, i
     return 1;
 }
 
-int ConvertTime24ToString(char* result, int secs, int mins, int hours, int length)
+int ConvertTime24ToString(char* result, unsigned char secs, unsigned char mins, unsigned char hours, unsigned char length)
 {
     if (secs < 0 || secs > 59 ||
         mins < 0 || mins > 59 ||
@@ -145,15 +145,15 @@ int ConvertTime24ToString(char* result, int secs, int mins, int hours, int lengt
     }
     h[2] = ':';
     
-    for (int i = 0; i < 3; i++)
+    for (unsigned char i = 0; i < 3; i++)
     {
         result[i] = h[i];
     }
-    for (int i = 0; i < 3; i++)
+    for (unsigned char i = 0; i < 3; i++)
     {
         result[i + 3] = m[i];
     }
-    for (int i = 0; i < 3; i++)
+    for (unsigned char i = 0; i < 3; i++)
     {
         result[i + 6] = s[i];
     }
@@ -161,7 +161,7 @@ int ConvertTime24ToString(char* result, int secs, int mins, int hours, int lengt
     return 1;
 }
 
-int ConvertDateToString(char* result, int date, int month, int year, int length)
+int ConvertDateToString(unsigned char* result, unsigned char date, unsigned char month, short year, unsigned char length)
 {
     if (date < 1 || date > 31 ||
         month < 1 || month > 12 ||
@@ -214,15 +214,15 @@ int ConvertDateToString(char* result, int date, int month, int year, int length)
     }
     y[4] = '\0';
     
-    for (int i = 0; i < 3; i++)
+    for (unsigned char i = 0; i < 3; i++)
     {
         result[i] = d[i];
     }
-    for (int i = 0; i < 3; i++)
+    for (unsigned char i = 0; i < 3; i++)
     {
         result[i + 3] = m[i];
     }
-    for (int i = 0; i < 5; i++)
+    for (unsigned char i = 0; i < 5; i++)
     {
         result[i + 6] = y[i];
     }
@@ -230,7 +230,7 @@ int ConvertDateToString(char* result, int date, int month, int year, int length)
     return 1;
 }
 
-int ConvertDayToString(char* result, int day, int length)
+unsigned char ConvertDayToString(char* result, unsigned char day, unsigned char length)
 {
     if (day < 1 || day > 7 ||
         length != 4)
