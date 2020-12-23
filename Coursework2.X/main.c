@@ -17,11 +17,12 @@
 
 #define HOME 0
 #define SETTIME 1
-#define TRIGTEMP 2
-#define FAKETEMP 3
-#define HOTTIME 4
-#define COLDTIME 5
-#define SETDATE 6
+#define SETDATE 2
+#define TRIGTEMP 3
+#define FAKETEMP 4
+#define HOTTIME 5
+#define COLDTIME 6
+
 
 signed char home_temperature_whole;
 unsigned char home_temperature_decimal;
@@ -44,9 +45,6 @@ unsigned char cold_time_temp;
 unsigned char temp_last;
 rtcTime start_trig_time;
 unsigned char trigger_timer_passed;
-
-unsigned char cold_timer_actual;
-unsigned char hot_timer_actual;
 
 void PrintTimeNumber(unsigned char number, char* endString) {
     char string[10];
@@ -288,13 +286,13 @@ void main(void) {
                 unsigned char time_difference = current_time_char - start_trig_time_char;
                 
                 if (temp_last == 0 && 
-                    start_trig_time_char + cold_timer_actual >= current_time_char)
+                    start_trig_time_char + cold_time_actual >= current_time_char)
                 {
                     trigger_timer_passed = 1;
                     ISounderBuzz(0);
                 }
                 else if (temp_last == 1 &&
-                         start_trig_time_char + hot_timer_actual >= current_time_char)
+                         start_trig_time_char + hot_time_actual >= current_time_char)
                 {
                     trigger_timer_passed = 1;  
                     ISounderBuzz(1);
