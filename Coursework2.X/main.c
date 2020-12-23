@@ -175,7 +175,7 @@ void SetHotColdTime(unsigned char* actual, unsigned char* temp, unsigned char bo
     if (buttons & 0x20) *actual = *temp; // Set;
     
     char string[10];
-    nbrcnvt_convert_integer(temp, string);
+    nbrcnvt_convert_integer(*temp, string);
     
     ILCDPanelSetCursor(1,0);
     ILCDPanelWrite(string);
@@ -189,6 +189,13 @@ void main(void) {
     
     set_trig_temp = 20;
     trigger_temperature = 20;
+    
+    // Set timer values
+    hot_time_actual = 45;
+    hot_time_temp = 45;
+    
+    cold_time_actual = 45;
+    cold_time_temp = 45;
     
     int mode = HOME;
 //    time.AMPM = PM;
