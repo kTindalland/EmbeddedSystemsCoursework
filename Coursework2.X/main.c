@@ -44,6 +44,12 @@ unsigned char trigger_timer_passed;
 unsigned char cold_timer_actual;
 unsigned char hot_timer_actual;
 
+signed char fake_temperature;
+signed char fake_temperature_decimal;
+signed char fake_temperature_temp;
+signed char fake_temperature_temp_decimal;
+unsigned char fake_temp_onoff;
+
 void PrintTimeNumber(unsigned char number, char* endString) {
     char string[10];
     
@@ -153,8 +159,74 @@ void SetTriggerTemperature() {
     ILCDPanelWrite(string);
 }
 
-void SetFakeTemperature() {
+void SetFakeTemperature(void) {
     ILCDPanelWrite("Set Fake Temp.");
+    
+    if ((fake_temperature != fake_temperature_temp) ||
+            (fake_temperature_decimal != fake_temperature_temp_decimal)) ILCDPanelWrite("*");
+    else ILCDPanelWrite(" ");
+    
+    unsigned char buttons;
+    buttons = checkButtons();
+    
+    fake_temperature_temp = fake_temperature_temp - (buttons & 0x01); // -1
+    fake_temperature_temp = fake_temperature_temp + ((buttons & 0x10) >> 4); // +1
+    
+    fake_temperature_temp = fake_temperature_temp - (((buttons & 0x02) >> 1) * 10); // -10
+    fake_temperature_temp = fake_temperature_temp + (((buttons & 0x20) >> 5) * 10); // +10
+    
+    fake_temperature_temp_decimal = fake_temperature_temp_decimal - ((buttons & 0x04) >> 2);
+    fake_temperature_temp_decimal = fake_temperature_temp_decimal + ((buttons & 0x40) >> 6);
+    
+    // Reorganise numbers
+    if (fake_temperature_temp_decimal < 0) {
+        fake_temperature_temp_decimal = 9;
+        fake_temperature_temp--;
+    }
+    
+    if (fake_temperature_temp_decimal > 9) {
+        fake_temperature_temp_decimal = 0;
+        fake_temperature_temp++;
+    }
+    
+    // Check numbers for bounds.
+   if (fake_temperature_temp >= 115 && fake_temperature_temp_decimal > 0) {
+       fake_temperature_temp = 115;
+       fake_temperature_temp_decimal = 0;
+    } 
+    
+    if (fake_temperature_temp <= -50 && fake_temperature_temp_decimal > 0) {
+        fake_temperature_temp = -50;
+       fake_temperature_temp_decimal = 0;
+    }
+    
+    // Check set/cancel.
+    if (buttons & 0x08) { // Cancel
+        fake_temperature_temp = fake_temperature;
+        fake_temperature_temp_decimal = fake_temperature_decimal;
+    }
+    
+    if (buttons & 0x80) { // Set
+        fake_temperature = fake_temperature_temp;
+        fake_temperature_decimal = fake_temperature_temp_decimal;
+    }
+    
+    // Write out numbers.
+    char string[10];
+    ILCDPanelSetCursor(1,0);
+    
+    nbrcnvt_convert_integer(fake_temperature_temp, string);
+    ILCDPanelWrite(string);
+    ILCDPanelWrite(".");
+    
+    nbrcnvt_convert_integer(fake_temperature_temp_decimal, string);
+    ILCDPanelWrite(string);
+    
+    string[0] = 0xDF; // Degree symbol.
+    string[1] = 'C';
+    string[2] = '\0';
+    
+    ILCDPanelWrite(string);
 }
 
 void SetHotColdTime(unsigned char* actual, unsigned char* temp, unsigned char bound, char* title) {
@@ -196,6 +268,13 @@ void main(void) {
     
     cold_time_actual = 45;
     cold_time_temp = 45;
+    
+    // Set fake temp values.
+    fake_temperature = 22;
+    fake_temperature_decimal = 0;
+    fake_temperature_temp = 22;
+    fake_temperature_temp_decimal = 0;
+    fake_temp_onoff = 0;
     
     unsigned char mode = HOME;
 //    time.AMPM = PM;
