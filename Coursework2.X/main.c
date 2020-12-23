@@ -29,6 +29,9 @@ unsigned char home_temperature_decimal;
 rtcTime set_time_time;
 unsigned char set_time_flag;
 
+rtcDate set_date_date;
+unsigned char set_date_flag;
+
 unsigned char set_trig_temp;
 unsigned char trigger_temperature;
 
@@ -62,6 +65,15 @@ void PrintTimeToLCD(rtcTime time) {
     
     char* tags[] = {"  ", "AM", "PM" };
     ILCDPanelWrite(tags[time.AMPM + 1]);
+}
+
+void PrintDateToLCD(rtcDate date){
+    PrintTimeNumber(date.day, "/");
+    PrintTimeNumber(date.month, "/");
+    PrintTimeNumber(date.year - 2000, " ");
+    
+    char* tags[] = {"MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"};
+    ILCDPanelWrite(tags[date.day -1]);
 }
 
 void Home(void) {
@@ -119,6 +131,44 @@ void SetTime(void) {
         set_time_flag = 1;
     }
     
+    
+    if (set_time_flag) {
+        ILCDPanelWrite(" Set");
+    }
+    else {
+        ILCDPanelWrite("    ");
+    }
+}
+
+void SetDate(void)
+{
+    ILCDPanelWrite("Set System Date");
+    
+    ILCDPanelSetCursor(1, 0);
+    
+    PrintDateToLCD(set_date_date);
+    
+    unsigned char buttons = checkButtons();
+    
+    if (buttons) set_date_flag = 0;
+    
+    // TODO: Needs validation.
+    set_date_date.date = set_date_date.date + ((buttons & 0x10) >> 4);
+    set_date_date.date = set_date_date.date - (buttons & 0x01);
+    
+    set_date_date.month = set_date_date.month + ((buttons & 0x20) >> 5);
+    set_date_date.month = set_date_date.month - ((buttons & 0x02) >> 1);
+    
+    set_date_date.year = set_date_date.year + ((buttons & 0x40) >> 6);
+    set_date_date.year = set_date_date.year - ((buttons & 0x04) >> 2);
+    
+    set_date_date.day = set_date_date.day + ((buttons & 0x08) >> 3);
+    if (set_date_date.day > 7) set_date_date.day = 1;
+    
+    if (buttons & 0x80) {
+        setDate(set_date_date);
+        set_time_flag = 1;
+    }
     
     if (set_time_flag) {
         ILCDPanelWrite(" Set");
@@ -187,6 +237,7 @@ void main(void) {
     clearWP();
     
     getTime(&set_time_time);
+    getDate(&set_date_date);
     
     set_trig_temp = 20;
     trigger_temperature = 20;
@@ -271,6 +322,7 @@ void main(void) {
         }
         else if (buttonResults[0][3]) {
             getTime(&set_time_time);
+            getDate(&set_date_date);
             ILCDPanelClear();
         }
         else if (buttonResults[1][0]) {
@@ -300,6 +352,10 @@ void main(void) {
                 
             case SETTIME:
                 SetTime();
+                break;
+                
+            case SETDATE:
+                SetDate();
                 break;
                 
             case TRIGTEMP:
