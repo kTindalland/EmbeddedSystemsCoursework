@@ -21,6 +21,7 @@
 #define FAKETEMP 3
 #define HOTTIME 4
 #define COLDTIME 5
+#define SETDATE 6
 
 signed char home_temperature_whole;
 unsigned char home_temperature_decimal;
@@ -265,11 +266,11 @@ void main(void) {
             ILCDPanelClear();
         }
         else if (buttonResults[0][2]) {
-            mode = TRIGTEMP;
+            mode = SETDATE;
             ILCDPanelClear();
         }
         else if (buttonResults[0][3]) {
-            mode = FAKETEMP;
+            getTime(&set_time_time);
             ILCDPanelClear();
         }
         else if (buttonResults[1][0]) {
@@ -279,9 +280,14 @@ void main(void) {
         else if (buttonResults[1][1]) {
             mode = COLDTIME;
             ILCDPanelClear();
+        }        
+        else if (buttonResults[1][2]) {
+            mode = TRIGTEMP;
+            ILCDPanelClear();
         }
-        else if (buttonResults[3][0]) {
-            getTime(&set_time_time);
+        else if (buttonResults[1][3]) {
+            mode = FAKETEMP;
+            ILCDPanelClear();
         }
                 
         
@@ -313,6 +319,5 @@ void main(void) {
                 break;
         }
     }
-    
     return;
 }
