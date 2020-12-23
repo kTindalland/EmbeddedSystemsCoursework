@@ -43,6 +43,8 @@ unsigned char cold_time_actual;
 unsigned char cold_time_temp;
 
 unsigned char temp_last;
+
+rtcDate start_trig_date;
 rtcTime start_trig_time;
 unsigned char trigger_timer_passed;
 
@@ -280,21 +282,45 @@ void main(void) {
             {
                 rtcTime current_time;
                 getTime(&current_time);
-                               
-                unsigned char current_time_char = (current_time.mins * 60) + current_time.secs;
-                unsigned char start_trig_time_char = (start_trig_time.mins * 60) + start_trig_time.secs;
-                unsigned char time_difference = current_time_char - start_trig_time_char;
+                
+                rtcDate current_date;
+                getDate(&current_date);
+                
+               
+                unsigned int current_time_char = (current_time.hours * 60 * 60) + (current_time.mins * 60) + current_time.secs;
+                unsigned int start_trig_time_char = (start_trig_time.hours * 60 * 60) + (start_trig_time.mins * 60) + start_trig_time.secs;
+                unsigned int time_difference;
+                
+                int cY = current_date.year;
+                int cM = current_date.month;
+                int cD = current_date.date;
+                int sY = start_trig_date.year;
+                int sM = start_trig_date.month;
+                int sD = start_trig_date.date;
+                
+                unsigned char time_flag = 0;
+                
+                if ((cY == sY + 1 && cM == 1 && cD == 1)  || // If next day is next day, but also next year.
+                    (cY == sY && cM == sM + 1 && cD == 1) || // If next day is next day, but also next month.
+                    (cY == sY && cM == sM && cD == sD + 1))  // If current day is next day, but in the same month/year.
+                {
+                    time_difference = current_time_char + (86400 - start_trig_time_char);
+                }
+                else
+                {
+                    time_difference = current_time_char - start_trig_time_char;
+                }
                 
                 if (temp_last == 0 && 
-                    start_trig_time_char + cold_time_actual >= current_time_char)
+                    start_trig_time_char + cold_time_actual <= time_difference)
                 {
                     trigger_timer_passed = 1;
                     ISounderBuzz(0);
                 }
                 else if (temp_last == 1 &&
-                         start_trig_time_char + hot_time_actual >= current_time_char)
+                         start_trig_time_char + hot_time_actual <= time_difference)
                 {
-                    trigger_timer_passed = 1;  
+                    trigger_timer_passed = 1;
                     ISounderBuzz(1);
                 }
             }
