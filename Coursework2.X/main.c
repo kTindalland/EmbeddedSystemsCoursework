@@ -46,6 +46,8 @@ unsigned char temp_last;
 
 rtcDate start_trig_date;
 rtcTime start_trig_time;
+rtcTime goal_time;
+rtcDate goal_date;
 unsigned char trigger_timer_passed;
 
 
@@ -308,6 +310,25 @@ void SetHotColdTime(unsigned char* actual, unsigned char* temp, unsigned char bo
     ILCDPanelWrite(string);
 }
 
+void GetMaximumMonth(char month, short year)
+{
+    if (month != 2)
+    {
+        if ((month == 1) || (month == 3) || (month == 5) || (month == 7) || (month == 8) ||(month == 10) ||  (month == 12))
+        {
+            return 31;
+        }
+        else return 30;
+    }
+    else
+    {
+        if (year % 400 == 0)        return 29;
+        else if (year % 100 == 0)   return 28;
+        else if (year % 4 == 0)     return 29;
+        else                        return 28;
+    }
+}
+
 void main(void) {
     ILCDPanelClear();
     clearWP();
@@ -354,21 +375,87 @@ void main(void) {
                 trigger_timer_passed = 0;
                 temp_last = 0;
                 getTime(&start_trig_time);
+                getDate(&start_trig_date);
+                goal_time = start_trig_time;
+                goal_date = start_trig_date;
+                
+                if (goal_time.secs + cold_time_actual > 59)
+                {
+                    goal_time.secs = 0;
+                    goal_time.mins = goal_time.mins + 1;
+                    if (goal_time.mins > 59)
+                    {
+                        goal_time.mins = 0;
+                        goal_time.hours = goal_time.hours + 1;
+                        if ((set_time_time.AMPM == -1 && goal_time.hours > 23) ||
+                             goal_time.hours > 11)
+                        {
+                            goal_time.hours = 0;
+                            goal_date.date = goal_date.date + 1;
+                            if (goal_date.day == 7) { goal_date.day = 1; }
+                            else { goal_date.day = goal_date.day + 1; }
+                            
+                            if (goal_date.date > GetMaximumMonth(goal_date.month))
+                            {
+                                goal_date.date = 1;
+                                goal_date.month = goal_date.month + 1;
+                                if (goal_date.month > 12)
+                                {
+                                    goal_date.month = 1;
+                                    goal_date.year = goal_date.year + 1;
+                                }
+                            }
+                        }
+                    }
+                }
             }
             else if (home_temperature_whole > trigger_temperature && temp_last == 0)
             {
                 trigger_timer_passed = 0;
                 temp_last = 1;
                 getTime(&start_trig_time);
+                getDate(&start_trig_date);
+                goal_time = start_trig_time;
+                goal_date = start_trig_date;
+                if (goal_time.secs + cold_time_actual > 59)
+                {
+                    goal_time.secs = 0;
+                    goal_time.mins = goal_time.mins + 1;
+                    if (goal_time.mins > 59)
+                    {
+                        goal_time.mins = 0;
+                        goal_time.hours = goal_time.hours + 1;
+                        if ((set_time_time.AMPM == -1 && goal_time.hours > 23) ||
+                             goal_time.hours > 11)
+                        {
+                            goal_time.hours = 0;
+                            goal_date.date = goal_date.date + 1;
+                            if (goal_date.day == 7) { goal_date.day = 1; }
+                            else { goal_date.day = goal_date.day + 1; }
+                            
+                            if (goal_date.date > GetMaximumMonth(goal_date.month))
+                            {
+                                goal_date.date = 1;
+                                goal_date.month = goal_date.month + 1;
+                                if (goal_date.month > 12)
+                                {
+                                    goal_date.month = 1;
+                                    goal_date.year = goal_date.year + 1;
+                                }
+                            }
+                        }
+                    }
+                }
             }
             else if (trigger_timer_passed == 0)
             {
+                
+                
                 rtcTime current_time;
                 getTime(&current_time);
                 
                 rtcDate current_date;
                 getDate(&current_date);
-                
                
                 unsigned int current_time_char = (current_time.hours * 60 * 60) + (current_time.mins * 60) + current_time.secs;
                 unsigned int start_trig_time_char = (start_trig_time.hours * 60 * 60) + (start_trig_time.mins * 60) + start_trig_time.secs;
