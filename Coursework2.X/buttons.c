@@ -40,11 +40,7 @@ void checkMatrixButtons(unsigned char result[4][4]) {
             if (inputs & (1 << col)) {
                 result[row][col] = 1;
             }
-            
-            
         }
-        
-        for (unsigned char i = 0; i < 255; i++);
     }
     
 }

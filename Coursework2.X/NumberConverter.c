@@ -18,7 +18,7 @@ char nbrcnvt_convert_digit(unsigned short digit ) {
 
 #pragma GCC diagnostic pop
 
-void nbrcnvt_convert_integer(unsigned short number, char* output) {
+void nbrcnvt_convert_integer(signed short number, char* output) {
 	unsigned char thousands;
 	unsigned char hundreds;
 	unsigned char tens;
