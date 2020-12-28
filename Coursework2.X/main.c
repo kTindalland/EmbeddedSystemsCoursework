@@ -430,7 +430,6 @@ void main(void) {
         else if (buttonResults[0][3]) {
             getTime(&set_time_time);
             getDate(&set_date_date);
-            ILCDPanelClear();
         }
         else if (buttonResults[1][0]) {
             mode = HOTTIME;
