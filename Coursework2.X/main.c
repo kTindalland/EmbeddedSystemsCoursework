@@ -282,6 +282,13 @@ void SetFakeTemperature(void) {
     string[2] = '\0';
     
     ILCDPanelWrite(string);
+    
+    if (fake_temp_onoff) {
+        ILCDPanelWrite(" ON  ");
+    }
+    else {
+        ILCDPanelWrite(" OFF  ");
+    }
 }
 
 void SetHotColdTime(unsigned char* actual, unsigned char* temp, unsigned char bound, char* title) {
@@ -308,7 +315,20 @@ void SetHotColdTime(unsigned char* actual, unsigned char* temp, unsigned char bo
     ILCDPanelWrite(string);
 }
 
+void GetTemperatureProxy(unsigned char* whole, unsigned char* decimal) {
+    if (fake_temp_onoff) {
+        *whole = fake_temperature;
+        *decimal = fake_temperature_decimal;
+    }
+    else {
+        IThermGetTemperature(whole, decimal);
+    }
+};
+
 void main(void) {
+    // Use real temperature.
+    fake_temp_onoff = 0x00;
+    
     ILCDPanelClear();
     clearWP();
     
@@ -347,7 +367,7 @@ void main(void) {
         getTime(&time);
         
         if (time.secs % 6 == 0) { // Every 6 secs to reduce time.
-            IThermGetTemperature(&home_temperature_whole, &home_temperature_decimal);
+            GetTemperatureProxy(&home_temperature_whole, &home_temperature_decimal);
             
             if (home_temperature_whole < trigger_temperature && temp_last == 1)
             {
@@ -447,6 +467,10 @@ void main(void) {
         else if (buttonResults[1][3]) {
             mode = FAKETEMP;
             ILCDPanelClear();
+        }
+        else if (buttonResults[2][0]) {
+            // Toggle the fake temperature.
+            fake_temp_onoff = ~fake_temp_onoff;
         }
                 
         
