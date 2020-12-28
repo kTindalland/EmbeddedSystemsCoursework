@@ -35,7 +35,7 @@ extern "C" {
         unsigned char secs;
         unsigned char mins;
         unsigned char hours;       
-        unsigned char AMPM;
+        signed char AMPM;
     } rtcTime;
     
     typedef struct rtcDate {

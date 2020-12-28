@@ -7,7 +7,6 @@
 void LcdInit();            
 void WriteCmd(char x);
 void WriteChar(char x);
-int StringLength(char s[]);
 void WriteString(char s[]);
 void SetCursorPos(char line, char col);
 void ClearCmd();

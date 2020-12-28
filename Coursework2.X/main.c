@@ -17,16 +17,21 @@
 
 #define HOME 0
 #define SETTIME 1
-#define TRIGTEMP 2
-#define FAKETEMP 3
-#define HOTTIME 4
-#define COLDTIME 5
+#define SETDATE 2
+#define TRIGTEMP 3
+#define FAKETEMP 4
+#define HOTTIME 5
+#define COLDTIME 6
+
 
 signed char home_temperature_whole;
 unsigned char home_temperature_decimal;
 
 rtcTime set_time_time;
 unsigned char set_time_flag;
+
+rtcDate set_date_date;
+unsigned char set_date_flag;
 
 unsigned char set_trig_temp;
 unsigned char trigger_temperature;
@@ -38,8 +43,11 @@ unsigned char cold_time_actual;
 unsigned char cold_time_temp;
 
 unsigned char temp_last;
+
+rtcDate start_trig_date;
 rtcTime start_trig_time;
 unsigned char trigger_timer_passed;
+
 
 unsigned char cold_timer_actual;
 unsigned char hot_timer_actual;
@@ -67,6 +75,15 @@ void PrintTimeToLCD(rtcTime time) {
     
     char* tags[] = {"  ", "AM", "PM" };
     ILCDPanelWrite(tags[time.AMPM + 1]);
+}
+
+void PrintDateToLCD(rtcDate date){
+    PrintTimeNumber(date.day, "/");
+    PrintTimeNumber(date.month, "/");
+    PrintTimeNumber(date.year - 2000, " ");
+    
+    char* tags[] = {"MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"};
+    ILCDPanelWrite(tags[date.day -1]);
 }
 
 void Home(void) {
@@ -124,6 +141,44 @@ void SetTime(void) {
         set_time_flag = 1;
     }
     
+    
+    if (set_time_flag) {
+        ILCDPanelWrite(" Set");
+    }
+    else {
+        ILCDPanelWrite("    ");
+    }
+}
+
+void SetDate(void)
+{
+    ILCDPanelWrite("Set System Date");
+    
+    ILCDPanelSetCursor(1, 0);
+    
+    PrintDateToLCD(set_date_date);
+    
+    unsigned char buttons = checkButtons();
+    
+    if (buttons) set_date_flag = 0;
+    
+    // TODO: Needs validation.
+    set_date_date.date = set_date_date.date + ((buttons & 0x10) >> 4);
+    set_date_date.date = set_date_date.date - (buttons & 0x01);
+    
+    set_date_date.month = set_date_date.month + ((buttons & 0x20) >> 5);
+    set_date_date.month = set_date_date.month - ((buttons & 0x02) >> 1);
+    
+    set_date_date.year = set_date_date.year + ((buttons & 0x40) >> 6);
+    set_date_date.year = set_date_date.year - ((buttons & 0x04) >> 2);
+    
+    set_date_date.day = set_date_date.day + ((buttons & 0x08) >> 3);
+    if (set_date_date.day > 7) set_date_date.day = 1;
+    
+    if (buttons & 0x80) {
+        setDate(set_date_date);
+        set_time_flag = 1;
+    }
     
     if (set_time_flag) {
         ILCDPanelWrite(" Set");
@@ -258,6 +313,7 @@ void main(void) {
     clearWP();
     
     getTime(&set_time_time);
+    getDate(&set_date_date);
     
     set_trig_temp = 20;
     trigger_temperature = 20;
@@ -309,21 +365,45 @@ void main(void) {
             {
                 rtcTime current_time;
                 getTime(&current_time);
-                               
-                unsigned char current_time_int = (current_time.mins * 60) + current_time.secs;
-                unsigned char start_trig_time_int = (start_trig_time.mins * 60) + start_trig_time.secs;
-                unsigned char time_difference = current_time_int - start_trig_time_int;
+                
+                rtcDate current_date;
+                getDate(&current_date);
+                
+               
+                unsigned int current_time_char = (current_time.hours * 60 * 60) + (current_time.mins * 60) + current_time.secs;
+                unsigned int start_trig_time_char = (start_trig_time.hours * 60 * 60) + (start_trig_time.mins * 60) + start_trig_time.secs;
+                unsigned int time_difference;
+                
+                int cY = current_date.year;
+                int cM = current_date.month;
+                int cD = current_date.date;
+                int sY = start_trig_date.year;
+                int sM = start_trig_date.month;
+                int sD = start_trig_date.date;
+                
+                unsigned char time_flag = 0;
+                
+                if ((cY == sY + 1 && cM == 1 && cD == 1)  || // If next day is next day, but also next year.
+                    (cY == sY && cM == sM + 1 && cD == 1) || // If next day is next day, but also next month.
+                    (cY == sY && cM == sM && cD == sD + 1))  // If current day is next day, but in the same month/year.
+                {
+                    time_difference = current_time_char + (86400 - start_trig_time_char);
+                }
+                else
+                {
+                    time_difference = current_time_char - start_trig_time_char;
+                }
                 
                 if (temp_last == 0 && 
-                    start_trig_time_int + cold_timer_actual >= current_time_int)
+                    start_trig_time_char + cold_time_actual <= time_difference)
                 {
                     trigger_timer_passed = 1;
                     ISounderBuzz(0);
                 }
                 else if (temp_last == 1 &&
-                         start_trig_time_int + hot_timer_actual >= current_time_int)
+                         start_trig_time_char + hot_time_actual <= time_difference)
                 {
-                    trigger_timer_passed = 1;  
+                    trigger_timer_passed = 1;
                     ISounderBuzz(1);
                 }
             }
@@ -344,11 +424,12 @@ void main(void) {
             ILCDPanelClear();
         }
         else if (buttonResults[0][2]) {
-            mode = TRIGTEMP;
+            mode = SETDATE;
             ILCDPanelClear();
         }
         else if (buttonResults[0][3]) {
-            mode = FAKETEMP;
+            getTime(&set_time_time);
+            getDate(&set_date_date);
             ILCDPanelClear();
         }
         else if (buttonResults[1][0]) {
@@ -358,9 +439,14 @@ void main(void) {
         else if (buttonResults[1][1]) {
             mode = COLDTIME;
             ILCDPanelClear();
+        }        
+        else if (buttonResults[1][2]) {
+            mode = TRIGTEMP;
+            ILCDPanelClear();
         }
-        else if (buttonResults[3][0]) {
-            getTime(&set_time_time);
+        else if (buttonResults[1][3]) {
+            mode = FAKETEMP;
+            ILCDPanelClear();
         }
                 
         
@@ -373,6 +459,10 @@ void main(void) {
                 
             case SETTIME:
                 SetTime();
+                break;
+                
+            case SETDATE:
+                SetDate();
                 break;
                 
             case TRIGTEMP:
@@ -392,6 +482,5 @@ void main(void) {
                 break;
         }
     }
-    
     return;
 }
