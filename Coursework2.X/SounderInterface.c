@@ -2,7 +2,7 @@
 #include "SounderDriver.h"
 #include "Delay.h"
 
-void ISounderBuzz(int hot) // 1 for hot 0 for cold;
+void ISounderBuzz(unsigned char hot) // 1 for hot 0 for cold;
 {
     InitialiseSounder();
     if(hot)

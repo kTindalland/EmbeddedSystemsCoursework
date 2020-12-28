@@ -54,7 +54,7 @@ void WriteChar(char x)
 
 void WriteString(char s[])
 { 
-    for (int i=0; i<StringLength(s); i++)
+    for (unsigned char i=0; i<StringLength(s); i++)
     {
         WriteChar(s[i]);
     }
