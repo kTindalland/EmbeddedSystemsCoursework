@@ -368,7 +368,7 @@ void GetGoalTriggerTime(unsigned char hot)
     }
 }
 
-void GetTriggerTimeStatus()
+unsigned char GetTriggerTimeStatus(void)
 {
     rtcTime current_time;
     getTime24(&current_time);
