@@ -33,8 +33,10 @@ unsigned char set_time_flag;
 rtcDate set_date_date;
 unsigned char set_date_flag;
 
-unsigned char set_trig_temp;
-unsigned char trigger_temperature;
+signed char set_trig_temp_whole;
+signed char set_trig_temp_decimal;
+signed char trigger_temperature_whole;
+signed char trigger_temperature_decimal;
 
 unsigned char hot_time_actual;
 unsigned char hot_time_temp;
@@ -192,26 +194,55 @@ void SetTriggerTemperature() {
     
     ILCDPanelWrite("Trigger Temp.");
     
-    if (set_trig_temp != trigger_temperature) ILCDPanelWrite("*"); // Change indicator.
+    if ((set_trig_temp_whole != trigger_temperature_whole) || (set_trig_temp_decimal != trigger_temperature_decimal)) ILCDPanelWrite("*"); // Change indicator.
     else ILCDPanelWrite(" ");
     
     unsigned char buttons;
     buttons = checkButtons();
     
-    set_trig_temp = set_trig_temp + ((buttons & 0x10) >> 4); // Add 1
-    set_trig_temp = set_trig_temp - (buttons & 0x01); // Sub 1
+    set_trig_temp_whole = set_trig_temp_whole + ((buttons & 0x10) >> 4); // Add 1
+    set_trig_temp_whole = set_trig_temp_whole - (buttons & 0x01); // Sub 1
     
-    //set_trig_temp = set_trig_temp + ((buttons & 0x20) >> 5); // Add 0.1
+    set_trig_temp_whole = set_trig_temp_whole + ((buttons & 0x20) >> 5) * 10; // Add 10
+    set_trig_temp_whole = set_trig_temp_whole - ((buttons & 0x02) >> 1) * 10; // Sub 10
     
-    //set_trig_temp = set_trig_temp - ((buttons & 0x02) >> 1); // Sub 0.1
+    set_trig_temp_decimal = set_trig_temp_decimal + ((buttons & 0x40) >> 6); // Add 0.1
+    set_trig_temp_decimal = set_trig_temp_decimal - ((buttons & 0x04) >> 2); // Sub 0.1
 
-    if (buttons & 0x40) trigger_temperature = set_trig_temp; // Set
-    if (buttons & 0x04) set_trig_temp = trigger_temperature; // Cancel
+    // Check the decimal stuff
+    if (set_trig_temp_decimal < 0) {
+        set_trig_temp_decimal = 9;
+        set_trig_temp_whole--;
+    }
+    
+    if (set_trig_temp_decimal > 9) {
+        set_trig_temp_decimal = 0;
+        set_trig_temp_whole++;
+    }
+    
+    // Check bounds?
+    
+    if (buttons & 0x80) {
+        trigger_temperature_whole = set_trig_temp_whole; // Set
+        trigger_temperature_decimal = set_trig_temp_decimal;
+    }
+    
+    if (buttons & 0x08) {
+        set_trig_temp_whole = trigger_temperature_whole; // Cancel
+        set_trig_temp_decimal = trigger_temperature_decimal;
+    }
     
     ILCDPanelSetCursor(1, 0);
     char string[10];
-    nbrcnvt_convert_integer(set_trig_temp, string);
+    nbrcnvt_convert_integer(set_trig_temp_whole, string);
     ILCDPanelWrite(string);
+    
+    ILCDPanelWrite(".");
+    
+    nbrcnvt_convert_integer(set_trig_temp_decimal, string);
+    ILCDPanelWrite(string);
+    
+    ILCDPanelWrite("   ");
 }
 
 void SetFakeTemperature(void) {
@@ -335,8 +366,10 @@ void main(void) {
     getTime(&set_time_time);
     getDate(&set_date_date);
     
-    set_trig_temp = 20;
-    trigger_temperature = 20;
+    set_trig_temp_whole = 30;
+    set_trig_temp_decimal = 0;
+    trigger_temperature_whole = 30;
+    set_trig_temp_whole = 0;
     
     // Set timer values
     hot_time_actual = 45;
@@ -369,13 +402,13 @@ void main(void) {
         if (time.secs % 6 == 0) { // Every 6 secs to reduce time.
             GetTemperatureProxy(&home_temperature_whole, &home_temperature_decimal);
             
-            if (home_temperature_whole < trigger_temperature && temp_last == 1)
+            if (home_temperature_whole < trigger_temperature_whole && temp_last == 1)
             {
                 trigger_timer_passed = 0;
                 temp_last = 0;
                 getTime(&start_trig_time);
             }
-            else if (home_temperature_whole > trigger_temperature && temp_last == 0)
+            else if (home_temperature_whole > trigger_temperature_whole && temp_last == 0)
             {
                 trigger_timer_passed = 0;
                 temp_last = 1;
