@@ -48,6 +48,8 @@ unsigned char temp_last;
 
 rtcDate start_trig_date;
 rtcTime start_trig_time;
+rtcTime goal_time;
+rtcDate goal_date;
 unsigned char trigger_timer_passed;
 
 
@@ -356,6 +358,93 @@ void GetTemperatureProxy(unsigned char* whole, unsigned char* decimal) {
     }
 };
 
+unsigned char GetMaximumDateForMonth(unsigned char month, short year)
+{
+    if (month != 2)
+    {
+        if ((month == 1) || (month == 3) || (month == 5) || (month == 7) || (month == 8) ||(month == 10) ||  (month == 12))
+        {
+            return 31;
+        }
+        else return 30;
+    }
+    else
+    {
+        if (year % 400 == 0)        return 29;
+        else if (year % 100 == 0)   return 28;
+        else if (year % 4 == 0)     return 29;
+        else                        return 28;
+    }
+}
+
+void GetGoalTriggerTime(unsigned char hot)
+{
+    trigger_timer_passed = 0;
+    getTime24(&start_trig_time);
+    getDate(&start_trig_date);
+    goal_time = start_trig_time;
+    goal_date = start_trig_date;
+    
+    if (goal_time.secs + cold_time_actual > 59)
+    {
+        goal_time.secs = goal_time.secs - 60;
+        goal_time.mins = goal_time.mins + 1;
+        if (goal_time.mins > 59)
+        {
+            goal_time.mins = 0;
+            goal_time.hours = goal_time.hours + 1;
+            if ((set_time_time.AMPM == -1 && goal_time.hours > 23) ||
+                goal_time.hours > 11) // Open to Being Extended for 12Hr Mode
+                {
+                    goal_time.hours = 0;
+                    goal_date.date = goal_date.date + 1;
+                    if (goal_date.day == 7) { goal_date.day = 1; }
+                    else { goal_date.day = goal_date.day + 1; }
+                            
+                    if (goal_date.date > GetMaximumDateForMonth(goal_date.month, goal_date.year))
+                    {
+                        goal_date.date = 1;
+                        goal_date.month = goal_date.month + 1;
+                        if (goal_date.month > 12)
+                        {
+                            goal_date.month = 1;
+                            goal_date.year = goal_date.year + 1;
+                        }
+                    }
+                }
+            }
+    }
+}
+
+unsigned char GetTriggerTimeStatus(void)
+{
+    rtcTime current_time;
+    getTime24(&current_time);
+                
+    rtcDate current_date;
+    getDate(&current_date);   
+    
+    if (current_date.year > goal_date.year) { return 1; }
+    if (current_date.year < goal_date.year) { return 0; }
+    
+    if (current_date.month > goal_date.month) { return 1; }
+    if (current_date.month < goal_date.month) { return 0; }
+    
+    if (current_date.date > goal_date.date) { return 1; }
+    if (current_date.date < goal_date.date) { return 0; }
+    
+    if (current_time.hours > goal_time.hours) { return 1; }
+    if (current_time.hours < goal_time.hours) { return 0; }
+    
+    if (current_time.mins > goal_time.mins) { return 1; }
+    if (current_time.mins < goal_time.mins) { return 0; }
+    
+    if (current_time.secs >= goal_time.secs) { return 1; }
+    if (current_time.secs < goal_time.secs) { return 0; }
+    
+    return 0;
+}
+
 void main(void) {
     // Use real temperature.
     fake_temp_onoff = 0x00;
@@ -392,7 +481,7 @@ void main(void) {
 //    time.secs = 0;
 //    
 //    setTime(time);
-    trigger_timer_passed = 0;
+    trigger_timer_passed = 1;
     
     while(1) {    
         
@@ -401,63 +490,33 @@ void main(void) {
         
         if (time.secs % 6 == 0) { // Every 6 secs to reduce time.
             GetTemperatureProxy(&home_temperature_whole, &home_temperature_decimal);
-            
-            if (home_temperature_whole < trigger_temperature_whole && temp_last == 1)
+
+            // Hot To Cold
+            if (((home_temperature_whole < trigger_temperature_whole) || // EG: 23.9 < 24.1
+               ((home_temperature_whole == trigger_temperature_whole) && (home_temperature_decimal < trigger_temperature_decimal))) // 25.4 < 25.5
+               && temp_last == 1)         
             {
-                trigger_timer_passed = 0;
                 temp_last = 0;
-                getTime(&start_trig_time);
+                GetGoalTriggerTime(0);
             }
-            else if (home_temperature_whole > trigger_temperature_whole && temp_last == 0)
-            {
-                trigger_timer_passed = 0;
+
+            
+            // Cold To Hot
+            else if (((home_temperature_whole > trigger_temperature_whole) || // EG: 24.1 > 23.9
+               ((home_temperature_whole == trigger_temperature_whole) && (home_temperature_decimal > trigger_temperature_decimal))) // 25.5 > 25.4
+               && temp_last == 0)         
+            {        
                 temp_last = 1;
-                getTime(&start_trig_time);
-            }
+                GetGoalTriggerTime(1);
+            }           
+            
+            // No Trigger, But Buzzer Hasn't Gone Off From Last Trigger
             else if (trigger_timer_passed == 0)
             {
-                rtcTime current_time;
-                getTime(&current_time);
-                
-                rtcDate current_date;
-                getDate(&current_date);
-                
-               
-                unsigned int current_time_char = (current_time.hours * 60 * 60) + (current_time.mins * 60) + current_time.secs;
-                unsigned int start_trig_time_char = (start_trig_time.hours * 60 * 60) + (start_trig_time.mins * 60) + start_trig_time.secs;
-                unsigned int time_difference;
-                
-                int cY = current_date.year;
-                int cM = current_date.month;
-                int cD = current_date.date;
-                int sY = start_trig_date.year;
-                int sM = start_trig_date.month;
-                int sD = start_trig_date.date;
-                
-                unsigned char time_flag = 0;
-                
-                if ((cY == sY + 1 && cM == 1 && cD == 1)  || // If next day is next day, but also next year.
-                    (cY == sY && cM == sM + 1 && cD == 1) || // If next day is next day, but also next month.
-                    (cY == sY && cM == sM && cD == sD + 1))  // If current day is next day, but in the same month/year.
-                {
-                    time_difference = current_time_char + (86400 - start_trig_time_char);
-                }
-                else
-                {
-                    time_difference = current_time_char - start_trig_time_char;
-                }
-                
-                if (temp_last == 0 && 
-                    start_trig_time_char + cold_time_actual <= time_difference)
+                if(GetTriggerTimeStatus())
                 {
                     trigger_timer_passed = 1;
-                    ISounderBuzz(0);
-                }
-                else if (temp_last == 1 &&
-                         start_trig_time_char + hot_time_actual <= time_difference)
-                {
-                    trigger_timer_passed = 1;
-                    ISounderBuzz(1);
+                    ISounderBuzz(temp_last);
                 }
             }
         }
@@ -483,7 +542,6 @@ void main(void) {
         else if (buttonResults[0][3]) {
             getTime(&set_time_time);
             getDate(&set_date_date);
-            ILCDPanelClear();
         }
         else if (buttonResults[1][0]) {
             mode = HOTTIME;
