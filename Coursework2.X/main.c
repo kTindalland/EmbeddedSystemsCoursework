@@ -78,7 +78,7 @@ void PrintTimeToLCD(rtcTime time) {
 }
 
 void PrintDateToLCD(rtcDate date){
-    PrintTimeNumber(date.day, "/");
+    PrintTimeNumber(date.date, "/");
     PrintTimeNumber(date.month, "/");
     PrintTimeNumber(date.year - 2000, " ");
     
