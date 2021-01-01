@@ -39,7 +39,7 @@ void ThermWriteByte(unsigned char value) {
         DQ_LOW();
         
         NOP();
-        NOP();
+        NOP();uk government scrap capital gains
         
         if (temp == 1) DQ_HIGH();
         therm_delay(2, 3);
@@ -50,7 +50,6 @@ void ThermWriteByte(unsigned char value) {
         value = value >> 1;
         
     }
-    
 }
 
 unsigned char ThermReadByte() {

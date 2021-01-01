@@ -4,11 +4,11 @@
 #define rw RA2
 #define e  RA3
 
-void LcdInit();            
+void LcdInit(void);            
 void WriteCmd(char x);
 void WriteChar(char x);
 void WriteString(char s[]);
 void SetCursorPos(char line, char col);
-void ClearCmd();
+void ClearCmd(void);
 
 // Tested on Sim, Not Board

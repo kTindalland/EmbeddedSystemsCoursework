@@ -4,7 +4,7 @@
 
 void ILCDPanelSetCursor(char down, char along);
 
-void ILCDPanelClear();
+void ILCDPanelClear(void);
 
 void ILCDPanelWrite(char s[]);
 

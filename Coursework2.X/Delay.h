@@ -13,7 +13,7 @@ extern "C" {
 #endif
 
     void Delay(unsigned short n);
-    void therm_delay(char, char);
+    void Therm_Delay(char, char);
 
 
 #ifdef	__cplusplus
