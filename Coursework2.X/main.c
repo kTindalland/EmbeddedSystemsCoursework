@@ -70,11 +70,15 @@ void PrintDateToLCD(rtcDate date){
     PrintTimeNumber(date.date, "/");
     PrintTimeNumber(date.month, "/");
     
-    unsigned char year_digits = (unsigned char)(date.year - (short)2000);
+    unsigned char year_digits = (unsigned char)(date.year);
     PrintTimeNumber(year_digits, " ");
+}
+
+void PrintDayToLCD(unsigned char day) {
+    if (day > 7 || day < 1) return;
     
     char* tags[] = {"MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"};
-    ILCDPanelWrite(tags[date.day -1]);
+    ILCDPanelWrite(tags[day - 1]);
 }
 
 void GetTemperatureProxy(signed char* whole, signed char* decimal) {
@@ -212,6 +216,14 @@ void main(void) {
 //    time.secs = 0;
 //    
 //    setTime(time);
+    
+//    rtcDate date;
+//    date.date = 1;
+//    date.month = 1;
+//    date.year = 21;
+//    date.day = 5;
+//    setDate(date);
+    
     trigger_timer_passed = 1;
     
     while(1) {    

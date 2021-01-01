@@ -27,6 +27,7 @@ extern "C" {
 void PrintTimeNumber(unsigned char, char*);
 void PrintTimeToLCD(rtcTime);
 void PrintDateToLCD(rtcDate);
+void PrintDayToLCD(unsigned char day);
 void Home(void);
 void SetTime(void);
 void SetDate(void);

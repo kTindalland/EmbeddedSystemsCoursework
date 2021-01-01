@@ -7,15 +7,25 @@
 void Home(void) {
     
     rtcTime time;
+    rtcDate date;
     char string[10];
     
     getTime(&time);
+    getDate(&date);
         
+    // Print day of week.
+    PrintDayToLCD(date.day);
+    ILCDPanelWrite(" ");
+    
+    // Print time
     PrintTimeToLCD(time);
 
     nbrcnvt_convert_integer(home_temperature_whole, string);
 
     ILCDPanelSetCursor(1,0);
+    
+    PrintDateToLCD(date);
+    
     ILCDPanelWrite(string);
     ILCDPanelWrite(".");
     
@@ -86,6 +96,7 @@ void SetDate(void)
     ILCDPanelSetCursor(1, 0);
     
     PrintDateToLCD(set_date_date);
+    PrintDayToLCD(set_date_date.day);
     
     unsigned char buttons = checkButtons();
     
