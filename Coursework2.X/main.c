@@ -125,9 +125,8 @@ void SetTime(void) {
     
     unsigned char buttons = checkButtons();
     
-    if (buttons) set_time_flag = 0;
+    if (buttons) set_time_flag = 0; // Check if any button has been pressed.
     
-    // TODO: Needs validation.
     set_time_time.hours = set_time_time.hours + ((buttons & 0x10) >> 4);
     set_time_time.hours = set_time_time.hours - (buttons & 0x01);
     
@@ -139,6 +138,19 @@ void SetTime(void) {
     
     set_time_time.AMPM = set_time_time.AMPM + ((buttons & 0x08) >> 3);
     if (set_time_time.AMPM > 1) set_time_time.AMPM = -1;
+    
+    // Validation
+    // Validate hours
+    // Don't have to handle negatives because datatype is unsigned.
+    // Will just wrap around if it tries to go negative.
+    if (set_time_time.AMPM == -1 && set_time_time.hours > 23) set_time_time.hours = 23;
+    else if (set_time_time.AMPM != -1 && set_time_time.hours > 12) set_time_time.hours = 12;
+    
+    // Validate minutes
+    if (set_time_time.mins > 59) set_time_time.mins = 59;
+    
+    // Validate seconds
+    if (set_time_time.secs > 59) set_time_time.secs = 59;
     
     if (buttons & 0x80) {
         setTime(set_time_time);
@@ -166,7 +178,6 @@ void SetDate(void)
     
     if (buttons) set_date_flag = 0;
     
-    // TODO: Needs validation.
     set_date_date.date = set_date_date.date + ((buttons & 0x10) >> 4);
     set_date_date.date = set_date_date.date - (buttons & 0x01);
     
@@ -178,6 +189,17 @@ void SetDate(void)
     
     set_date_date.day = set_date_date.day + ((buttons & 0x08) >> 3);
     if (set_date_date.day > 7) set_date_date.day = 1;
+    
+    
+    // Validation.
+    unsigned char max_date = GetMaximumDateForMonth(set_date_date.month, set_date_date.year);
+    if (set_date_date.date > max_date) set_date_date.date = max_date;
+    
+    if (set_date_date.month > 12) set_date_date.month = 12;
+    if (set_date_date.month == 0) set_date_date.month = 1;
+    
+    if (set_date_date.year > 2099) set_date_date.year = 2099;
+    if (set_date_date.year < 2000) set_date_date.year = 2000;
     
     if (buttons & 0x80) {
         setDate(set_date_date);
