@@ -6,7 +6,7 @@ void ILCDPanelSetCursor(char down, char along)
     SetCursorPos(down, along);
 }
 
-void ILCDPanelClear()
+void ILCDPanelClear(void)
 {
     LcdInit();
     ClearCmd();

@@ -1,11 +1,3 @@
-/*
- * File:   main.c
- * Author: kaiti
- *
- * Created on 18 December 2020, 10:33
- */
-
-
 #include <xc.h>
 #include "LCDPanelInterface.h"
 #include "RealTimeClockDriver.h"
@@ -14,15 +6,7 @@
 #include "NumberConverter.h"
 #include "buttons.h"
 #include "SounderInterface.h"
-
-#define HOME 0
-#define SETTIME 1
-#define SETDATE 2
-#define TRIGTEMP 3
-#define FAKETEMP 4
-#define HOTTIME 5
-#define COLDTIME 6
-
+#include "main.h"
 
 signed char home_temperature_whole;
 unsigned char home_temperature_decimal;
@@ -145,7 +129,6 @@ void SetTime(void) {
         set_time_flag = 1;
     }
     
-    
     if (set_time_flag) {
         ILCDPanelWrite(" Set");
     }
@@ -192,7 +175,7 @@ void SetDate(void)
     }
 }
 
-void SetTriggerTemperature() {
+void SetTriggerTemperature(void) {
     
     ILCDPanelWrite("Trigger Temp.");
     
@@ -395,7 +378,7 @@ void GetGoalTriggerTime(unsigned char hot)
             goal_time.hours = goal_time.hours + 1;
             if ((set_time_time.AMPM == -1 && goal_time.hours > 23) ||
                 goal_time.hours > 11) // Open to Being Extended for 12Hr Mode
-                {
+            {
                     goal_time.hours = 0;
                     goal_date.date = goal_date.date + 1;
                     if (goal_date.day == 7) { goal_date.day = 1; }
@@ -411,8 +394,8 @@ void GetGoalTriggerTime(unsigned char hot)
                             goal_date.year = goal_date.year + 1;
                         }
                     }
-                }
             }
+        }
     }
 }
 

@@ -9,7 +9,7 @@ void initialiseButtons(void) {
         
 }
 
-unsigned char checkButtons() {
+unsigned char checkButtons(void) {
     initialiseButtons();
     unsigned char result = 0;
     
@@ -20,7 +20,7 @@ unsigned char checkButtons() {
     return result;
 }
 
-void initialiseMatrixButtons() {
+void initialiseMatrixButtons(void) {
     TRISC = 0x0F;
 }
 

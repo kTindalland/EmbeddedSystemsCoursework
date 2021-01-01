@@ -15,12 +15,12 @@
 #define rw RA2
 #define e  RA3
 
-void ClearCmd()
+void ClearCmd(void)
 {
     WriteCmd(0x1); 
 }
 
-void LcdInit()
+void LcdInit(void)
 {
     ADCON1=0x07;               
     TRISA=0x00;             
