@@ -60,15 +60,12 @@ extern "C" {
 
     void setDate(rtcDate date);
     void setTime(rtcTime time);
-    void setDateTime(rtcDateTime datetime);
     void set24HourMode(unsigned char mode);
     
     void getDate(rtcDate* date);
     void getTime(rtcTime* time);
     void getTime24(rtcTime* time);
-    void getTime12(rtcTime* time);
     
-    void getDateTime(rtcDateTime* datetime);
     void convertHourFormat(rtcTime* time);
     
 #ifdef	__cplusplus

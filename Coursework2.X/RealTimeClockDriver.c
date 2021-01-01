@@ -155,10 +155,6 @@ void setTime(rtcTime time) {
     
 }
 
-void setDateTime(rtcDateTime datetime) {
-    setDate(datetime.date);
-    setTime(datetime.time);
-}
 
 void getDate(rtcDate* date) {
     uch dateByte = readByte(RTC_DATE);
@@ -195,16 +191,6 @@ void getTime24(rtcTime* time) {
     
 }
 
-void getTime12(rtcTime* time) {
-    
-    getTime(time);
-    
-    if (time->AMPM == NULL) {
-        convertHourFormat(time);
-    }
-    
-}
-
 void convertHourFormat(rtcTime* time) {
     // If 24 to 12
     if (time->AMPM == NULL) {
@@ -224,9 +210,5 @@ void convertHourFormat(rtcTime* time) {
     }
 }
 
-void getDateTime(rtcDateTime* datetime) {
-    getTime(&datetime->time);
-    getDate(&datetime->date);
-}
 
 #pragma GCC diagnostic pop
