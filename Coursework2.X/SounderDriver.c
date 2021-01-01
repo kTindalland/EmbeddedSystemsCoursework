@@ -1,6 +1,6 @@
 #include <xc.h>
 
-void InitialiseSounder()
+void InitialiseSounder(void)
 {
     TRISC = 0;
 }

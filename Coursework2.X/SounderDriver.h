@@ -14,7 +14,7 @@ extern "C" {
 
 
 void InitialiseSounder(void);
-void BeepSounder(int);
+void BeepSounder(short);
 
 
 #ifdef	__cplusplus

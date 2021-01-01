@@ -2,12 +2,12 @@
 #include "Delay.h"
 
 
-void ThermInit() {
+void ThermInit(void) {
     ADCON1 = 0x07;
     TRISA = 0x00;
 }
 
-void ThermReset() {
+void ThermReset(void) {
     
     char presence = 1;
     
@@ -39,7 +39,7 @@ void ThermWriteByte(unsigned char value) {
         DQ_LOW();
         
         NOP();
-        NOP();uk government scrap capital gains
+        NOP();
         
         if (temp == 1) DQ_HIGH();
         therm_delay(2, 3);
@@ -52,7 +52,7 @@ void ThermWriteByte(unsigned char value) {
     }
 }
 
-unsigned char ThermReadByte() {
+unsigned char ThermReadByte(void) {
     unsigned char i;
     unsigned char value = 0;
     static unsigned char j;
@@ -78,7 +78,7 @@ unsigned char ThermReadByte() {
     return value;
 }
 
-void ThermMeasureTemp() {
+void ThermMeasureTemp(void) {
     
     ThermInit();
     ThermReset();

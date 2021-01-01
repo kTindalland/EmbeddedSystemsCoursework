@@ -24,11 +24,11 @@ extern "C" {
 #endif
 
 
-    void ThermInit();
-    void ThermReset();
+    void ThermInit(void);
+    void ThermReset(void);
     void ThermWriteByte(unsigned char);
-    unsigned char ThermReadByte();
-    void ThermMeasureTemp();
+    unsigned char ThermReadByte(void);
+    void ThermMeasureTemp(void);
     void ThermGetTemp(unsigned char* msb, unsigned char* lsb);
 
 

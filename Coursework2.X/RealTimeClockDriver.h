@@ -50,18 +50,19 @@ extern "C" {
         rtcDate date;        
     } rtcDateTime;
     
-    void clearWP();
+    void clearWP(void);
+    uch readCH();
     
     void writeByte(uch addr, uch data);    
     uch readByte(uch addr);
-    void startClock();
-    void stopClock();
+    void startClock(void);
+    void stopClock(void);
 
 
     void setDate(rtcDate date);
     void setTime(rtcTime time);
     void setDateTime(rtcDateTime datetime);
-    void set24HourMode(unsigned char mode);
+    //void set24HourMode(unsigned char mode);
     
     void getDate(rtcDate* date);
     void getTime(rtcTime* time);
@@ -71,6 +72,7 @@ extern "C" {
     void getDateTime(rtcDateTime* datetime);
     void convertHourFormat(rtcTime* time);
     
+
 #ifdef	__cplusplus
 }
 #endif
