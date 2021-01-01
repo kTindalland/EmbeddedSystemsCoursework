@@ -12,7 +12,7 @@
 extern "C" {
 #endif
 
-    void IThermGetTemperature(signed char*, unsigned char*);
+    void IThermGetTemperature(signed char*, signed char*);
 
 
 #ifdef	__cplusplus

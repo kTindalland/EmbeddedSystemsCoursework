@@ -11,7 +11,7 @@ extern "C" {
     
 uch convertSecs(unsigned char sec);
 uch convertMins(unsigned char mins);
-uch convertHours(unsigned char hours, unsigned char is24Hour);
+uch convertHours(unsigned char hours, signed char is24Hour);
 uch convertDate(unsigned char date, unsigned char month, short year);
 uch convertMonth(unsigned char month);
 uch convertDay(unsigned char day);
@@ -19,13 +19,13 @@ uch convertYear(short year);
 
 unsigned char convertReadSecs(uch secs);
 unsigned char convertReadMins(uch mins);
-unsigned char convertReadHours(uch hours, unsigned char* AMPM);
+unsigned char convertReadHours(uch hours, signed char* AMPM);
 unsigned char convertReadDate(uch date);
 unsigned char convertReadMonth(uch month);
 unsigned char convertReadDay(uch day);
 short convertReadYear(uch year);
 
-uch readCH();
+uch readCH(void);
 
 #ifdef	__cplusplus
 }

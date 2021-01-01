@@ -11,6 +11,7 @@ unsigned char StringLength(char s[]) {
 
 	return count;
 }
+/*
 
 unsigned char StringCopy(char from[], char to[], unsigned char length)
 {
@@ -47,7 +48,7 @@ unsigned char Concatenate(char sA[], char sB[], char result[], unsigned char rLe
 	return 1;
 }
 
-/*
+
 unsigned char ConvertTime12ToString(char* result, unsigned char secs, unsigned char mins, unsigned char hours, unsigned char pm, unsigned char length)
 {
     if (secs < 0 || secs > 59 ||

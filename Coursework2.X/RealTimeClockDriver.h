@@ -50,12 +50,12 @@ extern "C" {
         rtcDate date;        
     } rtcDateTime;
     
-    void clearWP();
+    void clearWP(void);
     
     void writeByte(uch addr, uch data);    
     uch readByte(uch addr);
-    void startClock();
-    void stopClock();
+    void startClock(void);
+    void stopClock(void);
 
 
     void setDate(rtcDate date);

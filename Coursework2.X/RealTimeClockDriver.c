@@ -11,19 +11,19 @@ void rtcInit(){
     PORTB = 0xFF;
 }
 
-void clearWP() {
+void clearWP(void) {
     
     writeByte(RTC_CTRL, 0x00);
     
 }
 
-uch readCH() {
+uch readCH(void) {
     uch secsByte = readByte(RTC_SEC);
     
     return (secsByte & 0x80) >> 7;
 }
 
-void startClock() {
+void startClock(void) {
     uch currentSeconds = readByte(RTC_SEC);
     
     uch newSeconds = currentSeconds & 0x7F;
@@ -31,7 +31,7 @@ void startClock() {
     writeByte(RTC_SEC, newSeconds);
 }
 
-void stopClock() {
+void stopClock(void) {
     uch currentSeconds = readByte(RTC_SEC);
     
     uch newSeconds = currentSeconds | 0x80;

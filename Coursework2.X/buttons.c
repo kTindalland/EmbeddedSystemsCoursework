@@ -9,6 +9,9 @@ void initialiseButtons(void) {
         
 }
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
+
 unsigned char checkButtons(void) {
     initialiseButtons();
     unsigned char result = 0;
@@ -19,6 +22,8 @@ unsigned char checkButtons(void) {
     
     return result;
 }
+
+#pragma GCC diagostic pop
 
 void initialiseMatrixButtons(void) {
     TRISC = 0x0F;

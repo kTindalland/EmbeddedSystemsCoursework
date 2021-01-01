@@ -1,7 +1,7 @@
 #include "RealTimeClockConversions.h"
 
 uch convertSecs(unsigned char sec) {
-	if (sec < 0 || sec >= 60) return RTC_ERROR;
+	if (sec >= 60) return RTC_ERROR;
     
     uch result = 0;
     
@@ -17,7 +17,7 @@ uch convertSecs(unsigned char sec) {
 }
 
 uch convertMins(unsigned char mins) {
-	if (mins < 0 || mins >= 60) return RTC_ERROR;
+	if (mins >= 60) return RTC_ERROR;
     
     uch result = 0;
     
@@ -30,8 +30,8 @@ uch convertMins(unsigned char mins) {
     return result;
 }
 
-uch convertHours(unsigned char hours, unsigned char AMPM) {
-	if (AMPM == NULL && (hours < 0 || hours >= 24)) return RTC_ERROR;
+uch convertHours(unsigned char hours, signed char AMPM) {
+	if (AMPM == NULL && hours >= 24) return RTC_ERROR;
     if (AMPM != NULL && (hours < 1 || hours >= 13)) return RTC_ERROR;
     
     uch ones = hours % 10;
@@ -102,6 +102,9 @@ uch convertDay(unsigned char day) {
     return result;
 }
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
+
 uch convertYear(short year) {
 	if (year < 0 || year >= 100) return RTC_ERROR;
     
@@ -115,6 +118,8 @@ uch convertYear(short year) {
     
     return result;
 }
+
+#pragma GCC diagnostic pop
 
 unsigned char convertReadSecs(uch secs) {
 	unsigned char result = 0;
@@ -138,7 +143,7 @@ unsigned char convertReadMins(uch mins) {
     return result;
 }
 
-unsigned char convertReadHours(uch hours, unsigned char* AMPM) {
+unsigned char convertReadHours(uch hours, signed char* AMPM) {
     unsigned char result = 0;
     
     uch hour12 = hours & 0x80;

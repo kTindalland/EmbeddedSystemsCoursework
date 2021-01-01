@@ -8,7 +8,7 @@
 #pragma GCC diagnostic ignored "-Wconversion"
 
 char nbrcnvt_convert_digit(unsigned short digit ) {
-	if (digit >= 0 && digit <= 9) {
+	if (digit <= 9) {
 		return 48 + digit; /* ASCII 0 character is code 48. */
 	}
 	else { /* Invalid. */
@@ -61,28 +61,4 @@ void nbrcnvt_convert_integer(signed short number, char* output) {
 
 
 
-}
-
-unsigned char nbrcnvt_check_length_int(signed short number) {
-	if (number < 0 && number > -10) {
-		return 3; /* -X\0 */
-	}
-	else if (number < -9 && number >= -50) {
-		return 4; /* -XX\0 */
-	}
-	else if (number >= 0 && number <= 9) {
-		return 2; /* X\0 */
-	}
-	else if (number >= 10 && number <= 99) {
-		return 3;
-	}
-	else if (number >= 100 && number <= 999) {
-		return 4;
-	}
-	else if (number >= 1000 && number <= 9999) {
-		return 5;
-	}
-	else { /* Default */
-		return -1;
-	}
 }

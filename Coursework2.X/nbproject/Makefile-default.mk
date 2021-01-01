@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c LCDPanelDriver.c LCDPanelInterface.c Delay.c NumberConverter.c StringUtils.c RealTimeClockConversions.c RealTimeClockDriver.c ThermometerDriver.c ThermometerInterface.c buttons.c SounderDriver.c SounderInterface.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c LCDPanelDriver.c LCDPanelInterface.c Delay.c NumberConverter.c StringUtils.c RealTimeClockConversions.c RealTimeClockDriver.c ThermometerDriver.c ThermometerInterface.c buttons.c SounderDriver.c SounderInterface.c mode_functions.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.p1 ${OBJECTDIR}/LCDPanelDriver.p1 ${OBJECTDIR}/LCDPanelInterface.p1 ${OBJECTDIR}/Delay.p1 ${OBJECTDIR}/NumberConverter.p1 ${OBJECTDIR}/StringUtils.p1 ${OBJECTDIR}/RealTimeClockConversions.p1 ${OBJECTDIR}/RealTimeClockDriver.p1 ${OBJECTDIR}/ThermometerDriver.p1 ${OBJECTDIR}/ThermometerInterface.p1 ${OBJECTDIR}/buttons.p1 ${OBJECTDIR}/SounderDriver.p1 ${OBJECTDIR}/SounderInterface.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.p1.d ${OBJECTDIR}/LCDPanelDriver.p1.d ${OBJECTDIR}/LCDPanelInterface.p1.d ${OBJECTDIR}/Delay.p1.d ${OBJECTDIR}/NumberConverter.p1.d ${OBJECTDIR}/StringUtils.p1.d ${OBJECTDIR}/RealTimeClockConversions.p1.d ${OBJECTDIR}/RealTimeClockDriver.p1.d ${OBJECTDIR}/ThermometerDriver.p1.d ${OBJECTDIR}/ThermometerInterface.p1.d ${OBJECTDIR}/buttons.p1.d ${OBJECTDIR}/SounderDriver.p1.d ${OBJECTDIR}/SounderInterface.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.p1 ${OBJECTDIR}/LCDPanelDriver.p1 ${OBJECTDIR}/LCDPanelInterface.p1 ${OBJECTDIR}/Delay.p1 ${OBJECTDIR}/NumberConverter.p1 ${OBJECTDIR}/StringUtils.p1 ${OBJECTDIR}/RealTimeClockConversions.p1 ${OBJECTDIR}/RealTimeClockDriver.p1 ${OBJECTDIR}/ThermometerDriver.p1 ${OBJECTDIR}/ThermometerInterface.p1 ${OBJECTDIR}/buttons.p1 ${OBJECTDIR}/SounderDriver.p1 ${OBJECTDIR}/SounderInterface.p1 ${OBJECTDIR}/mode_functions.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.p1.d ${OBJECTDIR}/LCDPanelDriver.p1.d ${OBJECTDIR}/LCDPanelInterface.p1.d ${OBJECTDIR}/Delay.p1.d ${OBJECTDIR}/NumberConverter.p1.d ${OBJECTDIR}/StringUtils.p1.d ${OBJECTDIR}/RealTimeClockConversions.p1.d ${OBJECTDIR}/RealTimeClockDriver.p1.d ${OBJECTDIR}/ThermometerDriver.p1.d ${OBJECTDIR}/ThermometerInterface.p1.d ${OBJECTDIR}/buttons.p1.d ${OBJECTDIR}/SounderDriver.p1.d ${OBJECTDIR}/SounderInterface.p1.d ${OBJECTDIR}/mode_functions.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.p1 ${OBJECTDIR}/LCDPanelDriver.p1 ${OBJECTDIR}/LCDPanelInterface.p1 ${OBJECTDIR}/Delay.p1 ${OBJECTDIR}/NumberConverter.p1 ${OBJECTDIR}/StringUtils.p1 ${OBJECTDIR}/RealTimeClockConversions.p1 ${OBJECTDIR}/RealTimeClockDriver.p1 ${OBJECTDIR}/ThermometerDriver.p1 ${OBJECTDIR}/ThermometerInterface.p1 ${OBJECTDIR}/buttons.p1 ${OBJECTDIR}/SounderDriver.p1 ${OBJECTDIR}/SounderInterface.p1
+OBJECTFILES=${OBJECTDIR}/main.p1 ${OBJECTDIR}/LCDPanelDriver.p1 ${OBJECTDIR}/LCDPanelInterface.p1 ${OBJECTDIR}/Delay.p1 ${OBJECTDIR}/NumberConverter.p1 ${OBJECTDIR}/StringUtils.p1 ${OBJECTDIR}/RealTimeClockConversions.p1 ${OBJECTDIR}/RealTimeClockDriver.p1 ${OBJECTDIR}/ThermometerDriver.p1 ${OBJECTDIR}/ThermometerInterface.p1 ${OBJECTDIR}/buttons.p1 ${OBJECTDIR}/SounderDriver.p1 ${OBJECTDIR}/SounderInterface.p1 ${OBJECTDIR}/mode_functions.p1
 
 # Source Files
-SOURCEFILES=main.c LCDPanelDriver.c LCDPanelInterface.c Delay.c NumberConverter.c StringUtils.c RealTimeClockConversions.c RealTimeClockDriver.c ThermometerDriver.c ThermometerInterface.c buttons.c SounderDriver.c SounderInterface.c
+SOURCEFILES=main.c LCDPanelDriver.c LCDPanelInterface.c Delay.c NumberConverter.c StringUtils.c RealTimeClockConversions.c RealTimeClockDriver.c ThermometerDriver.c ThermometerInterface.c buttons.c SounderDriver.c SounderInterface.c mode_functions.c
 
 
 
@@ -198,6 +198,14 @@ ${OBJECTDIR}/SounderInterface.p1: SounderInterface.c  nbproject/Makefile-${CND_C
 	@-${MV} ${OBJECTDIR}/SounderInterface.d ${OBJECTDIR}/SounderInterface.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/SounderInterface.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/mode_functions.p1: mode_functions.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/mode_functions.p1.d 
+	@${RM} ${OBJECTDIR}/mode_functions.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp=${DFP_DIR}/xc8  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/mode_functions.p1 mode_functions.c 
+	@-${MV} ${OBJECTDIR}/mode_functions.d ${OBJECTDIR}/mode_functions.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/mode_functions.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
 ${OBJECTDIR}/main.p1: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -302,6 +310,14 @@ ${OBJECTDIR}/SounderInterface.p1: SounderInterface.c  nbproject/Makefile-${CND_C
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp=${DFP_DIR}/xc8  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/SounderInterface.p1 SounderInterface.c 
 	@-${MV} ${OBJECTDIR}/SounderInterface.d ${OBJECTDIR}/SounderInterface.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/SounderInterface.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/mode_functions.p1: mode_functions.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/mode_functions.p1.d 
+	@${RM} ${OBJECTDIR}/mode_functions.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp=${DFP_DIR}/xc8  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/mode_functions.p1 mode_functions.c 
+	@-${MV} ${OBJECTDIR}/mode_functions.d ${OBJECTDIR}/mode_functions.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/mode_functions.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

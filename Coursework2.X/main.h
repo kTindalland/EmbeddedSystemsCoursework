@@ -5,8 +5,16 @@
  * Created on 18 December 2020, 10:33
  */
 
+
+
 #ifndef MAIN_H
 #define	MAIN_H
+
+#include "RealTimeClockDriver.h"
+
+#ifdef	__cplusplus
+extern "C" {
+#endif
 
 #define HOME 0
 #define SETTIME 1
@@ -24,18 +32,14 @@ void SetTime(void);
 void SetDate(void);
 void SetTriggerTemperature(void);
 void SetFakeTemperature(void);
-void SetHotColdtime(unsigned char*, unsigned char*, unsigned char, char*);
-void GetTemperatureProxy(unsigned char*, unsigned char*);
+
+// Weird function won't work :(
+//void SmartHeaterSetHotColdtime(unsigned char*, unsigned char*, unsigned char, char*);
+void GetTemperatureProxy(signed char*, signed char*);
+
 unsigned char GetMaximumDateForMonth(unsigned char, short);
 void GetGoalTriggerTime(unsigned char);
 unsigned char GetTriggerTimeStatus(void);
-void main(void);
-
-#ifdef	__cplusplus
-extern "C" {
-#endif
-
-
 
 #ifdef	__cplusplus
 }
