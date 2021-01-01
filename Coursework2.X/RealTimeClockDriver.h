@@ -57,7 +57,6 @@ extern "C" {
     void startClock(void);
     void stopClock(void);
 
-
     void setDate(rtcDate date);
     void setTime(rtcTime time);
     void set24HourMode(unsigned char mode);
@@ -68,6 +67,7 @@ extern "C" {
     
     void convertHourFormat(rtcTime* time);
     
+
 #ifdef	__cplusplus
 }
 #endif

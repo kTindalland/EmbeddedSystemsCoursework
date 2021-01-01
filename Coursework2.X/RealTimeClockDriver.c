@@ -6,7 +6,7 @@
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wconversion"
 
-void rtcInit(){
+void rtcInit(void){
     TRISB = 0x00;
     PORTB = 0xFF;
 }

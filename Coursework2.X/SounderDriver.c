@@ -1,6 +1,6 @@
 #include <xc.h>
 
-void InitialiseSounder()
+void InitialiseSounder(void)
 {
     TRISA = TRISA & 0xFE;
 }
