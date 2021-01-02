@@ -340,5 +340,16 @@ void main(void) {
                 break;
         }
     }
+    
+    // Heating circuit on/off
+    // Using portc7
+    
+    if (on_off) {
+        PORTC = PORTC | 0x80;
+    }
+    else {
+        PORTC = PORTC & 0x7F;
+    }
+    
     return;
 }

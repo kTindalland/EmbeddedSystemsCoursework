@@ -76,9 +76,12 @@ void SetTime(void) {
     // Validate seconds
     if (set_time_time.secs > 59) set_time_time.secs = 59;
     
-    if (buttons & 0x80) {
+    if (buttons & 0x80) { // Set the time.
         setTime(set_time_time);
         set_time_flag = 1;
+        
+        // Reset the goal time.
+        GetGoalTriggerTime(temp_last);
     }
     
     if (set_time_flag) {
@@ -125,9 +128,12 @@ void SetDate(void)
     if (set_date_date.year > 2099) set_date_date.year = 2099;
     if (set_date_date.year < 2000) set_date_date.year = 2000;
     
-    if (buttons & 0x80) {
+    if (buttons & 0x80) { // Set the date.
         setDate(set_date_date);
         set_time_flag = 1;
+        
+        // Reset the goal time.
+        GetGoalTriggerTime(temp_last);
     }
     
     if (set_time_flag) {
@@ -269,7 +275,6 @@ void SetFakeTemperature(void) {
         ILCDPanelWrite(" OFF  ");
     }
 }
-
 
 void SmartHeaterSetHotColdTime(unsigned char* actual, unsigned char* temp, unsigned char bound, char* title) {
     ILCDPanelWrite(title);
