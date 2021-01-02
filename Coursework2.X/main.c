@@ -47,6 +47,9 @@ signed char fake_temperature_temp;
 signed char fake_temperature_temp_decimal;
 unsigned char fake_temp_onoff;
 
+unsigned char on_off;
+unsigned char on_off_last;
+
 void PrintTimeNumber(unsigned char number, char* endString) {
     char string[10];
     
@@ -183,8 +186,6 @@ unsigned char GetTriggerTimeStatus(void)
     return 0;
 }
 
-
-
 void main(void) {
     // Use real temperature.
     fake_temp_onoff = 0x00; 
@@ -234,9 +235,36 @@ void main(void) {
     while(1) {    
         
         rtcTime time;
-        getTime(&time);
+        getTime24(&time);
         
-        if (time.secs % 6 == 0) { // Every 6 secs to reduce time.
+        if (on_off_last == 0 && on_off == 1)
+        {
+            on_off_last = 1;
+            
+            GetTemperatureProxy(&home_temperature_whole, &home_temperature_decimal);
+            
+            if ((home_temperature_whole < trigger_temperature_whole) ||
+               ((home_temperature_whole == trigger_temperature_whole) && (home_temperature_decimal < trigger_temperature_decimal)))
+            {
+                temp_last = 0;
+            }
+            else if ((home_temperature_whole > trigger_temperature_whole) ||
+                    ((home_temperature_whole == trigger_temperature_whole) && (home_temperature_decimal > trigger_temperature_decimal)))
+            {
+                temp_last = 1;
+            }
+            else {temp_last = 0;}
+        }
+        
+        if ((time.hours < 7 || time.hours > 22) ||
+             (time.hours == 22 && time.mins >= 30))
+        {
+            on_off = 0;
+            on_off_last = 0;
+        }
+        else {on_off = 1;}
+        
+        if (on_off && (time.secs % 6 == 0)) { // Every 6 secs to reduce time / improve performance.
             GetTemperatureProxy(&home_temperature_whole, &home_temperature_decimal);
 
             // Hot To Cold
