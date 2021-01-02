@@ -118,7 +118,12 @@ void GetGoalTriggerTime(unsigned char hot)
     goal_time = start_trig_time;
     goal_date = start_trig_date;
     
-    if (goal_time.secs + cold_time_actual > 59)
+    unsigned char time_used;
+    if (hot) { time_used = hot_time_actual;}
+    else {time_used = cold_time_actual;}
+    
+    
+    if (goal_time.secs + time_used > 59)
     {
         goal_time.secs = goal_time.secs - 60;
         goal_time.mins = goal_time.mins + 1;
@@ -182,7 +187,7 @@ unsigned char GetTriggerTimeStatus(void)
 
 void main(void) {
     // Use real temperature.
-    fake_temp_onoff = 0x00;
+    fake_temp_onoff = 0x00; 
     
     ILCDPanelClear();
     clearWP();
