@@ -41,7 +41,7 @@ extern "C" {
     typedef struct rtcDate {
         unsigned char date;
         unsigned char month;
-        short year;
+        unsigned char year;
         unsigned char day;        
     } rtcDate;
     
@@ -67,6 +67,7 @@ extern "C" {
     
     void convertHourFormat(rtcTime* time);
     
+    uch GetIsLeapYear(uch year);
 
 #ifdef	__cplusplus
 }

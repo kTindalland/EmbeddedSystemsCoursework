@@ -210,5 +210,14 @@ void convertHourFormat(rtcTime* time) {
     }
 }
 
+uch GetIsLeapYear(uch year)
+{
+    short fullYear = year + 2000;
+    
+    if (year % 400 == 0)        return 1;
+    else if (year % 100 == 0)   return 0;
+    else if (year % 4 == 0)     return 1;
+    else                        return 0;
+}
 
 #pragma GCC diagnostic pop

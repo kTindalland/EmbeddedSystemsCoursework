@@ -1,6 +1,6 @@
 #include "RealTimeClockConversions.h"
 
-uch convertSecs(unsigned char sec) {
+uch convertSecs(uch sec) {
 	if (sec >= 60) return RTC_ERROR;
     
     uch result = 0;
@@ -16,7 +16,7 @@ uch convertSecs(unsigned char sec) {
     return result;
 }
 
-uch convertMins(unsigned char mins) {
+uch convertMins(uch mins) {
 	if (mins >= 60) return RTC_ERROR;
     
     uch result = 0;
@@ -30,7 +30,7 @@ uch convertMins(unsigned char mins) {
     return result;
 }
 
-uch convertHours(unsigned char hours, signed char AMPM) {
+uch convertHours(uch hours, signed char AMPM) {
 	if (AMPM == NULL && hours >= 24) return RTC_ERROR;
     if (AMPM != NULL && (hours < 1 || hours >= 13)) return RTC_ERROR;
     
@@ -50,7 +50,7 @@ uch convertHours(unsigned char hours, signed char AMPM) {
     return result;
 }
 
-uch convertDate(unsigned char date, unsigned char month, short year) {
+uch convertDate(uch date, uch month, uch year) {
 	if (month != 2){
         if ((month == 1) || (month == 3) || (month == 5) || (month == 7) || (month == 8) ||(month == 10) ||  (month == 12)){
             if (date < 1 || date >= 31) return RTC_ERROR;
@@ -58,12 +58,10 @@ uch convertDate(unsigned char date, unsigned char month, short year) {
         else if (date < 1 || date >= 30) return RTC_ERROR; // Month
     }
     else{
-        unsigned char isLeapYear = 0;
-        if (year % 400 == 0)        isLeapYear = 1;
-        else if (year % 100 == 0)   isLeapYear = 0;
-        else if (year % 4 == 0)     isLeapYear = 1;
-        else                        isLeapYear = 0;
-        
+        uch isLeapYear;
+        if (GetIsLeapYear(year)){ isLeapYear = 1; }
+        else { isLeapYear = 0; }
+              
         if (isLeapYear && (date < 1 || date >= 29)) return RTC_ERROR; // Leap Year
         else if (date < 1 || date >= 28) return RTC_ERROR;
     }
@@ -79,7 +77,7 @@ uch convertDate(unsigned char date, unsigned char month, short year) {
     return result;
 }
 
-uch convertMonth(unsigned char month) {
+uch convertMonth(uch month) {
 	if (month < 1 || month >= 13) return RTC_ERROR;
     
     uch result = 0;
@@ -93,7 +91,7 @@ uch convertMonth(unsigned char month) {
     return result;
 }
 
-uch convertDay(unsigned char day) {
+uch convertDay(uch day) {
 	if (day < 1 || day >= 8) return RTC_ERROR;
     
     uch result = 0;
@@ -105,8 +103,8 @@ uch convertDay(unsigned char day) {
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wconversion"
 
-uch convertYear(short year) {
-	if (year < 0 || year >= 100) return RTC_ERROR;
+uch convertYear(uch year) {
+	if (year >= 100) return RTC_ERROR;
     
     uch result = 0;
     

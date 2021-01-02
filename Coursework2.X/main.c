@@ -92,9 +92,9 @@ void GetTemperatureProxy(signed char* whole, signed char* decimal) {
     else {
         IThermGetTemperature(whole, decimal);
     }
-};
+}
 
-unsigned char GetMaximumDateForMonth(unsigned char month, short year)
+unsigned char GetMaximumDateForMonth(unsigned char month, unsigned char year)
 {
     if (month != 2)
     {
@@ -106,10 +106,8 @@ unsigned char GetMaximumDateForMonth(unsigned char month, short year)
     }
     else
     {
-        if (year % 400 == 0)        return 29;
-        else if (year % 100 == 0)   return 28;
-        else if (year % 4 == 0)     return 29;
-        else                        return 28;
+        if (GetIsLeapYear(year)) { return 29; }
+        else { return 28; }
     }
 }
 
@@ -262,7 +260,10 @@ void main(void) {
             on_off = 0;
             on_off_last = 0;
         }
-        else {on_off = 1;}
+        else {
+            GetGoalTriggerTime(!temp_last);
+            on_off = 1;
+        }
         
         if (on_off && (time.secs % 6 == 0)) { // Every 6 secs to reduce time / improve performance.
             GetTemperatureProxy(&home_temperature_whole, &home_temperature_decimal);
