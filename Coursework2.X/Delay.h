@@ -1,10 +1,3 @@
-/* 
- * File:   Delay.h
- * Author: kaiti
- *
- * Created on 14 December 2020, 11:19
- */
-
 #ifndef DELAY_H
 #define	DELAY_H
 
@@ -12,7 +5,10 @@
 extern "C" {
 #endif
 
+    // Normal delay, wait for n operations.
     void Delay(unsigned short n);
+    
+    // Thermometer specific delay, calculation used.
     void Therm_Delay(char, char);
 
 
