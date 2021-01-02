@@ -51,7 +51,7 @@ extern "C" {
     } rtcDateTime;
     
     void clearWP(void);
-    
+
     void writeByte(uch addr, uch data);    
     uch readByte(uch addr);
     void startClock(void);
