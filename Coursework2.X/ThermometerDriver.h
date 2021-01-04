@@ -24,12 +24,12 @@ extern "C" {
 #endif
 
 
-    void ThermInit(void);
-    void ThermReset(void);
-    void ThermWriteByte(unsigned char);
-    unsigned char ThermReadByte(void);
-    void ThermMeasureTemp(void);
-    void ThermGetTemp(unsigned char* msb, unsigned char* lsb);
+    void ThermInit(void); // Initialise the thermometer.
+    void ThermReset(void); // Reset the thermometer.
+    void ThermWriteByte(unsigned char); // Write a byte to the thermometer.
+    unsigned char ThermReadByte(void); // Read a byte from the thermometer.
+    void ThermMeasureTemp(void); // Instruct the thermometer to measure the temperature.
+    void ThermGetTemp(unsigned char* msb, unsigned char* lsb); // Retrieve the current temperature.
 
 
 #ifdef	__cplusplus

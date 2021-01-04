@@ -12,7 +12,7 @@
 extern "C" {
 #endif
 
-void ISounderBuzz(unsigned char);
+void ISounderBuzz(unsigned char); // Sound the buzzer in one of two methods.
 
 
 #ifdef	__cplusplus

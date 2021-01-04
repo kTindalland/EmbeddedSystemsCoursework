@@ -8,11 +8,17 @@
 extern "C" {
 #endif
 
+    // Read and Write bits
+    // These can be bitwise OR'ed onto memory addresses
+    // to give the read or write versions.
     #define RTC_READ 0x80
     #define RTC_WRITE 0x00
+
+    // Helpful AMPM macros
     #define AM 0
     #define PM 1
 
+    // Clock memory addresses
     #define RTC_SEC 0x01
     #define RTC_MINS 0x41
     #define RTC_HOURS 0x21
@@ -24,13 +30,16 @@ extern "C" {
     #define RTC_TRICKLE_CHARGER 0x09
     #define RTC_CLK_BURST 0x7D
 
+    // Clock pins
     #define RST RB5
     #define SCLK RB0
     #define RTC_IO RB4
     
+    // Error codes
     #define IRTC_SUCCESS 1
     #define IRTC_ERROR 2
     
+    // Real time clock structs
     typedef struct rtcTime {
         unsigned char secs;
         unsigned char mins;
@@ -45,27 +54,29 @@ extern "C" {
         unsigned char day;        
     } rtcDate;
     
-    typedef struct rtcDateTime {
-        rtcTime time;
-        rtcDate date;        
-    } rtcDateTime;
+    void clearWP(void); // Clear the write protect bit
     
-    void clearWP(void);
-    
-    void writeByte(uch addr, uch data);    
+    // Read and write to the clock.
+    void writeByte(uch addr, uch data);
     uch readByte(uch addr);
+    
+    // Start and stop the clock.
     void startClock(void);
     void stopClock(void);
 
-
+    // Set the date and time.
     void setDate(rtcDate date);
     void setTime(rtcTime time);
+    
+    // Set the 24 hour mode flag.
     void set24HourMode(unsigned char mode);
     
+    // Put the current time or date into struct pointers.
     void getDate(rtcDate* date);
     void getTime(rtcTime* time);
     void getTime24(rtcTime* time);
     
+    // Convert the hour format.
     void convertHourFormat(rtcTime* time);
     
 #ifdef	__cplusplus

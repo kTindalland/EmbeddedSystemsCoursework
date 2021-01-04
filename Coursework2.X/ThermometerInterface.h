@@ -12,7 +12,7 @@
 extern "C" {
 #endif
 
-    void IThermGetTemperature(signed char*, signed char*);
+    void IThermGetTemperature(signed char*, signed char*); // Return the current temperature from the thermometer.
 
 
 #ifdef	__cplusplus

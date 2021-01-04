@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-unsigned char StringLength(char s[]);
+unsigned char StringLength(char s[]); // Get the length of a string.
 
 #ifdef	__cplusplus
 }

@@ -1,10 +1,3 @@
-/* 
- * File:   SounderDriver.h
- * Author: linco
- *
- * Created on 22 December 2020, 17:36
- */
-
 #ifndef SOUNDERDRIVER_H
 #define	SOUNDERDRIVER_H
 
@@ -13,8 +6,8 @@ extern "C" {
 #endif
 
 
-void InitialiseSounder(void);
-void BeepSounder(int);
+void InitialiseSounder(void); // Initialise the sounder.
+void BeepSounder(int); // Beep the sounder for amount of time.
 
 
 #ifdef	__cplusplus
