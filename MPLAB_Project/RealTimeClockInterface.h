@@ -30,6 +30,8 @@ extern "C" {
     void getTime24(rtcTime* time);
     void convertHourFormat(rtcTime* time);
     
+    void clearWP(void);
+    
     #ifdef	__cplusplus
 }
 #endif
