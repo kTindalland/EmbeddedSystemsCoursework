@@ -8,7 +8,7 @@
 #ifndef GLOBALS_H
 #define	GLOBALS_H
 
-#include "RealTimeClockDriver.h"
+#include "RealTimeClockInterface.h"
 
 #ifdef	__cplusplus
 extern "C" {

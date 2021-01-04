@@ -1,16 +1,7 @@
-/* 
- * File:   main.h
- * Author: kaiti
- *
- * Created on 18 December 2020, 10:33
- */
-
-
-
 #ifndef MAIN_H
 #define	MAIN_H
 
-#include "RealTimeClockDriver.h" 
+#include "RealTimeClockInterface.h"
 
 #ifdef	__cplusplus
 extern "C" {
@@ -38,7 +29,7 @@ void SetFakeTemperature(void);
 //void SmartHeaterSetHotColdtime(unsigned char*, unsigned char*, unsigned char, char*);
 void GetTemperatureProxy(signed char*, signed char*);
 
-unsigned char GetMaximumDateForMonth(unsigned char, short);
+unsigned char GetMaximumDateForMonth(unsigned char, unsigned char);
 void GetGoalTriggerTime(unsigned char);
 unsigned char GetTriggerTimeStatus(void);
 

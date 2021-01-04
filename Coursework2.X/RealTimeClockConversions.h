@@ -27,6 +27,8 @@ short convertReadYear(uch year);
 
 uch readCH(void);
 
+uch GetIsLeapYear(uch year);
+
 #ifdef	__cplusplus
 }
 #endif

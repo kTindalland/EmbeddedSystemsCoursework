@@ -31,43 +31,12 @@ extern "C" {
     #define IRTC_SUCCESS 1
     #define IRTC_ERROR 2
     
-    typedef struct rtcTime {
-        unsigned char secs;
-        unsigned char mins;
-        unsigned char hours;       
-        signed char AMPM;
-    } rtcTime;
-    
-    typedef struct rtcDate {
-        unsigned char date;
-        unsigned char month;
-        unsigned char year;
-        unsigned char day;        
-    } rtcDate;
-    
-    typedef struct rtcDateTime {
-        rtcTime time;
-        rtcDate date;        
-    } rtcDateTime;
-    
     void clearWP(void);
 
     void writeByte(uch addr, uch data);    
     uch readByte(uch addr);
     void startClock(void);
     void stopClock(void);
-
-    void setDate(rtcDate date);
-    void setTime(rtcTime time);
-    void set24HourMode(unsigned char mode);
-    
-    void getDate(rtcDate* date);
-    void getTime(rtcTime* time);
-    void getTime24(rtcTime* time);
-    
-    void convertHourFormat(rtcTime* time);
-    
-    uch GetIsLeapYear(uch year);
 
 #ifdef	__cplusplus
 }

@@ -1,141 +1,83 @@
 #include "RealTimeClockDriver.h"
+#include "RealTimeClockConversions.h"
 
-int IRTCGetTime12(char result[], int length) // Have 12 in result
-{
+void setDate(rtcDate date) {
     
-    if (length < 12) // 12 Is Minimum Chars To Store Formatted 12H Time
-    {
-        return IRTC_ERROR;
-    }
-    else
-    {
-        rtcTime getTime;
-        getTime12(&getTime);
+    uch dateByte = convertDate(date.date, date.month, date.year);
+    writeByte(RTC_DATE, dateByte);
     
-        ConvertTime12ToString(result, getTime.secs, getTime.mins, getTime.hours, getTime.AMPM);
-        return IRTC_SUCCESS;
+    uch monthByte = convertMonth(date.month);
+    writeByte(RTC_MONTH, monthByte);
+    
+    uch yearByte = convertYear(date.year);
+    writeByte(RTC_YEAR, yearByte);
+    
+    uch dayByte = convertDay(date.day);
+    writeByte(RTC_DAY, dayByte);
+}
+
+void setTime(rtcTime time) {
+    
+    uch secByte = convertSecs(time.secs);
+    writeByte(RTC_SEC, secByte);
+    
+    uch minsByte = convertMins(time.mins);
+    writeByte(RTC_MINS, minsByte);
+    
+    uch hoursByte = convertHours(time.hours, time.AMPM);
+    writeByte(RTC_HOURS, hoursByte);  
+}
+
+
+void getDate(rtcDate* date) {
+    uch dateByte = readByte(RTC_DATE);
+    date->date = convertReadDate(dateByte);
+    
+    uch monthByte = readByte(RTC_MONTH);
+    date->month = convertReadMonth(monthByte);
+    
+    uch yearByte = readByte(RTC_YEAR);
+    date->year = convertReadYear(yearByte);
+    
+    uch dayByte = readByte(RTC_DAY);
+    date->day = convertReadDay(dayByte);
+}
+
+void getTime(rtcTime* time) {
+    uch secsByte = readByte(RTC_SEC);
+    time->secs = convertReadSecs(secsByte);
+    
+    uch minsByte = readByte(RTC_MINS);
+    time->mins = convertReadMins(minsByte);
+    
+    uch hoursByte = readByte(RTC_HOURS);
+    time->hours = convertReadHours(hoursByte, &time->AMPM);
+}
+
+void getTime24(rtcTime* time) {
+    
+    getTime(time);
+    
+    if (time->AMPM != NULL) {
+        convertHourFormat(time);
     }
 }
 
-int IRTCGetTime24(char result[], int length)
-{
-    
-    if (length < 9) // 9 Is Minimum Chars To Store Formatted 24H Time
-    {
-        return IRTC_ERROR;
-    }
-    else
-    {
-        rtcTime getTime;
-        getTime24(&getTime);
-    
-        ConvertTime24ToString(result, getTime.secs, getTime.mins, getTime.hours);
-        return IRTC_SUCCESS;
-    }
-}
-
-void IRTCGetDate(char date[], int lengthDate, char day[], int lengthDay)
-{
-    if (lengthDate >= 11 && lengthDay >= 4)
-    {
-        rtcDate date_var;
-        getDate(&date_var);
-    
-        ConvertDateToString(date, date_var.date, date_var.month, date_var.year);
-        ConvertDayToString(day, date_var.day);
-    }
-}
-
-int IRTCSetTime24(int hour, int minutes, int seconds)
-{
-    if (hour > -1 && hour < 24 &&
-    minutes > 0 && minutes < 61 &&
-    seconds > 0 && seconds < 61)
-    {
-        rtcTime time;
-        time.secs = seconds;
-        time.mins = minutes;
-        time.hours = hour;
-        time.AMPM = NULL;
+void convertHourFormat(rtcTime* time) {
+    // If 24 to 12
+    if (time->AMPM == NULL) {
+        time->AMPM = AM;
         
-        setTime(time);
-        return IRTC_SUCCESS;
-    }
-    else
-    {
-        return IRTC_ERROR; // IRTC_ERROR_UNDERZERO etc
-    }
-}
-
-void IRTCSetTime12(int hour, int minutes, int seconds, int pm)
-{
-    if (hour > 0 && hour < 13 &&
-        minutes > 0 && minutes < 61 &&
-        seconds > 0 && seconds < 61
-        && (pm == 0 || pm == 1))
-    {
-        rtcTime time;
-        time.secs = seconds;
-        time.mins = minutes;
-        time.hours = hour;
-        time.AMPM = pm;
-        
-        setTime(time);
-    }
-    else
-    {
-        // Error?
-    }
-}
-
-void IRTCSetDate(int date, int month, int year)
-{
-    int dayLimit = 30;
-    int isLeapYear = 0;
-    
-    if (year % 4 == 0)
-    {
-        if (year % 100 == 0)
-        {
-            if (year % 400 == 0)
-            {
-               isLeapYear = 1;
-            }
-        }
-        else
-        {
-            isLeapYear = 1;
+        if (time->hours > 12) {
+            time->hours -= 12;
+            time->AMPM = PM;
         }
     }
-    
-    if (month == 1 || month == 3 || month == 5 || 
-       month == 7 || month == 8 || month == 10 || month == 12)
-    {
-        dayLimit = 31;
-    }
-    
-    if (month == 2 && isLeapYear == 1)
-    {
-        dayLimit = 29;
-    }
-    else if (month == 2 && isLeapYear == 0)
-    {
-        dayLimit = 28;
-    }
-    
-    if (date > 0 && date < dayLimit &&
-        month > 0 && month < 13 &&
-        year > 0 && year < 2099) // Check Year
-    {
-        rtcDate date_var;
-        date_var.date = date;
-        date_var.month = month;
-        date_var.year = year;
+    else { // If 12 to 24
+        if (time->AMPM == PM) {
+            time->hours += 12;
+        }
         
-        setDate(date_var);
-    }
-    else
-    {
-        // Errors
+        if (time->hours >= 24) time->hours = 0;
     }
 }

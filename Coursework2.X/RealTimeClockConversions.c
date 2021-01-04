@@ -58,9 +58,7 @@ uch convertDate(uch date, uch month, uch year) {
         else if (date < 1 || date >= 30) return RTC_ERROR; // Month
     }
     else{
-        uch isLeapYear;
-        if (GetIsLeapYear(year)){ isLeapYear = 1; }
-        else { isLeapYear = 0; }
+        uch isLeapYear = GetIsLeapYear(year);
               
         if (isLeapYear && (date < 1 || date >= 29)) return RTC_ERROR; // Leap Year
         else if (date < 1 || date >= 28) return RTC_ERROR;
@@ -199,4 +197,14 @@ short convertReadYear(uch year) {
     result += tens;
     
     return result;
+}
+
+uch GetIsLeapYear(uch year)
+{
+    short fullYear = year + 2000;
+    
+    if (year % 400 == 0)        return 1;
+    else if (year % 100 == 0)   return 0;
+    else if (year % 4 == 0)     return 1;
+    else                        return 0;
 }
