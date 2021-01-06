@@ -1,7 +1,7 @@
 #ifndef MAIN_H
 #define	MAIN_H
 
-#include "RealTimeClockDriver.h"
+#include "RealTimeClockInterface.h"
 
 #ifdef	__cplusplus
 extern "C" {

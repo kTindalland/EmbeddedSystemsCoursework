@@ -18,6 +18,7 @@
       <itemPath>SounderInterface.h</itemPath>
       <itemPath>SounderDriver.h</itemPath>
       <itemPath>globals.h</itemPath>
+      <itemPath>RealTimeClockInterface.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -40,6 +41,7 @@
       <itemPath>SounderDriver.c</itemPath>
       <itemPath>SounderInterface.c</itemPath>
       <itemPath>mode_functions.c</itemPath>
+      <itemPath>RealTimeClockInterface.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -49,6 +51,7 @@
   </logicalFolder>
   <sourceRootList>
     <Elem>.</Elem>
+    <Elem>../MPLAB_Project</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

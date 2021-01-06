@@ -39,46 +39,17 @@ extern "C" {
     #define IRTC_SUCCESS 1
     #define IRTC_ERROR 2
     
-    // Real time clock structs
-    typedef struct rtcTime {
-        unsigned char secs;
-        unsigned char mins;
-        unsigned char hours;       
-        signed char AMPM;
-    } rtcTime;
-    
-    typedef struct rtcDate {
-        unsigned char date;
-        unsigned char month;
-        short year;
-        unsigned char day;        
-    } rtcDate;
-    
+
     void clearWP(void); // Clear the write protect bit
     
     // Read and write to the clock.
-    void writeByte(uch addr, uch data);
+    void writeByte(uch addr, uch data);  
     uch readByte(uch addr);
     
     // Start and stop the clock.
     void startClock(void);
     void stopClock(void);
 
-    // Set the date and time.
-    void setDate(rtcDate date);
-    void setTime(rtcTime time);
-    
-    // Set the 24 hour mode flag.
-    void set24HourMode(unsigned char mode);
-    
-    // Put the current time or date into struct pointers.
-    void getDate(rtcDate* date);
-    void getTime(rtcTime* time);
-    void getTime24(rtcTime* time);
-    
-    // Convert the hour format.
-    void convertHourFormat(rtcTime* time);
-    
 #ifdef	__cplusplus
 }
 #endif

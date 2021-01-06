@@ -47,5 +47,4 @@ void checkMatrixButtons(unsigned char result[4][4]) {
             }
         }
     }
-    
 }

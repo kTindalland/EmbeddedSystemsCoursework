@@ -125,8 +125,8 @@ void SetDate(void)
     if (set_date_date.month > 12) set_date_date.month = 12;
     if (set_date_date.month == 0) set_date_date.month = 1;
     
-    if (set_date_date.year > 2099) set_date_date.year = 2099;
-    if (set_date_date.year < 2000) set_date_date.year = 2000;
+    if (set_date_date.year > 99) set_date_date.year = 99;
+    if (set_date_date.year == 127) set_date_date.year = 0;
     
     if (buttons & 0x80) { // Set the date.
         setDate(set_date_date);
