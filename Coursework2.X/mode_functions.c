@@ -146,7 +146,7 @@ void SetDate(void)
 
 void SetTriggerTemperature(void) {
     
-    ILCDPanelWrite("Trigger Temp.");
+    ILCDPanelWrite("Set Trigger Temp");
     
     if ((set_trig_temp_whole != trigger_temperature_whole) || (set_trig_temp_decimal != trigger_temperature_decimal)) ILCDPanelWrite("*"); // Change indicator.
     else ILCDPanelWrite(" ");
@@ -194,6 +194,12 @@ void SetTriggerTemperature(void) {
     ILCDPanelWrite(".");
     
     nbrcnvt_convert_integer(set_trig_temp_decimal, string);
+    ILCDPanelWrite(string);
+    
+    string[0] = 0xDF; // Degree symbol.
+    string[1] = 'C';
+    string[2] = '\0';
+
     ILCDPanelWrite(string);
     
     ILCDPanelWrite("   ");

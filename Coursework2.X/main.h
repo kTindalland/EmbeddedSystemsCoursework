@@ -31,7 +31,7 @@ void SetFakeTemperature(void); // The set fake temperature function.
 
 void GetTemperatureProxy(signed char*, signed char*); // Returns the current temperature. Knows if to return real or fake.
 
-unsigned char GetMaximumDateForMonth(unsigned char, short); // Gets the maximum valid date for the given month and year.
+unsigned char GetMaximumDateForMonth(unsigned char, unsigned char); // Gets the maximum valid date for the given month and year.
 void GetGoalTriggerTime(unsigned char); // Reset the goal trigger time.
 unsigned char GetTriggerTimeStatus(void); // Gets the current status of the trigger time.
 

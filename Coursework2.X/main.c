@@ -1,3 +1,4 @@
+#include <xc.h>
 #include "main.h"
 #include "RealTimeClockConversions.h"
 #include "LCDPanelInterface.h"
