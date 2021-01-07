@@ -17,8 +17,8 @@ extern "C" {
 #endif
 
 #ifndef __UNIT_TESTING
-#define DQ RB7
-#define DQ_TRIS TRISB7
+#define DQ RE1
+#define DQ_TRIS TRISE1
 #define DQ_HIGH() DQ_TRIS = 1; 
 #define DQ_LOW() DQ_TRIS = 0; DQ = 0;
 #endif

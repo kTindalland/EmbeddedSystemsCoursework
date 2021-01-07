@@ -3,8 +3,7 @@
 
 
 void ThermInit(void) {
-    ADCON1 = 0x07;
-    TRISA = 0x00;
+    TRISE = 0x00;
 }
 
 void ThermReset(void) {

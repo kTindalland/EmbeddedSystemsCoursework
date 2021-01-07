@@ -186,6 +186,7 @@ unsigned char GetTriggerTimeStatus(void)
 }
 
 void main(void) {
+    
     // Use real temperature.
     fake_temp_onoff = 0x00; 
     

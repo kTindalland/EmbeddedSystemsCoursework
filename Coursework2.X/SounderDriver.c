@@ -2,14 +2,14 @@
 
 void InitialiseSounder(void)
 {
-    TRISA = TRISA & 0xFE;
+    TRISE = TRISE & 0xFE;
 }
 
 void BeepSounder(short time)
 {
     for (short i = 0; i < time; i++)
     {
-        RA0 = 1;
+        RE0 = 1;
     }
-    RA0 = 0;
+    RE0 = 0;
 }

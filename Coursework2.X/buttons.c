@@ -4,9 +4,9 @@
 void initialiseButtons(void) {
         
         ADCON1 = 0x07;
-        TRISA = 0xFF;
+        TRISA = TRISA | 0xF7;
         TRISB = 0xFF;
-        
+        TRISE = TRISE | 0x04; // use port E for one pin that clashes with important pin in the LCD screen.
 }
 
 #pragma GCC diagnostic push
@@ -17,8 +17,12 @@ unsigned char checkButtons(void) {
     unsigned char result = 0;
     
     result = result | (PORTA & 0x0F);
+    result = result & 0xF7; // Eliminate clashing bit.
+    result = result | ((PORTE & 0x04) << 1); // Put in new bit.
     result = result << 4;
     result = result | (PORTB & 0x0F);
+    
+    
     
     return result;
 }

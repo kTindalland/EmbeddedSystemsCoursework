@@ -130,13 +130,13 @@ void SetDate(void)
     
     if (buttons & 0x80) { // Set the date.
         setDate(set_date_date);
-        set_time_flag = 1;
+        set_date_flag = 1;
         
         // Reset the goal time.
         GetGoalTriggerTime(temp_last);
     }
     
-    if (set_time_flag) {
+    if (set_date_flag) {
         ILCDPanelWrite(" Set");
     }
     else {
@@ -146,7 +146,7 @@ void SetDate(void)
 
 void SetTriggerTemperature(void) {
     
-    ILCDPanelWrite("Set Trigger Temp");
+    ILCDPanelWrite("Set Trig Temp");
     
     if ((set_trig_temp_whole != trigger_temperature_whole) || (set_trig_temp_decimal != trigger_temperature_decimal)) ILCDPanelWrite("*"); // Change indicator.
     else ILCDPanelWrite(" ");

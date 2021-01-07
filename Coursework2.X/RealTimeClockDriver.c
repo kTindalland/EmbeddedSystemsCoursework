@@ -8,7 +8,7 @@
 
 void rtcInit(void){
     TRISB = 0x00;
-    PORTB = 0xFF;
+    // PORTB = 0xFF; Is this needed?
 }
 
 void clearWP(void) {
