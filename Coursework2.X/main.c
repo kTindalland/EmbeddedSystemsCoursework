@@ -7,6 +7,13 @@
 #include "buttons.h"
 #include "SounderInterface.h"
 
+// Config
+#pragma config FOSC = HS
+#pragma config WDTE = OFF
+#pragma config PWRTE = ON
+#pragma config BOREN = OFF
+#pragma config LVP = OFF
+
 // Weird function won't work if not given exactly what it wants.
 void SmartHeaterSetHotColdTime(unsigned char* actual, unsigned char* temp, unsigned char bound, char* title);
 

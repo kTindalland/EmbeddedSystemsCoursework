@@ -7,16 +7,18 @@ void ISounderBuzz(unsigned char hot) // 1 for hot 0 for cold;
     InitialiseSounder();
     if(hot)
     {
-        BeepSounder(2000);
-        Delay(500);
-        BeepSounder(2000);
+        // Two long beeps
+        BeepSounder(20000);
+        Delay(2500);
+        BeepSounder(20000);
     }
     else 
     {
-        BeepSounder(500);
-        Delay(500);
-        BeepSounder(500);
-        Delay(500);
-        BeepSounder(500);
+        // Three short beeps
+        BeepSounder(10000);
+        Delay(2500);
+        BeepSounder(10000);
+        Delay(2500);
+        BeepSounder(10000);
     }
 }

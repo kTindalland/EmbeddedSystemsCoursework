@@ -174,7 +174,15 @@ void SetTriggerTemperature(void) {
         set_trig_temp_whole++;
     }
     
-    // Check bounds?
+    if (set_trig_temp_whole > 115 || (set_trig_temp_whole == 115 && set_trig_temp_decimal > 0)) {
+        set_trig_temp_whole = 115;
+        set_trig_temp_decimal = 0;
+    } 
+    
+    if (set_trig_temp_whole < -50 || (set_trig_temp_whole == -50 && set_trig_temp_decimal > 0)) {
+        set_trig_temp_whole = -50;
+        set_trig_temp_decimal = 0;
+    }
     
     if (buttons & 0x80) {
         trigger_temperature_whole = set_trig_temp_whole; // Set
