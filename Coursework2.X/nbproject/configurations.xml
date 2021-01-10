@@ -14,11 +14,12 @@
       <itemPath>RealTimeClockDriver.h</itemPath>
       <itemPath>ThermometerDriver.h</itemPath>
       <itemPath>ThermometerInterface.h</itemPath>
-      <itemPath>buttons.h</itemPath>
       <itemPath>SounderInterface.h</itemPath>
       <itemPath>SounderDriver.h</itemPath>
       <itemPath>globals.h</itemPath>
       <itemPath>RealTimeClockInterface.h</itemPath>
+      <itemPath>ButtonsInterface.h</itemPath>
+      <itemPath>ButtonsDriver.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -37,11 +38,12 @@
       <itemPath>RealTimeClockDriver.c</itemPath>
       <itemPath>ThermometerDriver.c</itemPath>
       <itemPath>ThermometerInterface.c</itemPath>
-      <itemPath>buttons.c</itemPath>
       <itemPath>SounderDriver.c</itemPath>
       <itemPath>SounderInterface.c</itemPath>
       <itemPath>mode_functions.c</itemPath>
       <itemPath>RealTimeClockInterface.c</itemPath>
+      <itemPath>ButtonsInterface.c</itemPath>
+      <itemPath>ButtonsDriver.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

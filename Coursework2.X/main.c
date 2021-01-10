@@ -4,7 +4,7 @@
 #include "LCDPanelInterface.h"
 #include "ThermometerInterface.h"
 #include "NumberConverter.h"
-#include "buttons.h"
+#include "ButtonsInterface.h"
 #include "SounderInterface.h"
 
 // Config
@@ -398,7 +398,7 @@ void main(void) {
         // Get button states.
         unsigned char buttonResults[4][4] = {0};
         // Check buttons for mode change.
-        checkMatrixButtons(buttonResults);
+        CheckMatrixButtons(buttonResults);
         
         
         if (buttonResults[0][0]) {

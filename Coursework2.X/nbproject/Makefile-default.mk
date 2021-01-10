@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c LCDPanelDriver.c LCDPanelInterface.c Delay.c NumberConverter.c StringUtils.c RealTimeClockConversions.c RealTimeClockDriver.c ThermometerDriver.c ThermometerInterface.c buttons.c SounderDriver.c SounderInterface.c mode_functions.c RealTimeClockInterface.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c LCDPanelDriver.c LCDPanelInterface.c Delay.c NumberConverter.c StringUtils.c RealTimeClockConversions.c RealTimeClockDriver.c ThermometerDriver.c ThermometerInterface.c SounderDriver.c SounderInterface.c mode_functions.c RealTimeClockInterface.c ButtonsInterface.c ButtonsDriver.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.p1 ${OBJECTDIR}/LCDPanelDriver.p1 ${OBJECTDIR}/LCDPanelInterface.p1 ${OBJECTDIR}/Delay.p1 ${OBJECTDIR}/NumberConverter.p1 ${OBJECTDIR}/StringUtils.p1 ${OBJECTDIR}/RealTimeClockConversions.p1 ${OBJECTDIR}/RealTimeClockDriver.p1 ${OBJECTDIR}/ThermometerDriver.p1 ${OBJECTDIR}/ThermometerInterface.p1 ${OBJECTDIR}/buttons.p1 ${OBJECTDIR}/SounderDriver.p1 ${OBJECTDIR}/SounderInterface.p1 ${OBJECTDIR}/mode_functions.p1 ${OBJECTDIR}/RealTimeClockInterface.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.p1.d ${OBJECTDIR}/LCDPanelDriver.p1.d ${OBJECTDIR}/LCDPanelInterface.p1.d ${OBJECTDIR}/Delay.p1.d ${OBJECTDIR}/NumberConverter.p1.d ${OBJECTDIR}/StringUtils.p1.d ${OBJECTDIR}/RealTimeClockConversions.p1.d ${OBJECTDIR}/RealTimeClockDriver.p1.d ${OBJECTDIR}/ThermometerDriver.p1.d ${OBJECTDIR}/ThermometerInterface.p1.d ${OBJECTDIR}/buttons.p1.d ${OBJECTDIR}/SounderDriver.p1.d ${OBJECTDIR}/SounderInterface.p1.d ${OBJECTDIR}/mode_functions.p1.d ${OBJECTDIR}/RealTimeClockInterface.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.p1 ${OBJECTDIR}/LCDPanelDriver.p1 ${OBJECTDIR}/LCDPanelInterface.p1 ${OBJECTDIR}/Delay.p1 ${OBJECTDIR}/NumberConverter.p1 ${OBJECTDIR}/StringUtils.p1 ${OBJECTDIR}/RealTimeClockConversions.p1 ${OBJECTDIR}/RealTimeClockDriver.p1 ${OBJECTDIR}/ThermometerDriver.p1 ${OBJECTDIR}/ThermometerInterface.p1 ${OBJECTDIR}/SounderDriver.p1 ${OBJECTDIR}/SounderInterface.p1 ${OBJECTDIR}/mode_functions.p1 ${OBJECTDIR}/RealTimeClockInterface.p1 ${OBJECTDIR}/ButtonsInterface.p1 ${OBJECTDIR}/ButtonsDriver.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.p1.d ${OBJECTDIR}/LCDPanelDriver.p1.d ${OBJECTDIR}/LCDPanelInterface.p1.d ${OBJECTDIR}/Delay.p1.d ${OBJECTDIR}/NumberConverter.p1.d ${OBJECTDIR}/StringUtils.p1.d ${OBJECTDIR}/RealTimeClockConversions.p1.d ${OBJECTDIR}/RealTimeClockDriver.p1.d ${OBJECTDIR}/ThermometerDriver.p1.d ${OBJECTDIR}/ThermometerInterface.p1.d ${OBJECTDIR}/SounderDriver.p1.d ${OBJECTDIR}/SounderInterface.p1.d ${OBJECTDIR}/mode_functions.p1.d ${OBJECTDIR}/RealTimeClockInterface.p1.d ${OBJECTDIR}/ButtonsInterface.p1.d ${OBJECTDIR}/ButtonsDriver.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.p1 ${OBJECTDIR}/LCDPanelDriver.p1 ${OBJECTDIR}/LCDPanelInterface.p1 ${OBJECTDIR}/Delay.p1 ${OBJECTDIR}/NumberConverter.p1 ${OBJECTDIR}/StringUtils.p1 ${OBJECTDIR}/RealTimeClockConversions.p1 ${OBJECTDIR}/RealTimeClockDriver.p1 ${OBJECTDIR}/ThermometerDriver.p1 ${OBJECTDIR}/ThermometerInterface.p1 ${OBJECTDIR}/buttons.p1 ${OBJECTDIR}/SounderDriver.p1 ${OBJECTDIR}/SounderInterface.p1 ${OBJECTDIR}/mode_functions.p1 ${OBJECTDIR}/RealTimeClockInterface.p1
+OBJECTFILES=${OBJECTDIR}/main.p1 ${OBJECTDIR}/LCDPanelDriver.p1 ${OBJECTDIR}/LCDPanelInterface.p1 ${OBJECTDIR}/Delay.p1 ${OBJECTDIR}/NumberConverter.p1 ${OBJECTDIR}/StringUtils.p1 ${OBJECTDIR}/RealTimeClockConversions.p1 ${OBJECTDIR}/RealTimeClockDriver.p1 ${OBJECTDIR}/ThermometerDriver.p1 ${OBJECTDIR}/ThermometerInterface.p1 ${OBJECTDIR}/SounderDriver.p1 ${OBJECTDIR}/SounderInterface.p1 ${OBJECTDIR}/mode_functions.p1 ${OBJECTDIR}/RealTimeClockInterface.p1 ${OBJECTDIR}/ButtonsInterface.p1 ${OBJECTDIR}/ButtonsDriver.p1
 
 # Source Files
-SOURCEFILES=main.c LCDPanelDriver.c LCDPanelInterface.c Delay.c NumberConverter.c StringUtils.c RealTimeClockConversions.c RealTimeClockDriver.c ThermometerDriver.c ThermometerInterface.c buttons.c SounderDriver.c SounderInterface.c mode_functions.c RealTimeClockInterface.c
+SOURCEFILES=main.c LCDPanelDriver.c LCDPanelInterface.c Delay.c NumberConverter.c StringUtils.c RealTimeClockConversions.c RealTimeClockDriver.c ThermometerDriver.c ThermometerInterface.c SounderDriver.c SounderInterface.c mode_functions.c RealTimeClockInterface.c ButtonsInterface.c ButtonsDriver.c
 
 
 
@@ -174,14 +174,6 @@ ${OBJECTDIR}/ThermometerInterface.p1: ThermometerInterface.c  nbproject/Makefile
 	@-${MV} ${OBJECTDIR}/ThermometerInterface.d ${OBJECTDIR}/ThermometerInterface.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/ThermometerInterface.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/buttons.p1: buttons.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/buttons.p1.d 
-	@${RM} ${OBJECTDIR}/buttons.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp=${DFP_DIR}/xc8  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=0 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/buttons.p1 buttons.c 
-	@-${MV} ${OBJECTDIR}/buttons.d ${OBJECTDIR}/buttons.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/buttons.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
 ${OBJECTDIR}/SounderDriver.p1: SounderDriver.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/SounderDriver.p1.d 
@@ -213,6 +205,22 @@ ${OBJECTDIR}/RealTimeClockInterface.p1: RealTimeClockInterface.c  nbproject/Make
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp=${DFP_DIR}/xc8  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=0 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/RealTimeClockInterface.p1 RealTimeClockInterface.c 
 	@-${MV} ${OBJECTDIR}/RealTimeClockInterface.d ${OBJECTDIR}/RealTimeClockInterface.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/RealTimeClockInterface.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/ButtonsInterface.p1: ButtonsInterface.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/ButtonsInterface.p1.d 
+	@${RM} ${OBJECTDIR}/ButtonsInterface.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp=${DFP_DIR}/xc8  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=0 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ButtonsInterface.p1 ButtonsInterface.c 
+	@-${MV} ${OBJECTDIR}/ButtonsInterface.d ${OBJECTDIR}/ButtonsInterface.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/ButtonsInterface.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/ButtonsDriver.p1: ButtonsDriver.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/ButtonsDriver.p1.d 
+	@${RM} ${OBJECTDIR}/ButtonsDriver.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp=${DFP_DIR}/xc8  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=0 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ButtonsDriver.p1 ButtonsDriver.c 
+	@-${MV} ${OBJECTDIR}/ButtonsDriver.d ${OBJECTDIR}/ButtonsDriver.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/ButtonsDriver.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 else
 ${OBJECTDIR}/main.p1: main.c  nbproject/Makefile-${CND_CONF}.mk
@@ -295,14 +303,6 @@ ${OBJECTDIR}/ThermometerInterface.p1: ThermometerInterface.c  nbproject/Makefile
 	@-${MV} ${OBJECTDIR}/ThermometerInterface.d ${OBJECTDIR}/ThermometerInterface.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/ThermometerInterface.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/buttons.p1: buttons.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/buttons.p1.d 
-	@${RM} ${OBJECTDIR}/buttons.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp=${DFP_DIR}/xc8  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=0 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/buttons.p1 buttons.c 
-	@-${MV} ${OBJECTDIR}/buttons.d ${OBJECTDIR}/buttons.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/buttons.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
 ${OBJECTDIR}/SounderDriver.p1: SounderDriver.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/SounderDriver.p1.d 
@@ -334,6 +334,22 @@ ${OBJECTDIR}/RealTimeClockInterface.p1: RealTimeClockInterface.c  nbproject/Make
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp=${DFP_DIR}/xc8  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=0 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/RealTimeClockInterface.p1 RealTimeClockInterface.c 
 	@-${MV} ${OBJECTDIR}/RealTimeClockInterface.d ${OBJECTDIR}/RealTimeClockInterface.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/RealTimeClockInterface.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/ButtonsInterface.p1: ButtonsInterface.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/ButtonsInterface.p1.d 
+	@${RM} ${OBJECTDIR}/ButtonsInterface.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp=${DFP_DIR}/xc8  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=0 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ButtonsInterface.p1 ButtonsInterface.c 
+	@-${MV} ${OBJECTDIR}/ButtonsInterface.d ${OBJECTDIR}/ButtonsInterface.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/ButtonsInterface.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/ButtonsDriver.p1: ButtonsDriver.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/ButtonsDriver.p1.d 
+	@${RM} ${OBJECTDIR}/ButtonsDriver.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp=${DFP_DIR}/xc8  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=0 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ButtonsDriver.p1 ButtonsDriver.c 
+	@-${MV} ${OBJECTDIR}/ButtonsDriver.d ${OBJECTDIR}/ButtonsDriver.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/ButtonsDriver.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

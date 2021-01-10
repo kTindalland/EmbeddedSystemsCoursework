@@ -1,7 +1,7 @@
 #include "globals.h"
 #include "NumberConverter.h"
 #include "LCDPanelInterface.h"
-#include "buttons.h"
+#include "ButtonsInterface.h"
 #include "main.h"
 
 void Home(void) {
@@ -47,7 +47,7 @@ void SetTime(void) {
     ILCDPanelSetCursor(1, 0);
     PrintTimeToLCD(set_time_time);
     
-    unsigned char buttons = checkButtons();
+    unsigned char buttons = CheckButtons();
     
     if (buttons) set_time_flag = 0; // Check if any button has been pressed.
     
@@ -101,7 +101,7 @@ void SetDate(void)
     PrintDateToLCD(set_date_date);
     PrintDayToLCD(set_date_date.day);
     
-    unsigned char buttons = checkButtons();
+    unsigned char buttons = CheckButtons();
     
     if (buttons) set_date_flag = 0;
     
@@ -152,7 +152,7 @@ void SetTriggerTemperature(void) {
     else ILCDPanelWrite(" ");
     
     unsigned char buttons;
-    buttons = checkButtons();
+    buttons = CheckButtons();
     
     set_trig_temp_whole = set_trig_temp_whole + ((buttons & 0x10) >> 4); // Add 1
     set_trig_temp_whole = set_trig_temp_whole - (buttons & 0x01); // Sub 1
@@ -224,7 +224,7 @@ void SetFakeTemperature(void) {
     else ILCDPanelWrite(" ");
     
     unsigned char buttons;
-    buttons = checkButtons();
+    buttons = CheckButtons();
     
     fake_temperature_temp = fake_temperature_temp - (buttons & 0x01); // -1
     fake_temperature_temp = fake_temperature_temp + ((buttons & 0x10) >> 4); // +1
@@ -300,7 +300,7 @@ void SmartHeaterSetHotColdTime(unsigned char* actual, unsigned char* temp, unsig
     else ILCDPanelWrite(" ");
     
     unsigned char buttons;
-    buttons = checkButtons();
+    buttons = CheckButtons();
     
     *temp = *temp - (buttons & 0x01); // Take 1
     *temp = *temp + ((buttons & 0x10) >> 4); // Add 1
