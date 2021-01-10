@@ -2,6 +2,7 @@
 #include "RealTimeClockConversions.h"
 #include "RealTimeClockInterface.h"
 
+// Convert and write all the parts of the date
 void setDate(rtcDate date) {
     
     uch dateByte = convertDate(date.date, date.month, date.year);
@@ -17,6 +18,7 @@ void setDate(rtcDate date) {
     writeByte(RTC_DAY, dayByte);
 }
 
+// Convert and write all the parts of the time
 void setTime(rtcTime time) {
     
     uch secByte = convertSecs(time.secs);
@@ -29,7 +31,7 @@ void setTime(rtcTime time) {
     writeByte(RTC_HOURS, hoursByte);  
 }
 
-
+// Read and convert all the parts of a date
 void getDate(rtcDate* date) {
     uch dateByte = readByte(RTC_DATE);
     date->date = convertReadDate(dateByte);
@@ -44,6 +46,7 @@ void getDate(rtcDate* date) {
     date->day = convertReadDay(dayByte);
 }
 
+// Read and convert all the parts of a time
 void getTime(rtcTime* time) {
     uch secsByte = readByte(RTC_SEC);
     time->secs = convertReadSecs(secsByte);
@@ -55,6 +58,7 @@ void getTime(rtcTime* time) {
     time->hours = convertReadHours(hoursByte, &time->AMPM);
 }
 
+// Gets the time and guarentees it's in 24hr mode
 void getTime24(rtcTime* time) {
     
     getTime(time);
@@ -64,6 +68,7 @@ void getTime24(rtcTime* time) {
     }
 }
 
+// Converts from 24hr to 12hr mode and vice versa
 void convertHourFormat(rtcTime* time) {
     // If 24 to 12
     if (time->AMPM == NULL) {

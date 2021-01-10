@@ -17,6 +17,7 @@
 // Weird function won't work if not given exactly what it wants.
 void SmartHeaterSetHotColdTime(unsigned char* actual, unsigned char* temp, unsigned char bound, char* title);
 
+// Global variables.
 signed char home_temperature_whole;
 signed char home_temperature_decimal;
 
@@ -58,6 +59,7 @@ rtcTime global_time;
 rtcTime global_time_24;
 rtcDate global_date;
 
+// Prints each number for the time and a string after that
 void PrintTimeNumber(unsigned char number, char* endString) {
     char string[10];
     
@@ -67,6 +69,7 @@ void PrintTimeNumber(unsigned char number, char* endString) {
     ILCDPanelWrite(endString);
 }
 
+// Prints the time to the LCD panel
 void PrintTimeToLCD(rtcTime time) {
         
     PrintTimeNumber(time.hours, ":");
@@ -77,6 +80,7 @@ void PrintTimeToLCD(rtcTime time) {
     ILCDPanelWrite(tags[time.AMPM + 1]);
 }
 
+// Prints the date to the LCD panel
 void PrintDateToLCD(rtcDate date){
     PrintTimeNumber(date.date, "/");
     PrintTimeNumber(date.month, "/");
@@ -85,6 +89,7 @@ void PrintDateToLCD(rtcDate date){
     PrintTimeNumber(year_digits, " ");
 }
 
+// Prints the Day to the LCD panel
 void PrintDayToLCD(unsigned char day) {
     if (day > 7 || day < 1) return;
     
@@ -92,6 +97,7 @@ void PrintDayToLCD(unsigned char day) {
     ILCDPanelWrite(tags[day - 1]);
 }
 
+// Returns the temperature. If the fake temp should be used, returns that instead.
 void GetTemperatureProxy(signed char* whole, signed char* decimal) {
     if (fake_temp_onoff) {
         *whole = fake_temperature;
@@ -102,6 +108,7 @@ void GetTemperatureProxy(signed char* whole, signed char* decimal) {
     }
 }
 
+// Gets the maximum date for a given year and month - includes leap years
 unsigned char GetMaximumDateForMonth(unsigned char month, unsigned char year)
 {
     if (month != 2)
@@ -119,19 +126,25 @@ unsigned char GetMaximumDateForMonth(unsigned char month, unsigned char year)
     }
 }
 
+// Resets the goal time.
 void GetGoalTriggerTime(unsigned char hot)
 {
-    
+    // Get current time and date
     goal_time = global_time_24;
     goal_date = global_date;
     
+    // Get the additional time that should be used.
     unsigned char time_used;
     if (hot) { time_used = hot_time_actual;}
     else {time_used = cold_time_actual;}
     
+    // Add the time to the current time.
     goal_time.secs = goal_time.secs + time_used;
+    
+    // If it goes over the current minute
     if (goal_time.secs > 59)
     {
+        // Add the additional minutes
         unsigned char secs_over = goal_time.secs % 60;
         unsigned char mins_extra = (goal_time.secs - secs_over) / 60;
         
@@ -139,6 +152,7 @@ void GetGoalTriggerTime(unsigned char hot)
         goal_time.mins = goal_time.mins + mins_extra;
     }
     
+    // If it goes over the hour, add the hour
     if (goal_time.mins > 59)
     {
         unsigned char mins_over = goal_time.mins % 60;
@@ -147,6 +161,7 @@ void GetGoalTriggerTime(unsigned char hot)
         goal_time.hours = goal_time.hours + hours_extra;
     }
     
+    // Same again...
     if (goal_time.hours > 23)
     {
         goal_time.hours = 0;
@@ -168,6 +183,7 @@ void GetGoalTriggerTime(unsigned char hot)
     
 }
 
+// Gets if it has gone over the trigger time.
 unsigned char GetTriggerTimeStatus(void)
 {
     rtcTime current_time;
@@ -222,6 +238,7 @@ unsigned char IsTemperatureHot() {
     return whole_above;
 }
 
+// Gets if we're in the active hours
 unsigned char IsInTimePeriod(void) {
     if (global_time_24.hours > 22) {
         return 0;
@@ -231,9 +248,7 @@ unsigned char IsInTimePeriod(void) {
         if (global_time_24.mins >= 30) {
             return 0;
         }
-    }
-    
-    
+    }    
     
     if (global_time_24.hours < 7) {
         return 0;
@@ -250,17 +265,25 @@ void main(void) {
     // Use real temperature.
     fake_temp_onoff = 0x00; 
     
-    rtcTime time;
-    time.AMPM = 0;
-    time.hours = 6;
-    time.mins = 59;
-    time.secs = 45;
-    
-    setTime(time);
+//    rtcTime time;
+//    time.AMPM = 0;
+//    time.hours = 6;
+//    time.mins = 59;
+//    time.secs = 45;
+//    
+//    setTime(time);
+        
+//    rtcDate date;
+//    date.date = 1;
+//    date.month = 1;
+//    date.year = 21;
+//    date.day = 5;
+//    setDate(date);
     
     ILCDPanelClear();
     clearWP();
     
+    // Initial values
     getTime(&set_time_time);
     getDate(&set_date_date);
     global_time = set_time_time;
@@ -302,13 +325,7 @@ void main(void) {
     unsigned char heating_latch = 0;
 
     
-    
-//    rtcDate date;
-//    date.date = 1;
-//    date.month = 1;
-//    date.year = 21;
-//    date.day = 5;
-//    setDate(date);
+
     
     trigger_timer_passed = 0;
     

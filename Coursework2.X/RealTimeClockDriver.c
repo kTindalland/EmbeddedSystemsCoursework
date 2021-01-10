@@ -11,17 +11,19 @@ void rtcInit(void){
 }
 
 void clearWP(void) {
-    
+    // clear the write protect.
     writeByte(RTC_CTRL, 0x00);
 }
 
 uch readCH(void) {
+    // Read the clock halt
     uch secsByte = readByte(RTC_SEC);
     
     return (secsByte & 0x80) >> 7;
 }
 
 void startClock(void) {
+    // Wipe the clock halt
     uch currentSeconds = readByte(RTC_SEC);
     
     uch newSeconds = currentSeconds & 0x7F;
@@ -30,6 +32,7 @@ void startClock(void) {
 }
 
 void stopClock(void) {
+    // Write the clock halt bit
     uch currentSeconds = readByte(RTC_SEC);
     
     uch newSeconds = currentSeconds | 0x80;
@@ -38,6 +41,7 @@ void stopClock(void) {
 }
 
 uch readByte(uch addr) {
+    // Read a byte from the clock
     rtcInit();
     
     uch readAddr = addr | RTC_READ;
@@ -85,6 +89,7 @@ uch readByte(uch addr) {
 }
 
 void writeByte(uch addr, uch data) {
+    // Write a byte to the clock
     rtcInit();
     
     uch writeAddr = addr | RTC_WRITE;

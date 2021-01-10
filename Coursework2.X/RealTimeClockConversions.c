@@ -1,5 +1,9 @@
 #include "RealTimeClockConversions.h"
 
+// Each function is very much like the rest.
+// They all pretty much get a value and just put the byte in at
+// the specific position the clock wants them at.
+
 uch convertSecs(uch sec) {
 	if (sec >= 60) return RTC_ERROR;
     
@@ -7,11 +11,11 @@ uch convertSecs(uch sec) {
     
     if (readCH()) result |= 0x80;
     
-    uch ones = sec % 10;
-    uch tens = (sec - ones) / 10;
+    uch ones = sec % 10; // Get the ones
+    uch tens = (sec - ones) / 10; // Get the tens digit
     
-    result |= ones;
-    result |= (tens << 4);
+    result |= ones; // Put the ones in
+    result |= (tens << 4); // Put the tens in on the left
     
     return result;
 }

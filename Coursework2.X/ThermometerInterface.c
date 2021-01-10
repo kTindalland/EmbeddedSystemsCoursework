@@ -1,6 +1,7 @@
 #include "ThermometerInterface.h"
 #include "ThermometerDriver.h"
 
+// Measure and read the temperature.
 void IThermGetTemperature(signed char* whole, signed char* decimal) {
     // Variable declarations.
     unsigned char msb;

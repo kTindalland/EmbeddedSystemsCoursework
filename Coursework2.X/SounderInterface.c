@@ -2,6 +2,7 @@
 #include "SounderDriver.h"
 #include "Delay.h"
 
+// Beep sounder for different patterns
 void ISounderBuzz(unsigned char hot) // 1 for hot 0 for cold;
 {
     InitialiseSounder();

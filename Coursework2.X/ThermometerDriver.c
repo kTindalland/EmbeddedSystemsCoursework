@@ -1,11 +1,12 @@
 #include "ThermometerDriver.h"
 #include "Delay.h"
 
-
+// Set the tris values
 void ThermInit(void) {
     TRISE = 0x00;
 }
 
+// Initialise a communication with the thermometer.
 void ThermReset(void) {
     
     char presence = 1;
@@ -26,11 +27,13 @@ void ThermReset(void) {
     
 }
 
+// Write a byte to the thermometer.
 void ThermWriteByte(unsigned char value) {
     
     unsigned char i;
     unsigned char temp;
     
+    // Go through each bit and send it.
     for (i = 8; i > 0; i--) {
         
         temp = value & 0x01;
@@ -51,6 +54,7 @@ void ThermWriteByte(unsigned char value) {
     }
 }
 
+// Read a byte from the thermometer.
 unsigned char ThermReadByte(void) {
     unsigned char i;
     unsigned char value = 0;
@@ -77,6 +81,7 @@ unsigned char ThermReadByte(void) {
     return value;
 }
 
+// Send the convert temperature command.
 void ThermMeasureTemp(void) {
     
     ThermInit();
@@ -89,6 +94,7 @@ void ThermMeasureTemp(void) {
     for (unsigned char i = 0; i < 100; i++);    
 }
 
+// Read the temperature from the thermometer.
 void ThermGetTemp(unsigned char* msb, unsigned char* lsb) {
     
     ThermInit();

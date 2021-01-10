@@ -32,11 +32,13 @@ void nbrcnvt_convert_integer(signed short number, char* output) {
 		number = number * -1;
 	}
 
+    // Gets the values in individual digits
 	units = number % 10;
 	tens = ((number - units) % 100) / 10;
 	hundreds = ((number - units - (tens * 10)) % 1000) / 100;
 	thousands = ((number - units - (tens * 10) - (hundreds * 100)) % 10000) / 1000;
 
+    // Number convert each digit
 	if (thousands != 0) {
 		zero_flag = 1;
 		output[count] = nbrcnvt_convert_digit(thousands);
