@@ -86,7 +86,7 @@ void ThermMeasureTemp(void) {
     ThermWriteByte(0x44); // Read ambient temp command.
     
     // Give it some time to work.
-    for (unsigned char i = 0; i < 50; i++);    
+    for (unsigned char i = 0; i < 100; i++);    
 }
 
 void ThermGetTemp(unsigned char* msb, unsigned char* lsb) {

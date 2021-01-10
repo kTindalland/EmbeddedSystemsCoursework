@@ -59,6 +59,11 @@ extern signed char fake_temperature_temp; // To-be-set valus.
 extern signed char fake_temperature_temp_decimal;
 extern unsigned char fake_temp_onoff; // If the fake temperature is being use.
 
+// Global time and date
+extern rtcTime global_time;
+extern rtcTime global_time_24;
+extern rtcDate global_date;
+
 #ifdef	__cplusplus
 }
 #endif

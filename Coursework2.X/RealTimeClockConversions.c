@@ -188,8 +188,8 @@ unsigned char convertReadDay(uch day) {
     return result;
 }
 
-short convertReadYear(uch year) {
-	short result = 0;
+uch convertReadYear(uch year) {
+	uch result = 0;
     uch ones = year & 0x0F;
     uch tens = ((year & 0xF0) >> 4 ) * 10;
     

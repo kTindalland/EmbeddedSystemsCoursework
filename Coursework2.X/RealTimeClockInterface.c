@@ -80,5 +80,7 @@ void convertHourFormat(rtcTime* time) {
         }
         
         if (time->hours >= 24) time->hours = 0;
+        
+        time->AMPM = NULL;
     }
 }

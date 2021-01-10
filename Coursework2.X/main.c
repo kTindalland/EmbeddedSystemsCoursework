@@ -40,7 +40,6 @@ unsigned char cold_time_temp;
 unsigned char temp_last;
 
 rtcDate start_trig_date;
-rtcTime start_trig_time;
 rtcTime goal_time;
 rtcDate goal_date;
 unsigned char trigger_timer_passed;
@@ -55,8 +54,9 @@ signed char fake_temperature_temp;
 signed char fake_temperature_temp_decimal;
 unsigned char fake_temp_onoff;
 
-unsigned char on_off;
-unsigned char on_off_last;
+rtcTime global_time;
+rtcTime global_time_24;
+rtcDate global_date;
 
 void PrintTimeNumber(unsigned char number, char* endString) {
     char string[10];
@@ -121,55 +121,60 @@ unsigned char GetMaximumDateForMonth(unsigned char month, unsigned char year)
 
 void GetGoalTriggerTime(unsigned char hot)
 {
-    trigger_timer_passed = 0;
-    getTime24(&start_trig_time);
-    getDate(&start_trig_date);
-    goal_time = start_trig_time;
-    goal_date = start_trig_date;
+    
+    goal_time = global_time_24;
+    goal_date = global_date;
     
     unsigned char time_used;
     if (hot) { time_used = hot_time_actual;}
     else {time_used = cold_time_actual;}
     
-    
-    if (goal_time.secs + time_used > 59)
+    goal_time.secs = goal_time.secs + time_used;
+    if (goal_time.secs > 59)
     {
-        goal_time.secs = goal_time.secs - 60;
-        goal_time.mins = goal_time.mins + 1;
-        if (goal_time.mins > 59)
+        unsigned char secs_over = goal_time.secs % 60;
+        unsigned char mins_extra = (goal_time.secs - secs_over) / 60;
+        
+        goal_time.secs = secs_over;
+        goal_time.mins = goal_time.mins + mins_extra;
+    }
+    
+    if (goal_time.mins > 59)
+    {
+        unsigned char mins_over = goal_time.mins % 60;
+        unsigned char hours_extra = (goal_time.mins - mins_over) / 60;
+        goal_time.mins = mins_over;
+        goal_time.hours = goal_time.hours + hours_extra;
+    }
+    
+    if (goal_time.hours > 23)
+    {
+        goal_time.hours = 0;
+        goal_date.date = goal_date.date + 1;
+        if (goal_date.day == 7) { goal_date.day = 1; }
+        else { goal_date.day = goal_date.day + 1; }
+
+        if (goal_date.date > GetMaximumDateForMonth(goal_date.month, goal_date.year))
         {
-            goal_time.mins = 0;
-            goal_time.hours = goal_time.hours + 1;
-            if ((set_time_time.AMPM == -1 && goal_time.hours > 23) ||
-                goal_time.hours > 11) // Open to Being Extended for 12Hr Mode
+            goal_date.date = 1;
+            goal_date.month = goal_date.month + 1;
+            if (goal_date.month > 12)
             {
-                    goal_time.hours = 0;
-                    goal_date.date = goal_date.date + 1;
-                    if (goal_date.day == 7) { goal_date.day = 1; }
-                    else { goal_date.day = goal_date.day + 1; }
-                            
-                    if (goal_date.date > GetMaximumDateForMonth(goal_date.month, goal_date.year))
-                    {
-                        goal_date.date = 1;
-                        goal_date.month = goal_date.month + 1;
-                        if (goal_date.month > 12)
-                        {
-                            goal_date.month = 1;
-                            goal_date.year = goal_date.year + 1;
-                        }
-                    }
+                goal_date.month = 1;
+                goal_date.year = goal_date.year + 1;
             }
         }
     }
+    
 }
 
 unsigned char GetTriggerTimeStatus(void)
 {
     rtcTime current_time;
-    getTime24(&current_time);
+    current_time = global_time_24;
                 
     rtcDate current_date;
-    getDate(&current_date);   
+    current_date = global_date;
     
     if (current_date.year > goal_date.year) { return 1; }
     if (current_date.year < goal_date.year) { return 0; }
@@ -192,8 +197,55 @@ unsigned char GetTriggerTimeStatus(void)
     return 0;
 }
 
-void main(void) {
+// returns if the temperature is above or below the trigger.
+unsigned char IsTemperatureHot() {
+    unsigned char whole_above = 0;
+    unsigned char whole_equal = 0;
+    unsigned char decimal_above = 0;
     
+    if (home_temperature_whole > trigger_temperature_whole) {
+        whole_above = 1;
+    }
+    
+    if (home_temperature_whole == trigger_temperature_whole) {
+        whole_equal = 1;
+    }
+    
+    if (home_temperature_decimal >= trigger_temperature_decimal) {
+        decimal_above = 1;
+    }
+    
+    // Returns 1 for hot and 0 for cold.    
+    if (whole_equal == 1 && decimal_above == 1) {
+        return 1;
+    }
+    return whole_above;
+}
+
+unsigned char IsInTimePeriod(void) {
+    if (global_time_24.hours > 22) {
+        return 0;
+    }
+    
+    if (global_time_24.hours == 22) {
+        if (global_time_24.mins >= 30) {
+            return 0;
+        }
+    }
+    
+    
+    
+    if (global_time_24.hours < 7) {
+        return 0;
+    }
+    
+    return 1;
+}
+
+void main(void) {
+    TRISB = 0x00;
+    TRISE = 0x00;
+    PORTE = 0x00;
     // Use real temperature.
     fake_temp_onoff = 0x00; 
     
@@ -202,18 +254,24 @@ void main(void) {
     
     getTime(&set_time_time);
     getDate(&set_date_date);
+    global_time = set_time_time;
+    
+    global_time_24 = global_time;
+    if (global_time_24.AMPM != -1) convertHourFormat(&global_time_24);
+    
+    global_date = set_date_date;
     
     set_trig_temp_whole = 30;
     set_trig_temp_decimal = 0;
     trigger_temperature_whole = 30;
-    set_trig_temp_whole = 0;
+    trigger_temperature_decimal = 0;
     
     // Set timer values
-    hot_time_actual = 45;
-    hot_time_temp = 45;
+    hot_time_actual = 5;
+    hot_time_temp = 5;
     
-    cold_time_actual = 45;
-    cold_time_temp = 45;
+    cold_time_actual = 5;
+    cold_time_temp = 5;
     
     // Set fake temp values.
     fake_temperature = 22;
@@ -223,8 +281,20 @@ void main(void) {
     fake_temp_onoff = 0;
     
     unsigned char mode = HOME;
-//    time.AMPM = PM;
-//    time.hours = 2;
+    unsigned char system_just_initialised = 0xFF;
+    unsigned char isOverTriggerTemperature;
+    unsigned char old_temperature_over_trigger;
+    
+    unsigned char in_time_period;
+    unsigned char old_in_time_period;
+    
+    unsigned char system_on = IsInTimePeriod();
+    
+    unsigned char heating_latch = 0;
+
+//    rtcTime time;
+//    time.AMPM = 1;
+//    time.hours = 9;
 //    time.mins = 36;
 //    time.secs = 0;
 //    
@@ -237,75 +307,93 @@ void main(void) {
 //    date.day = 5;
 //    setDate(date);
     
-    trigger_timer_passed = 1;
+    trigger_timer_passed = 0;
     
-    while(1) {    
+    
+    
+    while(1) {
+        getTime(&global_time);
         
-        rtcTime time;
-        getTime24(&time);
+        global_time_24 = global_time;
+        if (global_time_24.AMPM != -1) convertHourFormat(&global_time_24);
         
-        if (on_off_last == 0 && on_off == 1)
-        {
-            on_off_last = 1;
+        getDate(&global_date);
+        
+        GetTemperatureProxy(&home_temperature_whole, &home_temperature_decimal);
+        
+        // Check the time is in bounds.
+        in_time_period = IsInTimePeriod();
+        
+        
+        isOverTriggerTemperature = IsTemperatureHot();
+        temp_last = isOverTriggerTemperature; // For use in the mode_functions.c
+        
+        
+        if (system_just_initialised) {
+            // Clear the flag
+            system_just_initialised = 0x00;
             
-            GetTemperatureProxy(&home_temperature_whole, &home_temperature_decimal);
+            // Set the old values equal to new
+            old_temperature_over_trigger = isOverTriggerTemperature;
+            old_in_time_period = in_time_period;
             
-            if ((home_temperature_whole < trigger_temperature_whole) ||
-               ((home_temperature_whole == trigger_temperature_whole) && (home_temperature_decimal < trigger_temperature_decimal)))
-            {
-                temp_last = 0;
-            }
-            else if ((home_temperature_whole > trigger_temperature_whole) ||
-                    ((home_temperature_whole == trigger_temperature_whole) && (home_temperature_decimal > trigger_temperature_decimal)))
-            {
-                temp_last = 1;
-            }
-            else {temp_last = 0;}
+            // Get calculate the goal time.
+            GetGoalTriggerTime(isOverTriggerTemperature);
+            trigger_timer_passed = 0;
         }
         
-        if ((time.hours < 7 || time.hours > 22) ||
-             (time.hours == 22 && time.mins >= 30))
-        {
-            on_off = 0;
-            on_off_last = 0;
+        // Calculate change in time period.
+        if (in_time_period != old_in_time_period) {
+            // Set system on flag
+            system_on = in_time_period;
+            
+            // When system comes back online, reinitialise it.
+            system_just_initialised = in_time_period;
+          
+        }
+        
+        if (system_on) {
+            RB5 = 1;
         }
         else {
-            GetGoalTriggerTime(!temp_last);
-            on_off = 1;
+            RB5 = 0;
         }
         
-        if (on_off && (time.secs % 6 == 0)) { // Every 6 secs to reduce time / improve performance.
-            GetTemperatureProxy(&home_temperature_whole, &home_temperature_decimal);
-
-            // Hot To Cold
-            if (((home_temperature_whole < trigger_temperature_whole) || // EG: 23.9 < 24.1
-               ((home_temperature_whole == trigger_temperature_whole) && (home_temperature_decimal < trigger_temperature_decimal))) // 25.4 < 25.5
-               && temp_last == 1)         
-            {
-                temp_last = 0;
-                GetGoalTriggerTime(0);
+        if (system_on) {
+            // Calculate the flip
+            if (isOverTriggerTemperature != old_temperature_over_trigger) {
+                GetGoalTriggerTime(isOverTriggerTemperature);
+                trigger_timer_passed = 0;
             }
 
-            
-            // Cold To Hot
-            else if (((home_temperature_whole > trigger_temperature_whole) || // EG: 24.1 > 23.9
-               ((home_temperature_whole == trigger_temperature_whole) && (home_temperature_decimal > trigger_temperature_decimal))) // 25.5 > 25.4
-               && temp_last == 0)         
-            {        
-                temp_last = 1;
-                GetGoalTriggerTime(1);
-            }           
-            
-            // No Trigger, But Buzzer Hasn't Gone Off From Last Trigger
-            else if (trigger_timer_passed == 0)
-            {
-                if(GetTriggerTimeStatus())
-                {
-                    trigger_timer_passed = 1;
-                    ISounderBuzz(temp_last);
+            // Assign current temperature to old value for next time.
+            old_temperature_over_trigger = isOverTriggerTemperature;
+
+            // If the timer hasn't already passed and it's over the threshold.
+            if(!trigger_timer_passed && GetTriggerTimeStatus()) {
+                // Need to buzz.
+                ISounderBuzz(isOverTriggerTemperature);
+                trigger_timer_passed = 1;
+
+                // Change heating circuit.
+                if (isOverTriggerTemperature) {
+                    // If it's hot again, turn off the circuit.
+                    heating_latch = 0;
+                }
+                else {
+                    // If it's gone cold, turn on the circuit.
+                    heating_latch = 1;
                 }
             }
+            
+            if (heating_latch) {
+                RB7 = 1;
+            }
+            else {
+                RB7 = 0;
+            }
         }
+        
         
         // Get button states.
         unsigned char buttonResults[4][4] = {0};
@@ -326,8 +414,8 @@ void main(void) {
             ILCDPanelClear();
         }
         else if (buttonResults[0][3]) {
-            getTime(&set_time_time);
-            getDate(&set_date_date);
+            set_time_time = global_time;
+            set_date_date = global_date;
         }
         else if (buttonResults[1][0]) {
             mode = HOTTIME;
@@ -382,16 +470,6 @@ void main(void) {
                 SmartHeaterSetHotColdTime(&cold_time_actual, &cold_time_temp, (unsigned char)90, "Set Cold Timer");
                 break;
         }
-    }
-    
-    // Heating circuit on/off
-    // Using portc7
-    
-    if (on_off) {
-        PORTC = PORTC | 0x80;
-    }
-    else {
-        PORTC = PORTC & 0x7F;
     }
     
     return;

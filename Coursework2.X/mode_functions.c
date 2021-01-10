@@ -10,8 +10,8 @@ void Home(void) {
     rtcDate date;
     char string[10];
     
-    getTime(&time);
-    getDate(&date);
+    time = global_time;
+    date = global_date;
         
     // Print day of week.
     PrintDayToLCD(date.day);
@@ -187,6 +187,9 @@ void SetTriggerTemperature(void) {
     if (buttons & 0x80) {
         trigger_temperature_whole = set_trig_temp_whole; // Set
         trigger_temperature_decimal = set_trig_temp_decimal;
+        
+        // Reset the goal time.
+        GetGoalTriggerTime(temp_last);
     }
     
     if (buttons & 0x08) {
@@ -305,11 +308,17 @@ void SmartHeaterSetHotColdTime(unsigned char* actual, unsigned char* temp, unsig
     if (*temp > bound) *temp = bound;
     
     if (buttons & 0x02) *temp = *actual; // Cancel;
-    if (buttons & 0x20) *actual = *temp; // Set;
+    if (buttons & 0x20) {
+        *actual = *temp; // Set;
+        
+        // Reset the goal time.
+        GetGoalTriggerTime(temp_last);
+    }
     
     char string[10];
     nbrcnvt_convert_integer(*temp, string);
     
     ILCDPanelSetCursor(1,0);
     ILCDPanelWrite(string);
+    ILCDPanelWrite("    "); // Clear it out
 }

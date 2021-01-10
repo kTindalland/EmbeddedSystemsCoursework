@@ -25,7 +25,7 @@ unsigned char convertReadHours(uch hours, signed char* AMPM);
 unsigned char convertReadDate(uch date);
 unsigned char convertReadMonth(uch month);
 unsigned char convertReadDay(uch day);
-short convertReadYear(uch year);
+unsigned char convertReadYear(uch year);
 
 // Read the clock halt bit
 uch readCH(void);
