@@ -246,8 +246,17 @@ void main(void) {
     TRISB = 0x00;
     TRISE = 0x00;
     PORTE = 0x00;
+    PORTB = 0x00;
     // Use real temperature.
     fake_temp_onoff = 0x00; 
+    
+    rtcTime time;
+    time.AMPM = 0;
+    time.hours = 6;
+    time.mins = 59;
+    time.secs = 45;
+    
+    setTime(time);
     
     ILCDPanelClear();
     clearWP();
@@ -292,13 +301,7 @@ void main(void) {
     
     unsigned char heating_latch = 0;
 
-//    rtcTime time;
-//    time.AMPM = 1;
-//    time.hours = 9;
-//    time.mins = 36;
-//    time.secs = 0;
-//    
-//    setTime(time);
+    
     
 //    rtcDate date;
 //    date.date = 1;
@@ -347,9 +350,14 @@ void main(void) {
             // Set system on flag
             system_on = in_time_period;
             
+            if (system_on == 0) {
+                RB7 = 0;
+            }
+            
             // When system comes back online, reinitialise it.
             system_just_initialised = in_time_period;
           
+            continue;
         }
         
         if (system_on) {

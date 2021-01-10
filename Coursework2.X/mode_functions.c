@@ -70,6 +70,8 @@ void SetTime(void) {
     if (set_time_time.AMPM == -1 && set_time_time.hours > 23) set_time_time.hours = 23;
     else if (set_time_time.AMPM != -1 && set_time_time.hours > 12) set_time_time.hours = 12;
     
+    if (set_time_time.AMPM != -1 && set_time_time.hours == 0) set_time_time.hours = 12; 
+    
     // Validate minutes
     if (set_time_time.mins > 59) set_time_time.mins = 59;
     
