@@ -302,13 +302,16 @@ void SmartHeaterSetHotColdTime(unsigned char* actual, unsigned char* temp, unsig
     unsigned char buttons;
     buttons = checkButtons();
     
-    *temp = *temp - (buttons & 0x01);
-    *temp = *temp + ((buttons & 0x10) >> 4);
+    *temp = *temp - (buttons & 0x01); // Take 1
+    *temp = *temp + ((buttons & 0x10) >> 4); // Add 1
+    
+    *temp = *temp - (((buttons & 0x02) >> 1) * 10); // Take 10
+    *temp = *temp + (((buttons & 0x20) >> 5) * 10); // Add 10
     
     if (*temp > bound) *temp = bound;
     
-    if (buttons & 0x02) *temp = *actual; // Cancel;
-    if (buttons & 0x20) {
+    if (buttons & 0x04) *temp = *actual; // Cancel;
+    if (buttons & 0x40) {
         *actual = *temp; // Set;
         
         // Reset the goal time.
